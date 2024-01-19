@@ -26,10 +26,12 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'email' => ['required', 'email:dns', 'unique:users,email'],
-            'username' => ['required'],
+            'username' => ['required', 'unique:users,username'],
             'password' => ['required'],
             'name' => ['required', 'max:255'],
         ]);
+
+        $validatedData['image'] = 'default_profile.png';
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         try {
@@ -53,28 +55,22 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
+        $credentials = $request->validate([
+            'username' => 'required|exists:users,username',
             'password' => 'required'
         ]);
-
-
-        $credentials = $validator->validated();
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Mendapatkan pengguna yang terotentikasi
             $user = Auth::user();
 
-            // Mengarahkan ke halaman yang sesuai berdasarkan peran (role)
-            return redirect()->intended('/home')
-                ->with('succces', 'anda berhasil login');
+            return redirect()->intended('/');
         }
 
-        return back()->withErrors(
-            ['password' => 'Password yang dimasukkan salah.']
-        )->with('failed', 'Login Failed');
+        return back()->withErrors([
+            'password' => 'Password yang dimasukkan salah.'
+        ])->with('failed', 'Login Failed');
     }
 
 

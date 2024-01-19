@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->uuid('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->uuid('item_id');
-            $table->string('item_type');
+            $table->uuid('likeable_id');
+            $table->string('likeable_type');
             $table->timestamps();
         });
     }

@@ -1,0 +1,116 @@
+/* * {
+        border: 1px solid black;
+    } */
+
+:root {
+    --main_color: black;
+}
+
+body {
+    background-color: #3f979b;
+}
+
+.main_content {
+    background-color: var(--main_color);
+    min-height: 100%;
+    margin-bottom: 10vh;
+}
+
+.main_content .container_wrap {
+    padding: 5% 10%;
+}
+
+.main_content .container_wrap .row_header {
+    margin-top: 5%;
+    margin-bottom: 6vh;
+}
+
+.row_header h4 {
+    text-align: center;
+    color: white;
+    font-family: "Poppins";
+    letter-spacing: 2;
+}
+
+.HomeLogoImages img {
+    border-radius: 50%;
+    padding: 20px;
+    width: 12rem;
+    transition: 0.3s;
+}
+
+.row_input1 h6 {
+    color: white;
+    font-family: "Poppins";
+    margin-left: -10px;
+    letter-spacing: 1;
+}
+
+.row_input1 input[type="text"] {
+    border-radius: 10px;
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 8px 20px 8px 15px;
+    letter-spacing: 0.7;
+    box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.2);
+    border: transparent;
+}
+
+.row_input2 h6 {
+    color: white;
+    font-family: "Poppins";
+    margin-left: -10px;
+    margin-top: 20px;
+    letter-spacing: 1;
+}
+
+.row_input2 input[type="password"] {
+    border-radius: 10px;
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 8px 20px 8px 15px;
+    letter-spacing: 0.7;
+    box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.2);
+    border: transparent;
+}
+
+.row_input3 input[type="submit"] {
+    border-radius: 5px;
+    margin-top: 30px;
+    background-color: white;
+    color: var(--main_color);
+    border: 2px;
+    font-family: "Poppins";
+    float: right;
+    box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.2);
+    width: 20%;
+    font-size: 0.8rem;
+    margin-right: -15px;
+    padding: 8px 20px 8px 15px;
+}
+
+.punya_akun .col-12 {
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+.punya_akun .col-12 p {
+    font-size: 0.8rem;
+    color: white;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.punya_akun .col-12 a {
+    font-size: 0.8rem;
+    color: white;
+    border: 2px;
+    font-family: "Poppins";
+}
+
+@media (max-width: 992px) {
+    .HomeLogoImages img {
+        margin-bottom: 3rem;
+        transition: 0.3s;
+    }
+}

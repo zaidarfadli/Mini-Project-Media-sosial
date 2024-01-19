@@ -21,6 +21,13 @@ class Post extends Model
 
     ];
 
+    public function like()
+    {
+
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
+
     public function user()
     {
 
@@ -43,6 +50,8 @@ class Post extends Model
 
 
 
+
+
     public function isBookmarkedByUser()
     {
         $user = Auth::user();
@@ -53,6 +62,32 @@ class Post extends Model
 
         return false;
     }
+
+    public function isLikedByUser()
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            return $this->like()->where('user_id', $user->id)->where('likeable_type', 'App\Models\Post')->exists();
+        }
+
+        return false;
+    }
+
+
+
+    public function getLikesCountAttribute()
+    {
+        return $this->like()->count();
+    }
+
+
+    public function getCommentsCountAttribute()
+    {
+        return $this->comment()->count();
+    }
+
+
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Notif;
 use App\Models\Post;
 use App\Models\Reply;
 use Illuminate\Http\Request;
@@ -26,6 +27,8 @@ class ReplyController extends Controller
                     'comment_id' => $comment->id,
                     'reply' => $request->reply
                 ]);
+
+                $this->createNotif($user, $comment, $reply);
                 return redirect()->back();
             } else {
 
@@ -41,11 +44,14 @@ class ReplyController extends Controller
     }
 
 
-    public function deleteReply(Reply $reply)
+    public function deleteReply(Comment $comment, Reply $reply)
     {
         $user = Auth::user();
 
         if ($user->id == $reply->user_id) {
+
+            $this->deleteNotif($user, $comment, $reply);
+
             $reply->delete();
             return redirect()->back()->with([
                 'message' => 'berhasil menghapus balasan',
@@ -54,6 +60,34 @@ class ReplyController extends Controller
             return redirect()->back()->with([
                 'message' => 'Anda tidak punya hak akses'
             ]);
+        }
+    }
+
+    public function createNotif($user, $comment, $reply)
+    {
+        if ($user->id != $comment->user_id) {
+            $notif = new Notif();
+            $notif->user_id = $user->id;
+            $notif->receiver_id = $comment->user_id;
+            $notif->notifable_id = $reply->id;
+            $notif->notifable_type = 'App\Models\Reply';
+            $notif->type = 'Reply';
+            $reply->notif()->save($notif);
+        }
+    }
+
+
+    public function deleteNotif($user, $comment, $reply)
+    {
+
+        $cekNotif = Notif::where('user_id', $user->id)
+            ->where('receiver_id', $comment->user_id)
+            ->where('notifable_id', $reply->id)
+            ->where('notifable_type', 'App\Models\Reply')
+            ->where('type', 'Reply')->first();
+
+        if ($cekNotif) {
+            $cekNotif->delete();
         }
     }
 }

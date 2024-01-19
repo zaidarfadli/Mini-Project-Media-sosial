@@ -39,28 +39,28 @@ class DatabaseSeeder extends Seeder
         Comment::factory(30)->create();
         Reply::factory(60)->create();
 
-        User::factory()->create([
-            'id' => Uuid::uuid4()->toString(),
-            'name' => 'zaidarfadli',
-            'username' => 'zaidar123',
-            'email' => 'zaidar@gmail.com',
-            'password' => '12345678'
-        ]);
+        // User::factory()->create([
+        //     'id' => Uuid::uuid4()->toString(),
+        //     'name' => 'zaidarfadli',
+        //     'username' => 'zaidar123',
+        //     'email' => 'zaidar@gmail.com',
+        //     'password' => '12345678'
+        // ]);
 
-        User::factory()->create([
-            'id' => Uuid::uuid4()->toString(),
-            'name' => 'aji',
-            'username' => 'aji123',
-            'email' => 'aji@gmail.com',
-            'password' => '12345678'
-        ]);
+        // User::factory()->create([
+        //     'id' => Uuid::uuid4()->toString(),
+        //     'name' => 'aji',
+        //     'username' => 'aji123',
+        //     'email' => 'aji@gmail.com',
+        //     'password' => '12345678'
+        // ]);
 
-        User::factory()->create([
-            'id' => Uuid::uuid4()->toString(),
-            'name' => 'fadli',
-            'username' => 'fadli123',
-            'email' => 'fadli@gmail.com',
-            'password' => '12345678'
-        ]);
+        // User::factory()->create([
+        //     'id' => Uuid::uuid4()->toString(),
+        //     'name' => 'fadli',
+        //     'username' => 'fadli123',
+        //     'email' => 'fadli@gmail.com',
+        //     'password' => '12345678'
+        // ]);
     }
 }

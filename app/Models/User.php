@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 
@@ -22,6 +23,7 @@ class User extends Authenticatable
     public $incrementing = false;
     protected $keyType = 'string';
     protected $fillable = [
+        'id',
         'name',
         'username',
         'bio',
@@ -57,9 +59,6 @@ class User extends Authenticatable
     }
 
 
-
-
-
     public function comment()
     {
         return $this->hasMany(Comment::class);
@@ -70,14 +69,11 @@ class User extends Authenticatable
         return $this->hasMany(Reply::class);
     }
 
+    public function like()
+    {
 
-
-
-
-
-
-
-
+        return $this->hasMany(Like::class);
+    }
 
     public function bookmarks()
     {
@@ -85,6 +81,65 @@ class User extends Authenticatable
     }
 
 
+
+    public function followings()
+    {
+        return $this->hasMany(Follow::class, 'user_id');
+    }
+
+    public function followers()
+    {
+        return $this->hasMany(Follow::class, 'following_id');
+    }
+
+
+    public function notif()
+    {
+
+        return $this->hasMany(Notif::class);
+    }
+
+
+
+    public function getIsMeAttribute()
+    {
+        $user = Auth::user();
+        return $this->id === $user->id;
+    }
+
+    public function isLikedByUser()
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            return $this->like()->where('user_id', $user->id)->exists();
+        }
+
+        return false;
+    }
+
+    // Model User
+    public function getIsFollowAttribute()
+    {
+        $user = Auth::user();
+        return $user ? $this->followers()->where('user_id', $user->id)->exists() : false;
+    }
+
+    public function postCount()
+    {
+        return $this->post()->count();
+    }
+
+
+    public function followingCount()
+    {
+        return $this->followings()->count();
+    }
+
+    public function followerCount()
+    {
+        return $this->followers()->count();
+    }
 
     protected static function boot()
     {

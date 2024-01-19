@@ -24,11 +24,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $imageOptions = ['pria1.jpg', 'pria2.jpg', 'wanita1.jpg', 'wanita2.jpg'];
         return [
             'id' => Uuid::uuid4()->toString(),
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
-            'image' => 'https://source.unsplash.com/random',
+            'image' => $this->faker->randomElement(['pria1.jpg', 'pria2.jpg', 'wanita1.jpg', 'wanita2.jpg']),
             'username' => $this->faker->userName(),
             'bio' => $this->faker->paragraph(),
             'email_verified_at' => now(),

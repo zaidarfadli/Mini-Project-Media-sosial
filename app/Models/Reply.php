@@ -35,6 +35,11 @@ class Reply extends Model
         return $this->belongsTo(Post::class);
     }
 
+    public function notif()
+    {
+
+        return $this->morphMany(Follow::class, 'notifable');
+    }
 
 
     protected static function boot()
