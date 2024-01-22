@@ -170,7 +170,7 @@
 
     .nav-section {
         position: relative;
-        width: calc(100% - 240px);
+        width: calc(100% - 10px);
         left: 280px;
         transition: all 0.5s ease;
     }
@@ -343,6 +343,9 @@
     }
 
     @media (max-width: 991px) {
+        .konten-postingan .card-postingan {
+            margin-left: 0rem;
+        }
 
         .home-section #SuggestFollowing {
             display: none;
@@ -398,12 +401,14 @@
             left: 220px;
         }
     }
+
     @media (max-width: 576px) {
 
-        footer .row{
+        footer .row {
             margin-left: 0.5rem;
         }
     }
+
     @media (max-width: 560px) {
         .card-postingan {
             width: 110%;
@@ -631,6 +636,7 @@
 
     .konten-postingan .card-postingan {
         margin-top: 6.5rem;
+        margin-left: 1.5rem;
         background-color: black;
         border: 2px solid black;
         border: 1.8px solid rgba(220, 220, 220, 0.3);
@@ -779,10 +785,6 @@
         cursor: pointer;
     }
 
-    .body {
-        background-color: rgba(0, 0, 0, 0.5);
-        transition: all 0.5s ease;
-    }
 
     @keyframes biarModalnyaKeren {
         from {
@@ -937,163 +939,163 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Postingan</title>
-        <link rel="icon" href="images/logo-medsos.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            if (window.history.replaceState) {
-                window.history.replaceState(null, null, window.location.href);
-            }
-            document.addEventListener('DOMContentLoaded', function () {
-                document.documentElement.style.backgroundColor = '#fff';
-                document.documentElement.style.color = '#fff';
-            });
-        </script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Postingan</title>
+    <link rel="icon" href="images/logo-medsos.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#fff';
+            document.documentElement.style.color = '#fff';
+        });
+    </script>
+</head>
 
-    <body style="background-color: black;">
-        <div class="sidebar">
-            <div class="detail_logo">
-                <a href="profile.php" style="display: flex;">
-                    <i><img src="{{ asset('images/smk1.jpg') }}" alt="gambar postingan"></i>
-                    <div class="container-fluid rowUsername">
-                        <div class="row">
-                            <span id="usernameProfileAuthor">Naufal Fadhilah F</span>
-                        </div>
-                        <div class="row">
-                            <span id="namaProfileAuthor">Naufal Fadhilah F</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <hr
-                style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
-            <ul class="link-navigasi">
-                <li class="sidebarActive">
-                    <a href="{{ route('home') }}">
-                        <i class="fa-solid fa-house aktif"></i>
-                        <p class="links_name" id="beranda">Beranda</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="search.php">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <p class="links_name" id="explore">Explore</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('myNotifikasi') }}">
-                        <i class="fa-solid fa-bell"></i>
-                        <p class="links_name" id="notifikasi">Notifikasi</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('formPost') }}">
-                        <i class="fa-solid fa-plus"></i>
-                        <p class="links_name" id="posting">Posting</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('myBookmark') }}">
-                        <i class="fa-solid fa-bookmark"></i>
-                        <p class="links_name" id="bookmarks">Bookmarks</p>
-                    </a>
-                </li>
-                <li class="log_out">
-                    <a href="{{ route('logout') }}">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
-                    </a>
-                </li>
-                <li class="SidebarBottomText">
-                    <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
-                        Terms of Service
-                        Privacy Policy
-                        Cookie Policy
-                        Accessibility
-                        Ads info
-                        More
-                        © 2024 Amanah Corp.
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <section class="nav-section" style="z-index: 99; position: fixed; background-color: black;">
-            <div class="container-fluid nav" style="background-color: black;">
-                <div class="container" style="background-color: black; transform: translateX(-1rem); ">
-                    <nav class="justify-content-center">
-                        <div class="logoHomepage">
-                            <img src="{{ asset('images/logo-medsos.png') }}" alt="logo homepage">
-                        </div>
-                        <div class="row">
-                            <ul class="navigasi" style="margin-top: 10px; margin-bottom: 0;">
-                                <li class="navigasi-item NavFilter">
-                                    <a class="navigasi-link pilihKategoriPostingan active" href="#">
-                                        <p>For You</p>
-                                    </a>
-                                </li>
-                                <li class="navigasi-item">
-                                    <a class="navigasi-link pilihKategoriPostingan" href="#">
-                                        <p>Following</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </section>
-        <section class="home-section">
-            <div class="container-fluid nav" style="background-color: black;">
-                <div class="container-fluid container-xl">
+<body style="background-color: black;">
+    <div class="sidebar">
+        <div class="detail_logo">
+            <a href="profile.php" style="display: flex;">
+                <i><img src="{{ asset('images/smk1.jpg') }}" alt="gambar postingan"></i>
+                <div class="container-fluid rowUsername">
                     <div class="row">
-                        <div class="container-fluid konten-postingan">
-                            <div class="container">
-                                <div class="col-12">
-                                    <div class="row card-postingan">
-                                        <div class="col-md-7" id="column-konten-postingan">
-                                            <div class="row">
-                                                <div class="col-12 profile-author">
-                                                    <img src="{{ $post->user->image }}" alt="ImageProfilePostingan">
-                                                    <p>{{ $post->user->username }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <p id="teks-deskripsi-postingan">
-                                                        {{ $post->content }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="row" id="gambarKontenPostingan">
-                                                <img src="{{ $post->image }}" alt="gambar postingan">
+                        <span id="usernameProfileAuthor">Naufal Fadhilah F</span>
+                    </div>
+                    <div class="row">
+                        <span id="namaProfileAuthor">Naufal Fadhilah F</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <hr
+            style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
+        <ul class="link-navigasi">
+            <li class="sidebarActive">
+                <a href="{{ route('home') }}">
+                    <i class="fa-solid fa-house aktif"></i>
+                    <p class="links_name" id="beranda">Beranda</p>
+                </a>
+            </li>
+            <li>
+                <a href="search.php">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p class="links_name" id="explore">Explore</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('myNotifikasi') }}">
+                    <i class="fa-solid fa-bell"></i>
+                    <p class="links_name" id="notifikasi">Notifikasi</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('formPost') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    <p class="links_name" id="posting">Posting</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('myBookmark') }}">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <p class="links_name" id="bookmarks">Bookmarks</p>
+                </a>
+            </li>
+            <li class="log_out">
+                <a href="{{ route('logout') }}">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <p class="links_name">Log out</p>
+                </a>
+            </li>
+            <li class="SidebarBottomText">
+                <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
+                    Terms of Service
+                    Privacy Policy
+                    Cookie Policy
+                    Accessibility
+                    Ads info
+                    More
+                    © 2024 Amanah Corp.
+                </p>
+            </li>
+        </ul>
+    </div>
+    <section class="nav-section" style="z-index: 99; position: fixed; background-color: black;">
+        <div class="container-fluid nav" style="background-color: black;">
+            <div class="container" style="background-color: black; transform: translateX(-1rem); ">
+                <nav class="justify-content-center">
+                    <div class="logoHomepage">
+                        <img src="{{ asset('images/logo-medsos.png') }}" alt="logo homepage">
+                    </div>
+                    <div class="row">
+                        <ul class="navigasi" style="margin-top: 10px; margin-bottom: 0;">
+                            <li class="navigasi-item NavFilter">
+                                <a class="navigasi-link pilihKategoriPostingan active" href="#">
+                                    <p>For You</p>
+                                </a>
+                            </li>
+                            <li class="navigasi-item">
+                                <a class="navigasi-link pilihKategoriPostingan" href="#">
+                                    <p>Following</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section class="home-section">
+        <div class="container-fluid nav" style="background-color: black;">
+            <div class="container-fluid container-xl">
+                <div class="row">
+                    <div class="container-fluid konten-postingan">
+                        <div class="container">
+                            <div class="col-12">
+                                <div class="row card-postingan">
+                                    <div class="col-md-7" id="column-konten-postingan">
+                                        <div class="row">
+                                            <div class="col-12 profile-author">
+                                                <img src="{{ $post->user->image }}" alt="ImageProfilePostingan">
+                                                <p>{{ $post->user->username }}</p>
                                             </div>
                                         </div>
-                                        <div class="col-md-5" id="column-komentar-postingan">
-                                            <div class="row" id="header-komentar">
-                                                <div class="col-12">
-                                                    <p>komentar</p>
-                                                    <hr style="margin-top: -15px; color: var(--main_color-3);">
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p id="teks-deskripsi-postingan">
+                                                    {{ $post->content }}
+                                                </p>
                                             </div>
-                                            <div class="row" id="isi-komentar">                                                
+                                        </div>
+                                        <div class="row" id="gambarKontenPostingan">
+                                            <img src="{{ $post->image }}" alt="gambar postingan">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5" id="column-komentar-postingan">
+                                        <div class="row" id="header-komentar">
+                                            <div class="col-12">
+                                                <p>komentar</p>
+                                                <hr style="margin-top: -15px; color: var(--main_color-3);">
+                                            </div>
+                                        </div>
+                                        <div class="row" id="isi-komentar">
 
-                                                @foreach ($post->comment as $comment)
-                                                    
+                                            @foreach ($post->comment as $comment)
                                                 <div class="col-12">
                                                     <div class="row" id="profile-komentar">
                                                         <div class="col-12 d-flex">
-                                                            <img src="{{ $comment->user->image }}" alt="ImageProfilKomentar">
+                                                            <img src="{{ $comment->user->image }}"
+                                                                alt="ImageProfilKomentar">
                                                             <p>{{ $comment->user->username }}</p>
                                                         </div>
                                                     </div>
@@ -1104,127 +1106,139 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            @endforeach
 
-                                                @endforeach
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <hr style="width: 100%; color: white; margin-left: 22px;">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="input-komentar">
+                                                    <div class="row">
+                                                        <div class="col-12 d-flex">
+                                                            <div class="fitur d-flex">
+                                                                <form
+                                                                    action="{{ route('likePost', ['post' => $post->id]) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @if ($post->isLikedByUser())
+                                                                        <button type="submit"
+                                                                            style="background-color: unset; border: unset;"><i
+                                                                                class="fa-solid fa-heart"></i></button>
+                                                                    @else
+                                                                        <button type="submit"
+                                                                            style="background-color: unset; border: unset;"><i
+                                                                                class="fa-regular fa-heart"></i></button>
+                                                                    @endif
+                                                                </form>
 
-                                            </div>
-                                            <div class="row justify-content-center">
-                                                <hr style="width: 100%; color: white; margin-left: 22px;">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <form action="{{ route('likePost',['post' => $post->id]) }}" method="post">
-                                                        @csrf
-                                                        @if ($post->isLikedByUser())
-                                                          <button type="submit" class="btn btn-danger">Unlike</button>
-                                                        @else
-                                                          <button type="submit" class="btn btn-primary">Like</button>
-                                                        @endif
-                                                    </form>
-                                                </div>
-                                                <div class="col">
-                                                    <form action="{{ route('addBookmark',['post' => $post->id]) }}" method="post">
-                                                        @csrf
-                                                        @if ($post->isBookmarkedByUser())
-                                                          <button type="submit" class="btn btn-danger">Unbookmark</button>
-                                                        @else
-                                                          <button type="submit" class="btn btn-primary">Bookmark</button>
-                                                        @endif
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="input-komentar">
-                                                        <div class="row">
-                                                            <form action="" method="POST">
-                                                                <div class="col-12 d-flex">
-                                                                    <div class="fitur d-flex">
-                                                                        <i class="fa-regular fa-heart"></i>
-                                                                    </div>
-                                                                    <div class="fitur d-flex">
-                                                                        <i class="fa-regular fa-comment"></i>
-                                                                    </div>
-                                                                    <div class="fitur d-flex">
-                                                                        <i class="fa-regular fa-paper-plane"></i>
-                                                                    </div>
-                                                                </div>
+                                                            </div>
+                                                            <div class="fitur d-flex">
+                                                                <i class="fa-regular fa-comment"></i>
+                                                            </div>
+                                                            <div class="fitur d-flex">
+                                                                <i class="fa-regular fa-paper-plane"></i>
+                                                            </div>
+                                                        </div>
+                                                        <form
+                                                            action="{{ route('addBookmark', ['post' => $post->id]) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @if ($post->isBookmarkedByUser())
                                                                 <button class="saveToBookmark" type="submit"
                                                                     name="saveToBookmark">
                                                                     <i class="fa-regular fa-bookmark"></i>
                                                                 </button>
-                                                                <p class="text-1" id="tombol-muncul">{{ $post->likes_count }} Like</p>
-                                                                <div class="coverAll">
-                                                                    <div class="wrapperModal">
-                                                                        <div class="modalnya">
-                                                                            <div class="container containerWrapper">
-                                                                                <div class="row">
-                                                                                    <div class="col-11">
-                                                                                        <p id="likes">Likes</p>
-                                                                                    </div>
-                                                                                    <div class="col-1">
-                                                                                        <i class="fa-solid fa-xmark"
-                                                                                            id="tutupModal"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-12 listFollowers">
-                                                                                        @foreach ($likes as $like)
-                                                                                            
-                                                                                        <a href="{{ $like->user->id }}"
-                                                                                            style="display: flex;">
-                                                                                            <i><img src="{{ $like->user->image }}"
-                                                                                                    alt="gambar postingan"></i>
-                                                                                            <div
-                                                                                                class="container-fluid">
-                                                                                                <div class="row">
-                                                                                                    <span
-                                                                                                        class="usernameFollowers">{{ $like->user->username }}</span>
-                                                                                                </div>
-                                                                                                <div class="row">
-                                                                                                    <span
-                                                                                                        class="namaFollowers">{{ $like->user->name }}</span>
-                                                                                                </div>
+                                                            @else
+                                                                <button class="saveToBookmark" type="submit"
+                                                                    name="saveToBookmark">
+                                                                    <i class="fa-solid fa-bookmark"></i>
+                                                                </button>
+                                                            @endif
+                                                        </form>
+                                                        <p class="text-1" id="tombol-muncul">
+                                                            {{ $post->likes_count }} Like</p>
+                                                        <div class="coverAll">
+                                                            <div class="wrapperModal">
+                                                                <div class="modalnya">
+                                                                    <div class="container containerWrapper">
+                                                                        <div class="row">
+                                                                            <div class="col-11">
+                                                                                <p id="likes">Likes</p>
+                                                                            </div>
+                                                                            <div class="col-1">
+                                                                                <i class="fa-solid fa-xmark"
+                                                                                    id="tutupModal"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-12 listFollowers">
+                                                                                @forelse ($likes as $like)
+                                                                                    <a href="{{ $like->user->id }}"
+                                                                                        style="display: flex;">
+                                                                                        <i><img src="{{ $like->user->image }}"
+                                                                                                alt="gambar postingan"></i>
+                                                                                        <div class="container-fluid">
+                                                                                            <div class="row">
+                                                                                                <span
+                                                                                                    class="usernameFollowers">{{ $like->user->username }}</span>
                                                                                             </div>
-                                                                                            <form action="{{ route('follow', ['people' => $like->user->id]) }}" method="POST">
-                                                                                                @csrf
-                                                                                                <p>
-                                                                                                    @if ($like->user->is_follow)
-                                                                                                        <button type="submit" class="btn btn-danger">Unfollow</button>
-                                                                                                    @else
-                                                                                                        <button type="submit" class="btn btn-primary">Follow</button>
-                                                                                                    @endif
-                                                                                                </p>
-                                                                                            </form>
-                                                                                            
-                                                                                        </a>
-                                                                                       
-                                                                                        @endforeach
-
-                                                                                    </div>
-                                                                                </div>
+                                                                                            <div class="row">
+                                                                                                <span
+                                                                                                    class="namaFollowers">{{ $like->user->name }}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <form
+                                                                                            action="{{ route('follow', ['people' => $like->user->id]) }}"
+                                                                                            method="POST">
+                                                                                            @csrf
+                                                                                            <p>
+                                                                                                @if ($like->user->is_follow)
+                                                                                                    <button
+                                                                                                        type="submit"
+                                                                                                        class="btn"name="follow"
+                                                                                                        id="follow"
+                                                                                                        onclick="submitForm()">Unfollow</button>
+                                                                                                @else
+                                                                                                    <button
+                                                                                                        type="submit"
+                                                                                                        class="btn"
+                                                                                                        name="follow"
+                                                                                                        id="follow"
+                                                                                                        onclick="submitForm()">Follow</button>
+                                                                                                @endif
+                                                                                            </p>
+                                                                                        </form>
+                                                                                    </a>
+                                                                                @empty
+                                                                                    <p
+                                                                                        style="font-size: 0.8rem; font-weight: 400; text-align: center; color: var(--text-color); opacity: 0.7;">
+                                                                                        awikwok ga ada yang nge like</p>
+                                                                                @endforelse
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <p id="text-2">2 hours ago</p>
-                                                            </form>
-                                                        </div>
-                                                        <form action="{{ route('sendComment',['post' => $post->id]) }}" method="POST">
-                                                            @csrf
-                                                            <div class="row">
-                                                                <div class="col-12 d-flex">
-                                                                    <input type="text" class="form-control"
-                                                                        name="comment" id="isiKomentar"
-                                                                        placeholder="Tambahkan komentar">
-                                                                    <button type="submit" name="kirimKomentar"
-                                                                        id="btnKirimKomentar">
-                                                                        <p>kirim</p>
-                                                                    </button>
-                                                                </div>
                                                             </div>
-                                                        </form>
+                                                        </div>
+                                                        <p id="text-2">2 hours ago</p>
                                                     </div>
+                                                    <form action="{{ route('sendComment', ['post' => $post->id]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-12 d-flex">
+                                                                <input type="text" class="form-control"
+                                                                    name="comment" id="isiKomentar"
+                                                                    placeholder="Tambahkan komentar">
+                                                                <button type="submit" name="kirimKomentar"
+                                                                    id="btnKirimKomentar">
+                                                                    <p>kirim</p>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -1235,29 +1249,30 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center footer">
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center footer">
-                        <p id="copyright">Copyright 2023</p>
-                    </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center footer">
+                    <p>Naufal</p>
+                    <p>Fadhilah</p>
+                    <p>Fitrah</p>
+                    <p>Naufal</p>
+                    <p>Fadhilah</p>
+                    <p>Fitrah</p>
+                    <p>Naufal</p>
+                    <p>Fadhilah</p>
+                    <p>Fitrah</p>
                 </div>
             </div>
-        </section>
-        
-        @guest
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center footer">
+                    <p id="copyright">Copyright 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @guest
         <footer>
             <div class="container">
                 <div class="row">
@@ -1271,32 +1286,32 @@
                     </div>
                 </div>
         </footer>
-        @endguest
+    @endguest
 
 
-        </div>
-    </body>
+    </div>
+</body>
 
 </html>
 <script>
-    $(document).ready(function () {
-        $('#tombol-muncul').on('click', function () {
+    $(document).ready(function() {
+        $('#tombol-muncul').on('click', function() {
             $('.coverAll').toggle();
             $('.wrapperModal').toggle();
         });
-        $('.coverAll').on('click', function () {
+        $('.coverAll').on('click', function() {
             $('.coverAll').toggle();
             $('.wrapperModal').toggle();
         });
-        $('#tutupModal').on('click', function () {
+        $('#tutupModal').on('click', function() {
             $('.coverAll').toggle();
             $('.wrapperModal').toggle();
         });
-        $('.pilihKategoriPostingan').on('click', function () {
+        $('.pilihKategoriPostingan').on('click', function() {
             $('.pilihKategoriPostingan').removeClass('active');
             $(this).addClass('active');
         });
-        $('.sidebarActive').on('click', function () {
+        $('.sidebarActive').on('click', function() {
             $('.sidebarActive').removeClass('sidebarActive').$(this).addClass('sidebarActive');
         });
     })
