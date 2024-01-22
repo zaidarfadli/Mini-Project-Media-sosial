@@ -112,7 +112,7 @@
         transition: all 0.4s ease;
     }
 
-    .sidebar .link-navigasi li a p {
+    .sidebar .link-navigasi li p {
         height: 100%;
         width: 10%;
         margin-top: 45px;
@@ -123,14 +123,7 @@
         min-width: 60px;
         text-align: center;
         font-size: 14px;
-        color: var(--main_color);
-    }
-
-    .sidebar .link-navigasi li a .links_name {
-        color: var(--main_color);
-        font-size: 13px;
-        font-weight: 400;
-        white-space: nowrap;
+        color: var(--main_color-4);
     }
 
     .sidebar .link-navigasi .sidebarActive i {
@@ -143,12 +136,26 @@
         letter-spacing: 1;
     }
 
+    .sidebar .link-navigasi li .links_name {
+        color: white;
+        font-size: 13px;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
     }
 
+    .sidebar .link-navigasi .log_out button {
+        border: unset;
+        background: unset;
+    }
+
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -684,35 +691,6 @@
         align-items: center;
         text-decoration: none;
         transition: all 0.4s ease;
-    }
-
-    .sidebar .link-navigasi li a p {
-        height: 100%;
-        width: 10%;
-        margin-top: 45px;
-        transition: all 0.4s ease;
-    }
-
-    .sidebar .link-navigasi li i {
-        min-width: 60px;
-        text-align: center;
-        font-size: 14px;
-        color: var(--main_color-4);
-    }
-
-    .sidebar .link-navigasi li a .links_name {
-        color: var(--main_color);
-        font-size: 13px;
-        font-weight: 400;
-        white-space: nowrap;
-    }
-
-    .sidebar .link-navigasi .log_out {
-        width: 100%;
-    }
-
-    .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -1303,9 +1281,12 @@
     <title>Beranda</title>
     <link rel="icon" href="images/logo-medsos.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
@@ -1319,7 +1300,7 @@
     <div class="sidebar">
         <div class="detail_logo">
             <a href="profile.php" style="display: flex;">
-                <i><img src="{{ asset('images/profile'.$user->image) }}" alt="gambar postingan"></i>
+                <i><img src="{{ asset('images/profile' . $user->image) }}" alt="gambar postingan"></i>
                 <div class="container-fluid rowUsername">
                     <div class="row">
                         <span id="usernameProfileAuthor">{{ $user->username }}</span>
@@ -1330,9 +1311,10 @@
                 </div>
             </a>
         </div>
-        <hr style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
+        <hr
+            style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
         <ul class="link-navigasi">
-            <li class="sidebarActive">
+            <li>
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
                     <p class="links_name" id="beranda">Beranda</p>
@@ -1345,43 +1327,42 @@
                 </a>
             </li>
             @auth
-                
-            <li>
-                <a href="{{ route('myNotifikasi') }}">
-                    <i class="fa-solid fa-bell"></i>
-                    <p class="links_name" id="notifikasi">Notifikasi</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('formPost') }}">
-                    <i class="fa-solid fa-plus"></i>
-                    <p class="links_name" id="posting">Posting</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('myBookmark') }}">
-                    <i class="fa-solid fa-bookmark"></i>
-                    <p class="links_name" id="bookmarks">Bookmarks</p>
-                </a>
-            </li>
+                <li class="sidebarActive">
+                    <a href="{{ route('myNotifikasi') }}">
+                        <i class="fa-solid fa-bell"></i>
+                        <p class="links_name" id="notifikasi">Notifikasi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('formPost') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <p class="links_name" id="posting">Posting</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('myBookmark') }}">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="links_name" id="bookmarks">Bookmarks</p>
+                    </a>
+                </li>
             @endauth
             @auth
-            <li class="log_out">
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
-                    </button>
-                </form>
-            </li>
+                <li class="log_out">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="d-flex">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
             @else
-            <li class="login">
-                <a href="{{ route('login') }}">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Login</p>
-                </a>
-            </li>
+                <li class="login">
+                    <a href="{{ route('login') }}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Login</p>
+                    </a>
+                </li>
             @endauth
 
             <li class="SidebarBottomText">
@@ -1404,7 +1385,8 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12">
-                                <p class="usernameDetailFollow" style="text-align: center; justify-content: center;">Notifikasi</p>
+                                <p class="usernameDetailFollow" style="text-align: center; justify-content: center;">
+                                    Notifikasi</p>
                             </div>
                         </div>
                         <div class="row">
@@ -1433,65 +1415,75 @@
                                 <p id="listAll">Semua Notifikasi</p>
                             </div>
                             @if (isset($message))
-                            <h4 class="text-light text-center mt-5">Belum ada notifikasi apapun</h4>
+                                <h6 class="text-center mt-5"
+                                    style="color: var(--text-color); opacity: 0.7; font-weight: 400;">Belum ada
+                                    notifikasi apapun</h6>
                             @elseif(isset($notifs))
-
                                 @foreach ($notifs as $notif)
                                     @if ($notif->type == 'Follow')
-                                    <a href="{{ route('seeProfile',['user' => $notif->user->id]) }}" style="display: flex; margin-bottom: 1rem;">
-                                        <img src="{{ $notif->user->image }}" alt="gambar postingan">
-                                        <div class="container-fluid d-flex mt-2">
-                                            <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                            <p class="namaFollowers"> mulai mengikuti anda</p>
-                                        </div>
-                                    </a>
+                                        <a href="{{ route('seeProfile', ['user' => $notif->user->id]) }}"
+                                            style="display: flex; margin-bottom: 1rem;">
+                                            <img src="{{ $notif->user->image }}" alt="gambar postingan">
+                                            <div class="container-fluid d-flex mt-2">
+                                                <p class="usernameFollowers">{{ $notif->user->username }}</p>
+                                                <p class="namaFollowers"> mulai mengikuti anda</p>
+                                            </div>
+                                        </a>
                                     @endif
 
                                     @if ($notif->type == 'Comment')
-                                    <a href="{{ route('seePost',['post' => $notif->comment->post->id]) }}" style="display: flex; margin-bottom: 1rem;">
-                                        <img src="{{ $notif->user->image }}" alt="gambar postingan">
-                                        <div class="container-fluid d-flex mt-2">
-                                            <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                            <p class="namaFollowers"> komen di postingan anda</p>
-                                        </div>
-                                        <img src="{{ $notif->comment->post->image }}" alt="gambar postingan" style="border-radius: 0px;">
-                                    </a>
+                                        <a href="{{ route('seePost', ['post' => $notif->comment->post->id]) }}"
+                                            style="display: flex; margin-bottom: 1rem;">
+                                            <img src="{{ $notif->user->image }}" alt="gambar postingan">
+                                            <div class="container-fluid d-flex mt-2">
+                                                <p class="usernameFollowers">{{ $notif->user->username }}</p>
+                                                <p class="namaFollowers"> komen di postingan anda</p>
+                                            </div>
+                                            <img src="{{ $notif->comment->post->image }}" alt="gambar postingan"
+                                                style="border-radius: 0px;">
+                                        </a>
                                     @endif
 
                                     @if ($notif->type == 'Reply')
-                                    <a href="{{ route('seePost',['post' => $notif->reply->post->id]) }}" style="display: flex; margin-bottom: 1rem;">
-                                        <img src="{{ $notif->user->image }}" alt="gambar postingan">
-                                        <div class="container-fluid d-flex mt-2">
-                                            <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                            <p class="namaFollowers"> membalas komentar anda</p>
-                                        </div>
-                                        <img src="{{ $notif->reply->post->image }}" alt="gambar postingan" style="border-radius: 0px;">
-                                    </a>
+                                        <a href="{{ route('seePost', ['post' => $notif->reply->post->id]) }}"
+                                            style="display: flex; margin-bottom: 1rem;">
+                                            <img src="{{ $notif->user->image }}" alt="gambar postingan">
+                                            <div class="container-fluid d-flex mt-2">
+                                                <p class="usernameFollowers">{{ $notif->user->username }}</p>
+                                                <p class="namaFollowers"> membalas komentar anda</p>
+                                            </div>
+                                            <img src="{{ $notif->reply->post->image }}" alt="gambar postingan"
+                                                style="border-radius: 0px;">
+                                        </a>
                                     @endif
 
                                     @if ($notif->type == 'LikePost')
-                                    <a href="{{ route('seePost',['post' => $notif->like->post->id]) }}" style="display: flex; margin-bottom: 1rem;">
-                                        <img src="{{ $notif->user->image }}" alt="gambar postingan">
-                                        <div class="container-fluid d-flex mt-2">
-                                            <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                            <p class="namaFollowers"> melike postingan anda</p>
-                                        </div>
-                                        <img src="{{ $notif->like->post->image }}" alt="gambar postingan" style="border-radius: 0px;">
-                                    </a>
+                                        <a href="{{ route('seePost', ['post' => $notif->like->post->id]) }}"
+                                            style="display: flex; margin-bottom: 1rem;">
+                                            <img src="{{ $notif->user->image }}" alt="gambar postingan">
+                                            <div class="container-fluid d-flex mt-2">
+                                                <p class="usernameFollowers">{{ $notif->user->username }}</p>
+                                                <p class="namaFollowers"> melike postingan anda</p>
+                                            </div>
+                                            <img src="{{ $notif->like->post->image }}" alt="gambar postingan"
+                                                style="border-radius: 0px;">
+                                        </a>
                                     @endif
 
                                     @if ($notif->type == 'LikeComment')
-                                    <a href="{{ route('seePost',['post' => $notif->like->comment->post->id]) }}" style="display: flex; margin-bottom: 1rem;">
-                                        <img src="{{ $notif->user->image }}" alt="gambar postingan">
-                                        <div class="container-fluid d-flex mt-2">
-                                            <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                            <p class="namaFollowers"> melike komentar anda</p>
-                                        </div>
-                                        <img src="images/smk1.jpg" alt="gambar postingan" style="border-radius: 0px;">
-                                    </a>
+                                        <a href="{{ route('seePost', ['post' => $notif->like->comment->post->id]) }}"
+                                            style="display: flex; margin-bottom: 1rem;">
+                                            <img src="{{ $notif->user->image }}" alt="gambar postingan">
+                                            <div class="container-fluid d-flex mt-2">
+                                                <p class="usernameFollowers">{{ $notif->user->username }}</p>
+                                                <p class="namaFollowers"> melike komentar anda</p>
+                                            </div>
+                                            <img src="images/smk1.jpg" alt="gambar postingan"
+                                                style="border-radius: 0px;">
+                                        </a>
                                     @endif
                                 @endforeach
-                           @endif
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -1499,20 +1491,20 @@
     </section>
 </body>
 @guest
-    
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 column-text-footer">
-                <p id="text-1">Jangan ketinggalan berita terbaru</p>
-                <p id="text-2">login, untuk pengalaman yang baru</p>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 column-text-footer">
+                    <p id="text-1">Jangan ketinggalan berita terbaru</p>
+                    <p id="text-2">login, untuk pengalaman yang baru</p>
+                </div>
+                <div class="col-lg-4 col-12 d-flex column-btn">
+                    <a href="login" class="btn btn-login-footer">Login</a>
+                    <a href="login" class="btn btn-edit-akun">Register</a>
+                </div>
             </div>
-            <div class="col-lg-4 col-12 d-flex column-btn">
-                <a href="login" class="btn btn-login-footer">Login</a>
-                <a href="login" class="btn btn-edit-akun">Register</a>
-            </div>
-        </div>
-</footer>
+    </footer>
 
 @endguest
 </div>

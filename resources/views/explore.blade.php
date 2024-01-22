@@ -155,7 +155,7 @@
         color: var(--main_color-3);
     }
 
-    .sidebar .link-navigasi li a .links_name {
+    .sidebar .link-navigasi li .links_name {
         color: white;
         font-size: 13px;
         font-weight: 400;
@@ -163,11 +163,18 @@
     }
 
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
     }
 
+    .sidebar .link-navigasi .log_out button {
+        border: unset;
+        background: unset;
+    }
+
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -240,7 +247,7 @@
     .nav-section {
         position: relative;
         width: calc(100% - 240px);
-        left: 280px;
+        left: 220px;
         transition: all 0.5s ease;
     }
 
@@ -722,56 +729,56 @@
         <hr
             style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
         <ul class="link-navigasi">
-            <li class="sidebarActive">
+            <li>
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
                     <p class="links_name" id="beranda">Beranda</p>
                 </a>
             </li>
-            <li>
+            <li class="sidebarActive">
                 <a href="{{ route('explorePeople') }}">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <p class="links_name" id="explore">Explore</p>
                 </a>
             </li>
             @auth
-                
-            <li>
-                <a href="{{ route('myNotifikasi') }}">
-                    <i class="fa-solid fa-bell"></i>
-                    <p class="links_name" id="notifikasi">Notifikasi</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('formPost') }}">
-                    <i class="fa-solid fa-plus"></i>
-                    <p class="links_name" id="posting">Posting</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('myBookmark') }}">
-                    <i class="fa-solid fa-bookmark"></i>
-                    <p class="links_name" id="bookmarks">Bookmarks</p>
-                </a>
-            </li>
+
+                <li>
+                    <a href="{{ route('myNotifikasi') }}">
+                        <i class="fa-solid fa-bell"></i>
+                        <p class="links_name" id="notifikasi">Notifikasi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('formPost') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <p class="links_name" id="posting">Posting</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('myBookmark') }}">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="links_name" id="bookmarks">Bookmarks</p>
+                    </a>
+                </li>
             @endauth
             @auth
-            <li class="log_out">
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
-                    </button>
-                </form>
-            </li>
+                <li class="log_out">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="d-flex">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
             @else
-            <li class="login">
-                <a href="{{ route('login') }}">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Login</p>
-                </a>
-            </li>
+                <li class="login">
+                    <a href="{{ route('login') }}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Login</p>
+                    </a>
+                </li>
             @endauth
 
             <li class="SidebarBottomText">
@@ -796,7 +803,8 @@
                         <img src="images/logo-medsos.png" alt="logo homepage">
                     </div>
                     <form action="{{ route('search') }}" method="get" class="form-search">
-                        <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Cari user">
+                        <input type="text" name="search" id="search" value="{{ request('search') }}"
+                            placeholder="Cari user">
                         <button type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -811,13 +819,17 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="container container-lg">
-                            @if(isset($message))
-
-                            <p class="text-center text-light" >{{ $message }}</p>
-
+                            @if (isset($message))
+                                <div class="container" style="height: 70vh; justify-content: center; display: flex; align-items: center;">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="mt-3" style="color: var(--text-color) ">
+                                                {{ $message }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             @elseif(isset($peoples))
                                 <!-- Foreach card dimulai dari sini -->
-    
                                 <div class="col-lg-12 listFollowers">
                                     <div class="col-12"
                                         style="position: fixed; background-color: black; margin-top: -20px;">
@@ -825,24 +837,28 @@
                                     </div>
                                     <div class="col-12" style="margin-top: 2.4rem;">
                                         @foreach ($peoples as $people)
-                                        <a href="{{ route('seeProfile',['people'=> $people->id]) }}" style="display: flex;">
-                                            <i><img src="{{ asset('images/profile/'.$people->image) }}" alt="gambar postingan"></i>
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <span class="usernameFollowers">{{ $people->username }}</span>
+                                            <a href="{{ route('seeProfile', ['people' => $people->id]) }}"
+                                                style="display: flex;">
+                                                <i><img src="{{ asset('images/profile/' . $people->image) }}"
+                                                        alt="gambar postingan"></i>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <span class="usernameFollowers">{{ $people->username }}</span>
+                                                    </div>
+                                                    <div class="row">
+                                                        <span class="namaFollowers">{{ $people->name }}</span>
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <span class="namaFollowers">{{ $people->name  }}</span>
-                                                </div>
-                                            </div>
-                                            <form action="{{ route('follow',['people' => $people->id]) }}" method="POST">
-                                                @csrf
-                                                <p>
-                                                    <input type="submit" class="btn" name="follow" id="follow"
-                                                        value=" {{ $people->is_follow ? 'Unfollow' : 'Follow' }}">
+                                                <form action="{{ route('follow', ['people' => $people->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <p>
+                                                        <input type="submit" class="btn" name="follow"
+                                                            id="follow"
+                                                            value=" {{ $people->is_follow ? 'Unfollow' : 'Follow' }}">
 
-                                                </p>
-                                            </form>
+                                                    </p>
+                                                </form>
                                         @endforeach
                                         </a>
                                     </div>

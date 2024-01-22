@@ -171,7 +171,7 @@
         color: var(--main_color-3);
     }
 
-    .sidebar .link-navigasi li a .links_name {
+    .sidebar .link-navigasi li .links_name {
         color: white;
         font-size: 13px;
         font-weight: 400;
@@ -179,11 +179,17 @@
     }
 
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
+    }
+    .sidebar .link-navigasi .log_out button{
+        border: unset;
+        background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color:white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -216,7 +222,7 @@
     .home-section {
         position: relative;
         width: calc(100% - 240px);
-        left: 240px;
+        left: 200px;
         top: 7rem;
         transition: all 0.5s ease;
     }
@@ -665,7 +671,7 @@
             <hr
                 style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
             <ul class="link-navigasi">
-                <li class="sidebarActive">
+                <li>
                     <a href="{{ route('home') }}">
                         <i class="fa-solid fa-house aktif"></i>
                         <p class="links_name" id="beranda">Beranda</p>
@@ -685,7 +691,7 @@
                         <p class="links_name" id="notifikasi">Notifikasi</p>
                     </a>
                 </li>
-                <li>
+                <li class="sidebarActive">
                     <a href="{{ route('formPost') }}">
                         <i class="fa-solid fa-plus"></i>
                         <p class="links_name" id="posting">Posting</p>
@@ -702,7 +708,7 @@
                 <li class="log_out">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
-                        <button type="submit">
+                        <button type="submit" class="d-flex">
                             <i class="fa-solid fa-arrow-left"></i>
                             <p class="links_name">Log out</p>
                         </button>
@@ -811,7 +817,7 @@
                             </div>
                         </div>
                         <div class="col-3">
-                            <div class="row" style="position: fixed; max-width: 20rem; margin-left: -3rem;">
+                            <div class="row" style="position: fixed; max-width: 19rem; margin-left: -3rem;">
                                 <div class="col-12" id="SuggestFollowing">
                                     <div class="container"
                                         style="height: 50rem; width: 120%; margin-left: -3rem; border: 1px solid var(--main_color-2); border-radius: 10px;">

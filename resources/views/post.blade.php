@@ -141,7 +141,7 @@
         color: var(--main_color-3);
     }
 
-    .sidebar .link-navigasi li a .links_name {
+    .sidebar .link-navigasi li .links_name {
         color: white;
         font-size: 13px;
         font-weight: 400;
@@ -149,11 +149,17 @@
     }
 
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
+    }
+    .sidebar .link-navigasi .log_out button{
+        border: unset;
+        background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color:white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -993,7 +999,7 @@
         <hr
             style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
         <ul class="link-navigasi">
-            <li class="sidebarActive">
+            <li>
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
                     <p class="links_name" id="beranda">Beranda</p>
@@ -1030,7 +1036,7 @@
             <li class="log_out">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button type="submit">
+                    <button type="submit" class="d-flex">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p class="links_name">Log out</p>
                     </button>

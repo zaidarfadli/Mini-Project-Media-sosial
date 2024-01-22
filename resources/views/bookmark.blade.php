@@ -160,13 +160,25 @@
         font-weight: 400;
         white-space: nowrap;
     }
+    .sidebar .link-navigasi li .links_name {
+        color: white;
+        font-size: 13px;
+        font-weight: 400;
+        white-space: nowrap;
+    }
 
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
+    }
+    .sidebar .link-navigasi .log_out button{
+        border: unset;
+        background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color:white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -665,10 +677,10 @@
             </li>
             @endauth
             @auth
-            <li class="log_out">
+             <li class="log_out">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button type="submit">
+                    <button type="submit" class="d-flex">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p class="links_name">Log out</p>
                     </button>
@@ -734,7 +746,7 @@
                                                 <div class="card mx-auto">
                                                     <div class="card-body cardContent">
                                                         <div class="profileAuthor">
-                                                            <a href="{{ route('seeProfile',['user' => $bookmark->post->user->id]) }}"
+                                                            <a href="{{ route('seeProfile',['people' => $bookmark->post->user->id]) }}"
                                                                 style="display: flex; text-decoration: none;">
                                                                 <img class="imagesProfileAuthorPost"
                                                                     src="{{ $bookmark->post->user->image }}"

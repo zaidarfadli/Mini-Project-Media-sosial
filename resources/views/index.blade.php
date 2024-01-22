@@ -142,7 +142,7 @@
         transition: all 0.4s ease;
     }
 
-    .sidebar .link-navigasi li a p {
+    .sidebar .link-navigasi li p {
         height: 100%;
         width: 10%;
         margin-top: 45px;
@@ -156,7 +156,7 @@
         color: var(--main_color-4);
     }
 
-    .sidebar .link-navigasi li a .links_name {
+    .sidebar .link-navigasi li .links_name {
         color: white;
         font-size: 13px;
         font-weight: 400;
@@ -164,11 +164,17 @@
     }
 
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
+    }
+    .sidebar .link-navigasi .log_out button{
+        border: unset;
+        background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color:white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -722,7 +728,7 @@
             <li class="log_out">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button type="submit">
+                    <button type="submit" class="d-flex">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p class="links_name">Log out</p>
                     </button>

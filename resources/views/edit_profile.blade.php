@@ -10,13 +10,26 @@
     }
 
     * {
-        /* border: 1px solid black; */
+        /* border: 1px solid white; */
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: black;
+    }
     .sidebar {
         background-color: var(--main_color-2);
         position: fixed;
@@ -125,7 +138,7 @@
         color: var(--main_color);
     }
 
-    .sidebar .link-navigasi li a .links_name {
+    .sidebar .link-navigasi li .links_name {
         color: var(--main_color);
         font-size: 13px;
         font-weight: 400;
@@ -142,12 +155,55 @@
         letter-spacing: 1;
     }
 
+    .sidebar .link-navigasi li {
+        position: relative;
+        list-style: none;
+        height: 45px;
+    }
+
+    .sidebar .link-navigasi li a {
+        height: 100%;
+        width: 10%;
+        margin-left: -32px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.4s ease;
+    }
+
+    .sidebar .link-navigasi li p {
+        height: 100%;
+        width: 10%;
+        margin-top: 45px;
+        transition: all 0.4s ease;
+    }
+
+    .sidebar .link-navigasi li i {
+        min-width: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: var(--main_color-4);
+    }
+
+    .sidebar .link-navigasi li .links_name {
+        color: white;
+        font-size: 13px;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
+    }
+    .sidebar .link-navigasi .log_out button{
+        border: unset;
+        background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color:white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -669,51 +725,6 @@
 
     .sidebar .link-navigasi {
         margin-top: -8px;
-    }
-
-    .sidebar .link-navigasi li {
-        position: relative;
-        list-style: none;
-        height: 45px;
-    }
-
-    .sidebar .link-navigasi li a {
-        height: 100%;
-        width: 10%;
-        margin-left: -32px;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        transition: all 0.4s ease;
-    }
-
-    .sidebar .link-navigasi li a p {
-        height: 100%;
-        width: 10%;
-        margin-top: 45px;
-        transition: all 0.4s ease;
-    }
-
-    .sidebar .link-navigasi li i {
-        min-width: 60px;
-        text-align: center;
-        font-size: 14px;
-        color: var(--main_color-4);
-    }
-
-    .sidebar .link-navigasi li a .links_name {
-        color: var(--main_color);
-        font-size: 13px;
-        font-weight: 400;
-        white-space: nowrap;
-    }
-
-    .sidebar .link-navigasi .log_out {
-        width: 100%;
-    }
-
-    .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -1373,55 +1384,6 @@
         margin-top: -2px;
     }
 
-    .sidebar .link-navigasi {
-        margin-top: -8px;
-    }
-
-    .sidebar .link-navigasi li {
-        position: relative;
-        list-style: none;
-        height: 45px;
-    }
-
-    .sidebar .link-navigasi li a {
-        height: 100%;
-        width: 10%;
-        margin-left: -32px;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        transition: all 0.4s ease;
-    }
-
-    .sidebar .link-navigasi li a p {
-        height: 100%;
-        width: 10%;
-        margin-top: 45px;
-        transition: all 0.4s ease;
-    }
-
-    .sidebar .link-navigasi li i {
-        min-width: 60px;
-        text-align: center;
-        font-size: 14px;
-        color: var(--main_color-3);
-    }
-
-    .sidebar .link-navigasi li a .links_name {
-        color: var(--main_color);
-        font-size: 13px;
-        font-weight: 400;
-        white-space: nowrap;
-    }
-
-    .sidebar .link-navigasi .log_out {
-        width: 100%;
-    }
-
-    .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
-    }
-
     .sidebar .link-navigasi .SidebarBottomText {
         margin-left: -1rem;
         margin-right: 1rem;
@@ -1910,9 +1872,12 @@
     <title>Edit Profile</title>
     <link rel="icon" href="images/logo-medsos.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
@@ -1965,43 +1930,43 @@
                 </a>
             </li>
             @auth
-                
-            <li>
-                <a href="{{ route('myNotifikasi') }}">
-                    <i class="fa-solid fa-bell"></i>
-                    <p class="links_name" id="notifikasi">Notifikasi</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('formPost') }}">
-                    <i class="fa-solid fa-plus"></i>
-                    <p class="links_name" id="posting">Posting</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('myBookmark') }}">
-                    <i class="fa-solid fa-bookmark"></i>
-                    <p class="links_name" id="bookmarks">Bookmarks</p>
-                </a>
-            </li>
+
+                <li>
+                    <a href="{{ route('myNotifikasi') }}">
+                        <i class="fa-solid fa-bell"></i>
+                        <p class="links_name" id="notifikasi">Notifikasi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('formPost') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <p class="links_name" id="posting">Posting</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('myBookmark') }}">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="links_name" id="bookmarks">Bookmarks</p>
+                    </a>
+                </li>
             @endauth
             @auth
-            <li class="log_out">
+                 <li class="log_out">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button type="submit">
+                    <button type="submit" class="d-flex">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p class="links_name">Log out</p>
                     </button>
                 </form>
             </li>
             @else
-            <li class="login">
-                <a href="{{ route('login') }}">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Login</p>
-                </a>
-            </li>
+                <li class="login">
+                    <a href="{{ route('login') }}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Login</p>
+                    </a>
+                </li>
             @endauth
 
             <li class="SidebarBottomText">
@@ -2049,11 +2014,12 @@
                                                     <p id="edtUsername">Username</p>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p><input type="text" name="username" id="inpUsername" value="{{ old('username',$user->username) }}"></p>
+                                                    <p><input type="text" name="username" id="inpUsername"
+                                                            value="{{ old('username', $user->username) }}"></p>
                                                     @error('username')
-                                                    <div class="invalid-feedback">
-                                                       {{ $message }}
-                                                    </div>
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -2062,11 +2028,12 @@
                                                     <p id="edtNama">Nama</p>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p><input type="text" name="name" id="inpNama" value="{{ old('name',$user->name) }}"></p>
+                                                    <p><input type="text" name="name" id="inpNama"
+                                                            value="{{ old('name', $user->name) }}"></p>
                                                     @error('name')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -2083,11 +2050,12 @@
                                                     <p id="edtBio">Bio</p>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p><textarea type="text" name="bio" id="inpBio">.{{ old('bio',$user->bio) }}</textarea>
-                                                    @error('bio')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
+                                                    <p>
+                                                        <textarea type="text" name="bio" id="inpBio">.{{ old('bio', $user->bio) }}</textarea>
+                                                        @error('bio')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
                                                     @enderror
                                                 </div>
                                             </div>

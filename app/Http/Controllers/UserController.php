@@ -77,7 +77,6 @@ class UserController extends Controller
         ]);
     }
 
-
     public function editProfile(Request $request)
     {
         $user = Auth::user();
@@ -121,7 +120,7 @@ class UserController extends Controller
 
         if (!$search) {
             return view('explore', [
-                'message' => 'Ketikkan nama user',
+                'message' => 'Tidak ada pencarian',
                 'user' => $user,
                 'suggested' => $suggested
             ]);

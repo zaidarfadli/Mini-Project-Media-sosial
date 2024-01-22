@@ -125,7 +125,7 @@
         transition: all 0.4s ease;
     }
 
-    .sidebar .link-navigasi li a p {
+    .sidebar .link-navigasi li p {
         height: 100%;
         width: 10%;
         margin-top: 45px;
@@ -139,29 +139,26 @@
         color: var(--main_color-4);
     }
 
-    .sidebar .link-navigasi li a .links_name {
-        color: var(--main_color);
+    .sidebar .link-navigasi li .links_name {
+        color: white;
         font-size: 13px;
         font-weight: 400;
         white-space: nowrap;
     }
 
-    .sidebar .link-navigasi .sidebarActive i {
-        color: #52D3D8;
-    }
-
-    .sidebar .link-navigasi .sidebarActive .links_name {
-        color: #52D3D8;
-        font-weight: 600;
-        letter-spacing: 1;
-    }
-
     .sidebar .link-navigasi .log_out {
+        margin: 15px 0px 0px -32px;
         width: 100%;
     }
 
+    .sidebar .link-navigasi .log_out button {
+        border: unset;
+        background: unset;
+    }
+
     .sidebar .link-navigasi .log_out p {
-        margin-top: 40px;
+        margin-top: -2px;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -690,71 +687,70 @@
         </div>
         <hr
             style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
-        <ul class="link-navigasi">
-            <li class="sidebarActive">
-                <a href="{{ route('home') }}">
-                    <i class="fa-solid fa-house aktif"></i>
-                    <p class="links_name" id="beranda">Beranda</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('explorePeople') }}">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <p class="links_name" id="explore">Explore</p>
-                </a>
-            </li>
-            @auth
-
-                <li>
-                    <a href="{{ route('myNotifikasi') }}">
-                        <i class="fa-solid fa-bell"></i>
-                        <p class="links_name" id="notifikasi">Notifikasi</p>
+            <ul class="link-navigasi">
+                <li class="sidebarActive">
+                    <a href="{{ route('home') }}">
+                        <i class="fa-solid fa-house aktif"></i>
+                        <p class="links_name" id="beranda">Beranda</p>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('formPost') }}">
-                        <i class="fa-solid fa-plus"></i>
-                        <p class="links_name" id="posting">Posting</p>
+                    <a href="{{ route('explorePeople') }}">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p class="links_name" id="explore">Explore</p>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('myBookmark') }}">
-                        <i class="fa-solid fa-bookmark"></i>
-                        <p class="links_name" id="bookmarks">Bookmarks</p>
-                    </a>
-                </li>
-            @endauth
-            @auth
-                <li class="log_out">
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button type="submit">
+                @auth
+                    <li>
+                        <a href="{{ route('myNotifikasi') }}">
+                            <i class="fa-solid fa-bell"></i>
+                            <p class="links_name" id="notifikasi">Notifikasi</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('formPost') }}">
+                            <i class="fa-solid fa-plus"></i>
+                            <p class="links_name" id="posting">Posting</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('myBookmark') }}">
+                            <i class="fa-solid fa-bookmark"></i>
+                            <p class="links_name" id="bookmarks">Bookmarks</p>
+                        </a>
+                    </li>
+                @endauth
+                @auth
+                    <li class="log_out">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="d-flex">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <p class="links_name">Log out</p>
+                            </button>
+                        </form>
+                    </li>
+                @else
+                    <li class="login">
+                        <a href="{{ route('login') }}">
                             <i class="fa-solid fa-arrow-left"></i>
-                            <p class="links_name">Log out</p>
-                        </button>
-                    </form>
-                </li>
-            @else
-                <li class="login">
-                    <a href="{{ route('login') }}">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Login</p>
-                    </a>
-                </li>
-            @endauth
+                            <p class="links_name">Login</p>
+                        </a>
+                    </li>
+                @endauth
 
-            <li class="SidebarBottomText">
-                <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
-                    Terms of Service
-                    Privacy Policy
-                    Cookie Policy
-                    Accessibility
-                    Ads info
-                    More
-                    © 2024 Sosmed
-                </p>
-            </li>
-        </ul>
+                <li class="SidebarBottomText">
+                    <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
+                        Terms of Service
+                        Privacy Policy
+                        Cookie Policy
+                        Accessibility
+                        Ads info
+                        More
+                        © 2024 Sosmed
+                    </p>
+                </li>
+            </ul>
     </div>
     <section class="home-section">
         <div class="container-fluid nav" style="background-color: black;">
