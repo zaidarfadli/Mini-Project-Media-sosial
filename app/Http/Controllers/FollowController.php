@@ -134,7 +134,6 @@ class FollowController extends Controller
 
     //     $search = $request->input('search');
 
-
     //     $sFollowings = Follow::join('users', 'follows.following_id', '=', 'users.id')
     //         ->where('follows.user_id', $people->id)
     //         ->where(function ($query) use ($search) {
