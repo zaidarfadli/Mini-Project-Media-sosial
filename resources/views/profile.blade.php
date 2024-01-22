@@ -754,80 +754,86 @@
     </div>
     <section class="home-section">
         <div class="container-fluid nav" style="background-color: black;">
-            <div class="container container-lg">
-                <div class="row">
-                    <div class="col-xl-3">
-                        <div class="col-12 fotoProfile text-center">
-                            <img src="{{ asset('images/profile/' . $people->image) }}" alt="LogoProfile">
-                        </div>
-                    </div>
-                    <div class="col-xl-9">
-                        <div class="row d-flex">
-                            <div class="col-12 d-flex">
-                                <div class="col-8 d-flex">
-                                    <p id="usernameProfile">{{ $people->username }}</p>
-                                    @if ($people->is_me)
-                                    @else
-                                        <form action="{{ route('follow', ['people' => $people->id]) }}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn"
-                                                style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
-                                        </form>
-                                    @endif
+            <div class="row">
+                <div class="col-12">
+                    <div class="container container-lg">
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="col-12 fotoProfile text-center">
+                                    <img src="{{ asset('images/profile/' . $people->image) }}" alt="LogoProfile">
                                 </div>
-                                <div class="col-4">
-                                    @if ($people->is_me)
-                                        <a href="{{ route('formConfirmPassword') }}">
-                                            <i class="fa-solid fa-gear btn-edit-akun"></i>
+                            </div>
+                            <div class="col-xl-9">
+                                <div class="row d-flex">
+                                    <div class="col-12 d-flex">
+                                        <div class="col-8 d-flex">
+                                            <p id="usernameProfile">{{ $people->username }}</p>
+                                            @if ($people->is_me)
+                                            {{-- kosongin saja --}}
+                                            @else
+                                                <form action="{{ route('follow', ['people' => $people->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                         <button type="submit" class="btn"
+                                                            style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                        <div class="col-4">
+                                            @if ($people->is_me)
+                                                <a href="{{ route('formConfirmPassword') }}">
+                                                    <i class="fa-solid fa-gear btn-edit-akun"></i>
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex" class="dataInformation">
+                                        <a href="" id="wrapAnker">
+                                            <p id="countProfile">{{ $people->postCount() }}</p>
+                                            <p id="InformationProfile">Posts</p>
                                         </a>
-                                    @endif
+                                        <a href="{{ route('seeFollower', ['people' => $people->id]) }}" id="wrapAnker">
+                                            <p id="countProfile"> {{ $people->followerCount() }}</p>
+                                            <p id="InformationProfile">Followers</p>
+                                        </a>
+                                        <a href="{{ route('seeFollowing', ['people' => $people->id]) }}" id="wrapAnker">
+                                            <p id="countProfile"> {{ $people->followingCount() }}</p>
+                                            <p id="InformationProfile">Following</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p id="namaLengkapProfile">{{ $people->name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        {{-- bio masih belum responsive --}}
+                                        <p id="bioProfile">Lorem, ipsum dolor sit amet consectetur adipisicing
+                                            elit. Expedita placeat distinctio perspiciatis aspernatur nulla
+                                            praesentium et quas natus tempora adipisci.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr style="margin-right: 15px;">
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 d-flex" class="dataInformation">
-                                <a href="" id="wrapAnker">
-                                    <p id="countProfile">{{ $people->postCount() }}</p>
-                                    <p id="InformationProfile">Posts</p>
-                                </a>
-                                <a href="{{ route('seeFollower', ['people' => $people->id]) }}" id="wrapAnker">
-                                    <p id="countProfile"> {{ $people->followerCount() }}</p>
-                                    <p id="InformationProfile">Followers</p>
-                                </a>
-                                <a href="{{ route('seeFollowing', ['people' => $people->id]) }}" id="wrapAnker">
-                                    <p id="countProfile"> {{ $people->followingCount() }}</p>
-                                    <p id="InformationProfile">Following</p>
-                                </a>
-                            </div>
+                        <div class="row" id="feeds">
+                            @foreach ($people->post as $post)
+                                <div class="col-4">
+                                    <a href="{{ route('seePost', ['post' => $post->id]) }}">
+                                        <img style="aspect-ratio: 1/1; width: 100%;" src="{{ asset('images/post/'.$post->image) }}"
+                                            alt="Image Postingan Feeds">
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p id="namaLengkapProfile">{{ $people->name }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                {{-- bio masih belum responsive --}}
-                                <p id="bioProfile">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam
-                                    nisi harum eligendi a deleniti? Architecto aspernatur dicta ex sed doloribus totam
-                                    ea a vero, beatae nesciunt alias adipisci nisi?</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <hr style="margin-right: 15px;">
-                        </div>
-                    </div>
-                    <div class="row" id="feeds">
-                        @foreach ($people->post as $post)
-                            <div class="col-4">
-                                <a href="{{ route('seePost', ['post' => $post->id]) }}">
-                                    <img style="aspect-ratio: 1/1; width: 100%;"
-                                        src="{{ asset('images/post/' . $post->image) }}" alt="Image Postingan Feeds">
-                                </a>
-                            </div>
-                        @endforeach
                     </div>
                 </div>
             </div>

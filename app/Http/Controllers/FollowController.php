@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\search;
+
 class FollowController extends Controller
 {
     public function follow(User $people)
@@ -69,18 +71,93 @@ class FollowController extends Controller
             ->get();
         $followers = $follows->map(function ($follow) {
             return $follow->follower;
+        });;
+        $search = $request->input('search');
+
+
+
+        $sFollowers = Follow::join('users', 'follows.user_id', '=', 'users.id')
+            ->where('follows.following_id', $people->id)
+            ->where(function ($query) use ($search) {
+                $query->where('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.username', 'like', '%' . $search . '%');
+            })->get();
+
+        $searchFollowers = $sFollowers->map(function ($sFollowers) {
+            return $sFollowers->follower;
         });
-
-
         return view('follow', [
             'follows' => $followers,
             'judul' => "Followers",
             'people' => $people,
-            'user' => $user
+            'user' => $user,
+            'search' => $search,
+            'sFollows' => $searchFollowers
         ]);
     }
 
-    public function seeFollowing(User $people)
+    // public function seeFollower(Request $request, User $people)
+    // {
+    //     $user = Auth::user();
+    //     $follows = Follow::where('following_id', $people->id)->latest()->get();
+    //     $followers = $follows->map(function ($follow) {
+    //         return $follow->follower;
+    //     });
+
+    //     $search = $request->input('search');
+
+    //     $sFollows = Follow::join('users', 'follows.user_id', '=', 'users.id')
+    //         ->where('follows.following_id', $people->id)
+    //         ->where(function ($query) use ($search) {
+    //             $query->where('users.name', 'like', '%' . $search . '%')
+    //                 ->orWhere('users.username', 'like', '%' . $search . '%');
+    //         })->get();
+
+    //     return view('follow', [
+    //         'follows' => $followers,
+    //         'judul' => "Followers",
+    //         'people' => $people,
+    //         'user' => $user,
+    //         'search' => $search,
+    //         'sFollows' => $sFollows
+    //     ]);
+    // }
+
+
+    // public function seeFollowing(Request $request, User $people)
+    // {
+    //     $user = Auth::user();
+    //     $follows = Follow::where('user_id', $people->id)->latest()->get();
+    //     $followings = $follows->map(function ($follow) {
+    //         return $follow->following;
+    //     });
+
+    //     $search = $request->input('search');
+
+
+    //     $sFollowings = Follow::join('users', 'follows.following_id', '=', 'users.id')
+    //         ->where('follows.user_id', $people->id)
+    //         ->where(function ($query) use ($search) {
+    //             $query->where('users.name', 'like', '%' . $search . '%')
+    //                 ->orWhere('users.username', 'like', '%' . $search . '%');
+    //         })->get();
+
+    //     $searchFollowings = $sFollowings->map(function ($sFollowings) {
+    //         return $sFollowings->follower;
+    //     });
+
+    //     return view('follow', [
+    //         'follows' => $followings,
+    //         'judul' => "Followings",
+    //         'people' => $people,
+    //         'user' => $user,
+    //         'search' => $search,
+    //         'sFollows' => $searchFollowings
+    //     ]);
+    // }
+
+
+    public function seeFollowing(Request $request, User $people)
     {
         $user = Auth::user();
         $follows = Follow::where('user_id', $people->id)->latest()->get();
@@ -88,12 +165,26 @@ class FollowController extends Controller
             return $follow->following;
         });
 
+        $search = $request->input('search');
+
+        $sFollowings = Follow::join('users', 'follows.following_id', '=', 'users.id')
+            ->where('follows.user_id', $people->id)
+            ->where(function ($query) use ($search) {
+                $query->where('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.username', 'like', '%' . $search . '%');
+            })->get();
+
+        $searchFollowings = $sFollowings->map(function ($sFollowings) {
+            return $sFollowings->following;
+        });
 
         return view('follow', [
             'follows' => $followings,
-            'judul' => "Following",
+            'judul' => "Followings",
             'people' => $people,
-            'user' => $user
+            'user' => $user,
+            'search' => $search,
+            'sFollows' => $searchFollowings
         ]);
     }
 
@@ -126,4 +217,18 @@ class FollowController extends Controller
             $cekNotif->delete();
         }
     }
+
+
+    // public function searchFollow($user, $request)
+    // {
+    //     $search = $request->input('search');
+
+    //     if (!$search) {
+    //         return view('explore', [
+    //             'message' => 'Ketikkan nama user',
+    //             'user' => $user,
+    //             'suggested' => $suggested
+    //         ]);
+    //     }
+    // }
 }

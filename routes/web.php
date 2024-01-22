@@ -83,7 +83,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/deleteFollower/{people}', [FollowController::class, 'deleteFollower'])->name('deleteFollower');
     Route::get('/seeFollower/{people}', [FollowController::class, 'seeFollower'])->name('seeFollower');
     Route::get('/seeFollowing/{people}', [FollowController::class, 'seeFollowing'])->name('seeFollowing');
-
+    Route::get('/searchFollower/{people}', [FollowController::class, 'seeFollower'])->name('searchFollower');
+    Route::get('/searchFollowing/{people}', [FollowController::class, 'seeFollowing'])->name('searchFollowing');
 
     // All Route Bookmark
     Route::get('/MyBookmark', [BookmarkController::class, 'index'])->name('myBookmark');

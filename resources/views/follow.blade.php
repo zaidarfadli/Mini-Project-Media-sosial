@@ -1484,7 +1484,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 listFollowersSearch">
-                        <form action="" method="POST">
+                        <form action="{{ $judul == 'Followers' ? route('searchFollower',['people' => $people->id]) : route('searchFollowing',['people' => $people->id]) }} " method="get">
                             <div class="row">
                                 <div class="col-12 headerSearchFollowing">
                                     <p>Cari {{ $judul }}</p>
@@ -1492,30 +1492,58 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 d-flex searchFollowing">
-                                    <input type="text" class="form-control" name="isiCari" id="isiCari"
+                                    <input type="text" class="form-control" name="search" value="{{ request('search') }}" id="isiCari"
                                         placeholder="Cari">
-                                    <button type="submit" name="kirimCari" id="btnKirimCari">
+                                    <button type="submit"  id="btnKirimCari">
                                         <i class="fa-solid fa-magnifying-glass"></i> </button>
                                 </div>
                             </div>
                         </form>
-                        <a href="profile.php" style="display: flex;">
-                            <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"></i>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <span class="usernameFollowers">Naufal Fadhilah F</span>
+    
+                        @if (!$search)
+                            <p class="text-light">Masukan nama user</p>
+                        
+                        @else
+                            @forelse($sFollows as $follow)
+                        
+                            <a href="{{ route('seeProfile',['people' => $people->id]) }}" style="display: flex;">
+                                <i><img src="{{ asset('images/profile/'.$follow->image) }}" alt="gambar postingan"></i>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <span class="usernameFollowers">{{ $follow->username }}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="namaFollowers">{{ 
+                                            $follow->name }}</span>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <span class="namaFollowers">Naufal Fadhilah F</span>
-                                </div>
-                            </div>
-                            <form action="" method="POST">
-                                <p>
-                                    <input type="submit" class="btn" name="follow" id="follow"
-                                        value="Follow">
-                                </p>
-                            </form>
-                        </a>
+                                @if ($follow->id != $user->id)
+                                    @if ($judul == 'Followers' && $people->id == Auth::user()->id )
+                                        <form action="{{ route('deleteFollower',['people' => $follow->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <p>
+                                                <input type="submit" class="btn" name="follow" id="follow"
+                                                    value="Hapus">
+                                            </p>
+                                        </form>
+                                        @else
+                                        <form action="{{ route('follow',['people' => $follow->id]) }}" method="POST">
+                                            @csrf
+                                            <p>
+                                                <input type="submit" class="btn" name="follow" id="follow"
+                                                value="{{ $follow->is_follow ? 'Unfollow' : 'Follow' }}">
+                                            </p>
+                                        </form>
+                                    @endif
+                                @else
+                                {{-- KOSONGIN AJA --}}
+                                @endif
+                            </a>
+                            @empty
+                            <p>No followers found</p>
+                            @endforelse
+                        @endif
                     </div>
                     <div class="col-lg-6 listFollowers">
                         <div class="col-12">
@@ -1535,7 +1563,7 @@
                                     </div>
                                 </div>
                                 @if ($follow->id != $user->id)
-                                    @if ($judul == 'Follower' && $people->id == Auth::user()->id )
+                                    @if ($judul == 'Followers' && $people->id == Auth::user()->id )
                                         <form action="{{ route('deleteFollower',['people' => $follow->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -1565,7 +1593,10 @@
         </div>
     </section>
 </body>
-<!-- <footer>
+
+@guest
+    
+ <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 column-text-footer">
@@ -1577,7 +1608,8 @@
                 <a href="login" class="btn btn-edit-akun">Register</a>
             </div>
         </div>
-</footer> -->
+</footer> 
+@endguest
 </div>
 
 </html>
