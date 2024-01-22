@@ -72,7 +72,7 @@ class FollowController extends Controller
 
         return view('follow', [
             'follows' => $followers,
-            'judul' => "Follower",
+            'judul' => "Followers",
             'people' => $people,
             'user' => $user
         ]);

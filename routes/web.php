@@ -49,13 +49,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/home2', [HomeController::class, 'indexMyFollowing'])->name('home2');
-
+    Route::get('/explore', [HomeController::class, 'searchRoute'])->name('searchRoute');
 
     // ALL POSTINGAN ROUTE
     Route::get('/formPost', [HomeController::class, 'formPost'])->name('formPost');
     Route::post('/createPost', [PostController::class, 'createPost'])->name('createPost');
     Route::delete('/deletePost/{post}', [PostController::class, 'deletePost'])->name('deletePost');
-
 
     // ALL COMMENT ROUTE
     Route::post('/sendComment/{post}', [CommentController::class, 'sendComment'])->name('sendComment');
@@ -77,8 +76,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     // All Route Follow
     Route::post('/follow/{people}', [FollowController::class, 'follow'])->name('follow');
+
     Route::delete('/deleteFollower/{people}', [FollowController::class, 'deleteFollower'])->name('deleteFollower');
     Route::get('/seeFollower/{people}', [FollowController::class, 'seeFollower'])->name('seeFollower');
+
+    Route::get('/seeFollowers/{people}', [FollowController::class, 'seeFollower'])->name('seeFollower');
+
     Route::get('/seeFollowing/{people}', [FollowController::class, 'seeFollowing'])->name('seeFollowing');
 
 
@@ -90,7 +93,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/likePost/{post}', [LikeController::class, 'likePost'])->name('likePost');
     Route::get('seeWhoLike/{post}', [LikeController::class, 'seeWhoLike'])->name('seeWhoLike');
     Route::post('/likeComment/{post}/{comment}', [LikeController::class, 'likeComment'])->name('likeComment');
-
 
     // All Route Notifikasi
     Route::get('/myNotifikasi', [NotifController::class, 'myNotifikasi'])->name('myNotifikasi');

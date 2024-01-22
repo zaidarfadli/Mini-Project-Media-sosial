@@ -61,4 +61,23 @@ class HomeController extends Controller
             'user' => $user
         ]);
     }
+    public function searchRoute() {
+        $posts = Post::with(['user'])->latest()->get();
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $people = User::whereNot('id', $user->id)->latest()->get();
+            return view('explore', [
+                'posts' => $posts,
+                'user' => $user,
+                'peoples' => $people
+            ]);
+        } else {
+            $people = User::latest()->get();
+            return view('explore', [
+                'posts' => $posts,
+                'peoples' => $people
+            ]);
+        }
+    }
 }

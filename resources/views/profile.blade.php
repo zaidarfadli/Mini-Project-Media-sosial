@@ -646,9 +646,12 @@
     <title>Profile</title>
     <link rel="icon" href="images/logo-medsos.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
@@ -662,7 +665,7 @@
     <div class="sidebar">
         <div class="detail_logo">
             <a href="{{ route('myProfile') }}" style="display: flex;">
-                <i><img src="{{ asset('images/profile/'.$is_mine->image) }}" alt="gambar postingan"></i>
+                <i><img src="{{ asset('images/profile/' . $is_mine->image) }}" alt="gambar postingan"></i>
                 <div class="container-fluid rowUsername">
                     <div class="row">
                         <span id="usernameProfileAuthor">{{ $is_mine->username }}</span>
@@ -673,7 +676,8 @@
                 </div>
             </a>
         </div>
-        <hr style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
+        <hr
+            style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
         <ul class="link-navigasi">
             <li class="sidebarActive">
                 <a href="{{ route('home') }}">
@@ -732,21 +736,34 @@
                         <div class="row">
                             <div class="col-xl-3">
                                 <div class="col-12 fotoProfile text-center">
-                                    <img src="{{ asset('images/profile/'. $user->image ) }}" alt="LogoProfile">
+                                    <img src="{{ asset('images/profile/' . $user->image) }}" alt="LogoProfile">
                                 </div>
                             </div>
                             <div class="col-xl-9">
                                 <div class="row d-flex">
                                     <div class="col-12 d-flex">
-                                        <div class="col-8">
+                                        <div class="col-8 d-flex">
                                             <p id="usernameProfile">{{ $user->username }}</p>
+                                            @if ($user->is_me)
+                                            @else
+                                                <form action="{{ route('follow', ['people' => $user->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @if ($user->is_follow)
+                                                         <button type="submit" class="btn"
+                                                                        style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">Followed</button>
+                                                    @else
+                                                         <button type="submit" class="btn"
+                                                                        style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">Follow</button>
+                                                    @endif
+                                                </form>
+                                            @endif
                                         </div>
                                         <div class="col-4">
-                                            
                                             @if ($user->is_me)
-                                            <a href="edit_akun.php">
-                                                <i class="fa-solid fa-gear btn-edit-akun"></i>
-                                            </a>
+                                                <a href="edit_akun.php">
+                                                    <i class="fa-solid fa-gear btn-edit-akun"></i>
+                                                </a>
                                             @endif
                                         </div>
                                     </div>
@@ -757,11 +774,11 @@
                                             <p id="countProfile">{{ $user->postCount() }}</p>
                                             <p id="InformationProfile">Posts</p>
                                         </a>
-                                        <a href="{{ route('seeFollower',['people' => $user->id]) }}" id="wrapAnker">
+                                        <a href="{{ route('seeFollower', ['people' => $user->id]) }}" id="wrapAnker">
                                             <p id="countProfile"> {{ $user->followerCount() }}</p>
                                             <p id="InformationProfile">Followers</p>
                                         </a>
-                                        <a href="{{ route('seeFollowing',['people'=> $user->id]) }}" id="wrapAnker">
+                                        <a href="{{ route('seeFollowing', ['people' => $user->id]) }}" id="wrapAnker">
                                             <p id="countProfile"> {{ $user->followingCount() }}</p>
                                             <p id="InformationProfile">Following</p>
                                         </a>
@@ -779,21 +796,6 @@
                                             elit. Expedita placeat distinctio perspiciatis aspernatur nulla
                                             praesentium et quas natus tempora adipisci.</p>
                                     </div>
-                                    @if ($user->is_me)
-                                        
-                                    @else
-                                    <div class="col-12">
-                                        <form action="{{ route('follow',['people' => $user->id ]) }}" method="post">
-                                            @csrf
-                                            @if ($user->is_follow)
-                                                <button type="submit" class="btn btn-primary">Unfollow</button>
-                                            @else
-                                                <button type="submit" class="btn btn-primary">Follow</button>
-                                            @endif
-                                        </form>
-                                     </div>
-                                    @endif
-                                   
                                 </div>
                             </div>
                             <div class="row">
@@ -804,11 +806,12 @@
                         </div>
                         <div class="row" id="feeds">
                             @foreach ($user->post as $post)
-                            <div class="col-4">
-                                <a href="{{ route('seePost',['post' => $post->id]) }}">
-                                    <img style="aspect-ratio: 1/1; width: 100%;" src="{{ $post->image }}" alt="Image Postingan Feeds">
-                                </a>
-                            </div>
+                                <div class="col-4">
+                                    <a href="{{ route('seePost', ['post' => $post->id]) }}">
+                                        <img style="aspect-ratio: 1/1; width: 100%;" src="{{ $post->image }}"
+                                            alt="Image Postingan Feeds">
+                                    </a>
+                                </div>
                             @endforeach
                         </div>
                     </div>

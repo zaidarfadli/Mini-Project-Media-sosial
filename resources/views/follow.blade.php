@@ -323,9 +323,13 @@
         color: var(--main_color);
     }
 
+    .navigasi .navigasi-item p {
+        transition: all 0.5 ease;
+    }
+
     .navigasi-item .active p {
         font-weight: 600;
-        letter-spacing: 1;
+        letter-spacing: 0.6;
         padding-bottom: 5px;
         border-bottom: 2px solid var(--main_color-3);
         transition: all ease 0.3s;
@@ -1026,7 +1030,6 @@
 
     .navigasi-item .active p {
         font-weight: 600;
-        letter-spacing: 1;
         padding-bottom: 5px;
         border-bottom: 2px solid var(--main_color-3);
         transition: all ease 0.3s;
@@ -1346,9 +1349,12 @@
     <title>Beranda</title>
     <link rel="icon" href="images/logo-medsos.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
@@ -1362,7 +1368,7 @@
     <div class="sidebar">
         <div class="detail_logo">
             <a href="{{ route('myProfile') }}" style="display: flex;">
-                <i><img src="{{ asset('images/profile/' .$user->image )  }}" alt="gambar postingan"></i>
+                <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
                 <div class="container-fluid rowUsername">
                     <div class="row">
                         <span id="usernameProfileAuthor">{{ $user->username }}</span>
@@ -1373,7 +1379,8 @@
                 </div>
             </a>
         </div>
-        <hr style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
+        <hr
+            style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
         <ul class="link-navigasi">
             <li class="sidebarActive">
                 <a href="{{ route('home') }}">
@@ -1400,7 +1407,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('myBookmark')}}">
+                <a href="{{ route('myBookmark') }}">
                     <i class="fa-solid fa-bookmark"></i>
                     <p class="links_name" id="bookmarks">Bookmarks</p>
                 </a>
@@ -1442,18 +1449,21 @@
                                         <p id="back">Back</p>
                             </div>
                             <div class="col-lg-8 col-12">
-                                <p class="usernameDetailFollow" style="text-align: center; justify-content: center;">{{$people->username}}</p>
+                                <p class="usernameDetailFollow" style="text-align: center; justify-content: center;">
+                                    {{ $people->username }}</p>
                             </div>
                         </div>
                         <div class="row navigasiFilter">
                             <ul class="navigasi" style="margin-top: 10px; margin-bottom: -20px;">
                                 <li class="navigasi-item NavFilter">
-                                    <a class="navigasi-link pilihKategoriFollow active" href="#">
+                                    <a href="{{ route('seeFollower', ['people' => $user->id]) }}"
+                                        class="navigasi-link pilihKategoriFollow kategoriFollowers" href="#">
                                         <p>Followers</p>
                                     </a>
                                 </li>
                                 <li class="navigasi-item">
-                                    <a class="navigasi-link pilihKategoriFollow" href="#">
+                                    <a href="{{ route('seeFollowing', ['people' => $user->id]) }}"
+                                        class="navigasi-link pilihKategoriFollow kategoriFollowing" href="#">
                                         <p>Following</p>
                                     </a>
                                 </li>
@@ -1467,12 +1477,13 @@
                         <form action="" method="POST">
                             <div class="row">
                                 <div class="col-12 headerSearchFollowing">
-                                    <p>Cari followers</p>
+                                    <p>Cari {{ $judul }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 d-flex searchFollowing">
-                                    <input type="text" class="form-control" name="isiCari" id="isiCari" placeholder="Cari">
+                                    <input type="text" class="form-control" name="isiCari" id="isiCari"
+                                        placeholder="Cari">
                                     <button type="submit" name="kirimCari" id="btnKirimCari">
                                         <i class="fa-solid fa-magnifying-glass"></i> </button>
                                 </div>
@@ -1490,7 +1501,8 @@
                             </div>
                             <form action="" method="POST">
                                 <p>
-                                    <input type="submit" class="btn" name="follow" id="follow" value="Follow">
+                                    <input type="submit" class="btn" name="follow" id="follow"
+                                        value="Follow">
                                 </p>
                             </form>
                         </a>
@@ -1499,26 +1511,26 @@
                         <div class="col-12">
                             <p id="listAll">List All {{ $judul }}</p>
                         </div>
-
-
                         @foreach ($follows as $follow)
-                            
-                        <a href="{{ $judul== 'Follower' ? route('seeFollower',['people' => $follow->id ]) : route('seeFollowing',['people' => $follow->id ])   }}" style="display: flex;">
-                            <i><img src="{{ asset('images/profile/'. $follow->image ) }}" alt="gambar postingan"></i>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <span class="usernameFollowers">{{ $follow->username }}</span>
+                            <a href="{{ $judul == 'Follower' ? route('seeFollower', ['people' => $follow->id]) : route('seeFollowing', ['people' => $follow->id]) }}"
+                                style="display: flex;">
+                                <i><img src="{{ asset('images/profile/' . $follow->image) }}"
+                                        alt="gambar postingan"></i>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <span class="usernameFollowers">{{ $follow->username }}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="namaFollowers">{{ $follow->name }}</span>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <span class="namaFollowers">{{ $follow->name }}</span>
-                                </div>
-                            </div>
-                            <form action="" method="POST">
-                                <p>
-                                    <input type="submit" class="btn" name="follow" id="follow" value="Follow">
-                                </p>
-                            </form>
-                        </a>
+                                <form action="" method="POST">
+                                    <p>
+                                        <input type="submit" class="btn" name="follow" id="follow"
+                                            value="Follow">
+                                    </p>
+                                </form>
+                            </a>
                         @endforeach
 
                     </div>
@@ -1547,6 +1559,16 @@
     function backToHistory() {
         window.history.back();
     }
+
+    let url = window.location.href
+    const kategori = $('.kategoriFollowing');
+    const kategori2 = $('.kategoriFollowers');
+    if (url.includes('seeFollowing')) {
+        kategori.addClass('active')
+    } else if (url.includes('seeFollowers')) {
+        kategori2.addClass('active')
+    }
+
     $('.pilihKategoriFollow').on('click', function() {
         $('.pilihKategoriFollow').removeClass('active');
         $(this).addClass('active');

@@ -41,9 +41,6 @@
             <a href="{{ route('home2') }}" class="btn btn-primary">Postingan My Following</a>
           </div>
         @endauth
-        
-
-       
         <table class="table my-3">
           <thead class="table-primary">
             <tr>
@@ -56,9 +53,6 @@
               <th scope="col">Like</th>
               <th scope="col">Hapus</th>
               <th scope="col">Bookmark</th>
-              
-
-
             </tr>
           </thead>
           <tbody>
