@@ -8,7 +8,6 @@
         --main_color-4: #3F979B;
         --text-color: #D9D9D9;
     }
-
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -22,9 +21,8 @@
     ::-webkit-scrollbar-thumb {
         background: black;
     }
-
     * {
-        /* border: 1px solid white; */
+        /* border: 1px solid black; */
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -109,9 +107,8 @@
     }
 
     .sidebar .link-navigasi li {
-        color: var(--main_color);
-        position: relative;
-        list-style-type: none;
+        color: var(--main_color) position: relative;
+        list-style: none;
         height: 45px;
     }
 
@@ -460,14 +457,12 @@
             width: 130%;
         }
     }
-
     @media (max-width: 576px) {
 
-        footer .row {
+        footer .row{
             margin-left: 0.5rem;
         }
     }
-
     @media (max-width: 560px) {
         .profileAuthor .namaProfileAuthorPost p {
             font-size: 0.7rem;
@@ -641,28 +636,28 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-    <link rel="icon" href="images/logo-medsos.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Profile</title>
+        <link rel="icon" href="images/logo-medsos.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
+    </head>
 
-<body style="background-color: black;">
-    <div class="sidebar">
+    <body style="background-color: black;">
+        <div class="sidebar">
         <div class="detail_logo">
             <a href="{{ route('myProfile') }}" style="display: flex;">
                 @auth
@@ -690,7 +685,7 @@
         </div>
         <hr
             style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
-        <ul class="link-navigasi">
+       <ul class="link-navigasi">
             <li class="sidebarActive">
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
@@ -704,43 +699,43 @@
                 </a>
             </li>
             @auth
-
-                <li>
-                    <a href="{{ route('myNotifikasi') }}">
-                        <i class="fa-solid fa-bell"></i>
-                        <p class="links_name" id="notifikasi">Notifikasi</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('formPost') }}">
-                        <i class="fa-solid fa-plus"></i>
-                        <p class="links_name" id="posting">Posting</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('myBookmark') }}">
-                        <i class="fa-solid fa-bookmark"></i>
-                        <p class="links_name" id="bookmarks">Bookmarks</p>
-                    </a>
-                </li>
+                
+            <li>
+                <a href="{{ route('myNotifikasi') }}">
+                    <i class="fa-solid fa-bell"></i>
+                    <p class="links_name" id="notifikasi">Notifikasi</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('formPost') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    <p class="links_name" id="posting">Posting</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('myBookmark') }}">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <p class="links_name" id="bookmarks">Bookmarks</p>
+                </a>
+            </li>
             @endauth
             @auth
-                <li class="log_out">
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button type="submit">
-                            <i class="fa-solid fa-arrow-left"></i>
-                            <p class="links_name">Log out</p>
-                        </button>
-                    </form>
-                </li>
-            @else
-                <li class="login">
-                    <a href="{{ route('login') }}">
+            {{-- <li class="log_out">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">
                         <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Login</p>
-                    </a>
-                </li>
+                        <p class="links_name">Log out</p>
+                    </button>
+                </form>
+            </li> --}}
+            @else
+            <li class="login">
+                <a href="{{ route('login') }}">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <p class="links_name">Login</p>
+                </a>
+            </li>
             @endauth
 
             <li class="SidebarBottomText">
@@ -756,127 +751,139 @@
             </li>
         </ul>
     </div>
-    <section class="home-section">
-        <div class="container-fluid nav" style="background-color: black;">
-            <div class="container container-lg">
+        <section class="home-section">
+            <div class="container-fluid nav" style="background-color: black;">
                 <div class="row">
-                    <div class="col-xl-3">
-                        <div class="col-12 fotoProfile text-center">
-                            <img src="{{ asset('images/profile/' . $people->image) }}" alt="LogoProfile">
-                        </div>
-                    </div>
-                    <div class="col-xl-9">
-                        <div class="row d-flex">
-                            <div class="col-12 d-flex">
-                                <div class="col-8 d-flex">
-                                    <p id="usernameProfile">{{ $people->username }}</p>
-                                    @if ($people->is_me)
-                                    @else
-                                        <form action="{{ route('follow', ['people' => $people->id]) }}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn"
-                                                style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
-                                        </form>
-                                    @endif
+                    <div class="col-12">
+                        <div class="container container-lg">
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <div class="col-12 fotoProfile text-center">
+                                        <img src="images/smk1.jpg" alt="LogoProfile">
+                                    </div>
+                                </div>
+                                <div class="col-xl-9">
+                                    <div class="row d-flex">
+                                        <div class="col-12 d-flex">
+                                            <div class="col-8">
+                                                <p id="usernameProfile">jangandifollow_74</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="edit_akun.php">
+                                                    <i class="fa-solid fa-gear btn-edit-akun"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 d-flex" class="dataInformation">
+                                            <a href="" id="wrapAnker">
+                                                <p id="countProfile">20</p>
+                                                <p id="InformationProfile">Posts</p>
+                                            </a>
+                                            <a href="" id="wrapAnker">
+                                                <p id="countProfile">20</p>
+                                                <p id="InformationProfile">Followers</p>
+                                            </a>
+                                            <a href="followDetail.php" id="wrapAnker">
+                                                <p id="countProfile">20</p>
+                                                <p id="InformationProfile">Following</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p id="namaLengkapProfile">Naufal Fadhilah Fitrah</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p id="bioProfile"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <hr style="margin-right: 15px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="feeds">
+                                <div class="col-4">
+                                    <a href="">
+                                        <img style="aspect-ratio: 1/1; width: 100%;" src="images/usbn.jpg"
+                                            alt="Image Postingan Feeds">
+                                    </a>
                                 </div>
                                 <div class="col-4">
-                                    @if ($people->is_me)
-                                        <a href="{{ route('formConfirmPassword') }}">
-                                            <i class="fa-solid fa-gear btn-edit-akun"></i>
-                                        </a>
-                                    @endif
+                                    <a href="">
+                                        <img style="aspect-ratio: 1/1; width: 100%;" src="images/smk1.jpg"
+                                            alt="Image Postingan Feeds">
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="">
+                                        <img style="aspect-ratio: 1/1; width: 100%;"
+                                            src="images/ldks-hari--1_1640302800_ldks-11-hari-1-thumb.jpg"
+                                            alt="Image Postingan Feeds">
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="">
+                                        <img style="aspect-ratio: 1/1; width: 100%;" src="images/sambut_pagi.jpg"
+                                            alt="Image Postingan Feeds">
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="">
+                                        <img style="aspect-ratio: 1/1; width: 100%;" src="images/usbn.jpg"
+                                            alt="Image Postingan Feeds">
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 d-flex" class="dataInformation">
-                                <a href="" id="wrapAnker">
-                                    <p id="countProfile">{{ $people->postCount() }}</p>
-                                    <p id="InformationProfile">Posts</p>
-                                </a>
-                                <a href="{{ route('seeFollower', ['people' => $people->id]) }}" id="wrapAnker">
-                                    <p id="countProfile"> {{ $people->followerCount() }}</p>
-                                    <p id="InformationProfile">Followers</p>
-                                </a>
-                                <a href="{{ route('seeFollowing', ['people' => $people->id]) }}" id="wrapAnker">
-                                    <p id="countProfile"> {{ $people->followingCount() }}</p>
-                                    <p id="InformationProfile">Following</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p id="namaLengkapProfile">{{ $people->name }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                {{-- bio masih belum responsive --}}
-                                <p id="bioProfile">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam
-                                    nisi harum eligendi a deleniti? Architecto aspernatur dicta ex sed doloribus totam
-                                    ea a vero, beatae nesciunt alias adipisci nisi?</p>
-                            </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center footer">
+                            <p>Naufal</p>
+                            <p>Fadhilah</p>
+                            <p>Fitrah</p>
+                            <p>Naufal</p>
+                            <p>Fadhilah</p>
+                            <p>Fitrah</p>
+                            <p>Naufal</p>
+                            <p>Fadhilah</p>
+                            <p>Fitrah</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <hr style="margin-right: 15px;">
+                        <div class="col-12 d-flex justify-content-center footer">
+                            <p id="copyright">Copyright 2023</p>
                         </div>
                     </div>
-                    <div class="row" id="feeds">
-                        @foreach ($people->post as $post)
-                            <div class="col-4">
-                                <a href="{{ route('seePost', ['post' => $post->id]) }}">
-                                    <img style="aspect-ratio: 1/1; width: 100%;"
-                                        src="{{ asset('images/post/' . $post->image) }}" alt="Image Postingan Feeds">
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
                 </div>
+        </section>
+    </body>
+    <!-- <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 column-text-footer">
+                <p id="text-1">Jangan ketinggalan berita terbaru</p>
+                <p id="text-2">login, untuk pengalaman yang baru</p>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center footer">
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 d-lex justify-content-center footer">
-                        <p id="copyright">Copyright 2023</p>
-                    </div>
-                </div>
+            <div class="col-lg-4 col-12 d-flex column-btn">
+                <a href="login" class="btn btn-login-footer">Login</a>
+                <a href="login" class="btn btn-edit-akun">Register</a>
             </div>
-    </section>
-</body>
-@guest
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 column-text-footer">
-                    <p id="text-1">Jangan ketinggalan berita terbaru</p>
-                    <p id="text-2">login, untuk pengalaman yang baru</p>
-                </div>
-                <div class="col-lg-4 col-12 d-flex column-btn">
-                    <a href="login" class="btn btn-login-footer">Login</a>
-                    <a href="login" class="btn btn-edit-akun">Register</a>
-                </div>
-            </div>
-    </footer>
-@endguest
-</div>
+        </div>
+</footer> -->
+    </div>
 
 </html>
 <script>
-    $('.pilihKategoriPostingan').on('click', function() {
+    $('.pilihKategoriPostingan').on('click', function () {
         $('.pilihKategoriPostingan').removeClass('active');
         $(this).addClass('active');
     });
