@@ -41,7 +41,26 @@ class FollowController extends Controller
         }
     }
 
-    public function seeFollower(User $people)
+    public function deleteFollower(User $people)
+    {
+        $user = Auth::user();
+
+        $follower = Follow::where('user_id', $people->id)
+            ->where('following_id', $user->id)
+            ->first();
+
+        if ($follower) {
+
+            $follower->delete();
+            return redirect()->back();
+        }
+
+        return redirect()->back()->with([
+            'message' => 'Follower sudah dihapus'
+        ]);
+    }
+
+    public function seeFollower(Request $request, User $people)
     {
 
         $user = Auth::user();

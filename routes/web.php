@@ -72,10 +72,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/formConfirmPassword', [UserController::class, 'formConfirmPassword'])->name('formConfirmPassword');
     Route::post('/confirmPassword', [UserController::class, 'confirmPassword'])->name('confirmPassword');
     Route::get('/UbahProfile', [UserController::class, 'formUbahProfile'])->name('formUbahProfile');
+    Route::put('/UbahProfile', [UserController::class, 'editProfile'])->name('ubahProfile');
     Route::post('/confirmPassword', [UserController::class, 'confirmPassword'])->name('confirmPassword');
 
     // All Route Follow
     Route::post('/follow/{people}', [FollowController::class, 'follow'])->name('follow');
+    Route::delete('/deleteFollower/{people}', [FollowController::class, 'deleteFollower'])->name('deleteFollower');
     Route::get('/seeFollower/{people}', [FollowController::class, 'seeFollower'])->name('seeFollower');
     Route::get('/seeFollowing/{people}', [FollowController::class, 'seeFollowing'])->name('seeFollowing');
 
@@ -92,4 +94,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // All Route Notifikasi
     Route::get('/myNotifikasi', [NotifController::class, 'myNotifikasi'])->name('myNotifikasi');
+
+
+    // All route searching
+    Route::get('/searching', [UserController::class, 'searchPeople'])->name('searchPeople');
+    Route::post('/searching', [UserController::class, 'search'])->name('search');
 });
