@@ -815,10 +815,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        {{-- bio masih belum responsive --}}
-                                        <p id="bioProfile">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Expedita placeat distinctio perspiciatis aspernatur nulla
-                                            praesentium et quas natus tempora adipisci.</p>
+                                    
+                                        <p id="bioProfile">{{ $people->bio }}.</p>
                                     </div>
                                 </div>
                             </div>
