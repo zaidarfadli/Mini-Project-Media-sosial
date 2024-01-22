@@ -665,20 +665,32 @@
     <div class="sidebar">
         <div class="detail_logo">
             <a href="{{ route('myProfile') }}" style="display: flex;">
-                <i><img src="{{ asset('images/profile/' . $is_mine->image) }}" alt="gambar postingan"></i>
-                <div class="container-fluid rowUsername">
-                    <div class="row">
-                        <span id="usernameProfileAuthor">{{ $is_mine->username }}</span>
+                @auth
+                    <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
+                    <div class="container-fluid rowUsername">
+                        <div class="row">
+                            <span id="usernameProfileAuthor">{{ $user->username }}</span>
+                        </div>
+                        <div class="row">
+                            <span id="namaProfileAuthor">{{ $user->name }}</span>
+                        </div>
                     </div>
-                    <div class="row">
-                        <span id="namaProfileAuthor">{{ $is_mine->name }}</span>
+                @else
+                    <i><img src="{{ asset('images/logo-medsos.png') }}" alt="gambar foto profile"></i>
+                    <div class="container-fluid rowUsername">
+                        <div class="row">
+                            <span id="usernameProfileAuthor" style="margin-left: 0.2rem">Silahkan Login Dahulu</span>
+                        </div>
+                        <div class="row">
+                            <span id="namaProfileAuthor" style="margin-left: 0.2rem">Ayo Login</span>
+                        </div>
                     </div>
-                </div>
+                @endauth
             </a>
         </div>
         <hr
             style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
-        <ul class="link-navigasi">
+       <ul class="link-navigasi">
             <li class="sidebarActive">
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
@@ -686,11 +698,13 @@
                 </a>
             </li>
             <li>
-                <a href="search.php">
+                <a href="{{ route('explorePeople') }}">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <p class="links_name" id="explore">Explore</p>
                 </a>
             </li>
+            @auth
+                
             <li>
                 <a href="{{ route('myNotifikasi') }}">
                     <i class="fa-solid fa-bell"></i>
@@ -709,12 +723,26 @@
                     <p class="links_name" id="bookmarks">Bookmarks</p>
                 </a>
             </li>
+            @endauth
+            @auth
             <li class="log_out">
-                <a href="{{ route('logout') }}">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Log out</p>
+                    </button>
+                </form>
+            </li>
+            @else
+            <li class="login">
+                <a href="{{ route('login') }}">
                     <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Log out</p>
+                    <p class="links_name">Login</p>
                 </a>
             </li>
+            @endauth
+
             <li class="SidebarBottomText">
                 <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
                     Terms of Service
@@ -723,7 +751,7 @@
                     Accessibility
                     Ads info
                     More
-                    © 2024 PT. Lorem Ipsum.
+                    © 2024 Sosmed
                 </p>
             </li>
         </ul>
@@ -736,32 +764,28 @@
                         <div class="row">
                             <div class="col-xl-3">
                                 <div class="col-12 fotoProfile text-center">
-                                    <img src="{{ asset('images/profile/' . $user->image) }}" alt="LogoProfile">
+                                    <img src="{{ asset('images/profile/' . $people->image) }}" alt="LogoProfile">
                                 </div>
                             </div>
                             <div class="col-xl-9">
                                 <div class="row d-flex">
                                     <div class="col-12 d-flex">
                                         <div class="col-8 d-flex">
-                                            <p id="usernameProfile">{{ $user->username }}</p>
-                                            @if ($user->is_me)
+                                            <p id="usernameProfile">{{ $people->username }}</p>
+                                            @if ($people->is_me)
+                                            {{-- kosongin saja --}}
                                             @else
-                                                <form action="{{ route('follow', ['people' => $user->id]) }}"
+                                                <form action="{{ route('follow', ['people' => $people->id]) }}"
                                                     method="post">
                                                     @csrf
-                                                    @if ($user->is_follow)
                                                          <button type="submit" class="btn"
-                                                                        style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">Followed</button>
-                                                    @else
-                                                         <button type="submit" class="btn"
-                                                                        style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">Follow</button>
-                                                    @endif
+                                                            style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
                                                 </form>
                                             @endif
                                         </div>
                                         <div class="col-4">
-                                            @if ($user->is_me)
-                                                <a href="edit_akun.php">
+                                            @if ($people->is_me)
+                                                <a href="{{ route('formConfirmPassword') }}">
                                                     <i class="fa-solid fa-gear btn-edit-akun"></i>
                                                 </a>
                                             @endif
@@ -771,22 +795,22 @@
                                 <div class="row">
                                     <div class="col-12 d-flex" class="dataInformation">
                                         <a href="" id="wrapAnker">
-                                            <p id="countProfile">{{ $user->postCount() }}</p>
+                                            <p id="countProfile">{{ $people->postCount() }}</p>
                                             <p id="InformationProfile">Posts</p>
                                         </a>
-                                        <a href="{{ route('seeFollower', ['people' => $user->id]) }}" id="wrapAnker">
-                                            <p id="countProfile"> {{ $user->followerCount() }}</p>
+                                        <a href="{{ route('seeFollower', ['people' => $people->id]) }}" id="wrapAnker">
+                                            <p id="countProfile"> {{ $people->followerCount() }}</p>
                                             <p id="InformationProfile">Followers</p>
                                         </a>
-                                        <a href="{{ route('seeFollowing', ['people' => $user->id]) }}" id="wrapAnker">
-                                            <p id="countProfile"> {{ $user->followingCount() }}</p>
+                                        <a href="{{ route('seeFollowing', ['people' => $people->id]) }}" id="wrapAnker">
+                                            <p id="countProfile"> {{ $people->followingCount() }}</p>
                                             <p id="InformationProfile">Following</p>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p id="namaLengkapProfile">{{ $user->username }}</p>
+                                        <p id="namaLengkapProfile">{{ $people->name}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -805,10 +829,10 @@
                             </div>
                         </div>
                         <div class="row" id="feeds">
-                            @foreach ($user->post as $post)
+                            @foreach ($people->post as $post)
                                 <div class="col-4">
                                     <a href="{{ route('seePost', ['post' => $post->id]) }}">
-                                        <img style="aspect-ratio: 1/1; width: 100%;" src="{{ $post->image }}"
+                                        <img style="aspect-ratio: 1/1; width: 100%;" src="{{ asset('images/post/'.$post->image) }}"
                                             alt="Image Postingan Feeds">
                                     </a>
                                 </div>
@@ -839,7 +863,8 @@
             </div>
     </section>
 </body>
-<!-- <footer>
+@guest
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 column-text-footer">
@@ -851,7 +876,8 @@
                 <a href="login" class="btn btn-edit-akun">Register</a>
             </div>
         </div>
-</footer> -->
+</footer>
+@endguest
 </div>
 
 </html>

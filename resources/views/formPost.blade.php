@@ -651,13 +651,13 @@
         <div class="sidebar">
             <div class="detail_logo">
                 <a href="profile.php" style="display: flex;">
-                    <i><img src="images/smk1.jpg" alt="gambar postingan"></i>
+                    <i><img src="{{ asset('images/profile/'.$user->image) }}" alt="gambar postingan"></i>
                     <div class="container-fluid rowUsername">
                         <div class="row">
-                            <span id="usernameProfileAuthor">Naufal Fadhilah F</span>
+                            <span id="usernameProfileAuthor">{{ $user->username }}</span>
                         </div>
                         <div class="row">
-                            <span id="namaProfileAuthor">Naufal Fadhilah F</span>
+                            <span id="namaProfileAuthor">{{ $user->name }}</span>
                         </div>
                     </div>
                 </a>
@@ -665,42 +665,58 @@
             <hr
                 style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
             <ul class="link-navigasi">
-                <li>
+                <li class="sidebarActive">
                     <a href="{{ route('home') }}">
                         <i class="fa-solid fa-house aktif"></i>
                         <p class="links_name" id="beranda">Beranda</p>
                     </a>
                 </li>
                 <li>
-                    <a href="serach.php">
+                    <a href="{{ route('explorePeople') }}">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <p class="links_name" id="explore">Explore</p>
                     </a>
                 </li>
+                @auth
+                    
                 <li>
                     <a href="{{ route('myNotifikasi') }}">
                         <i class="fa-solid fa-bell"></i>
                         <p class="links_name" id="notifikasi">Notifikasi</p>
                     </a>
                 </li>
-                <li class="sidebarActive">
+                <li>
                     <a href="{{ route('formPost') }}">
                         <i class="fa-solid fa-plus"></i>
                         <p class="links_name" id="posting">Posting</p>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('myBookmark')  }}">
+                    <a href="{{ route('myBookmark') }}">
                         <i class="fa-solid fa-bookmark"></i>
                         <p class="links_name" id="bookmarks">Bookmarks</p>
                     </a>
                 </li>
+                @endauth
+                @auth
                 <li class="log_out">
-                    <a href="{{ route('logout') }}">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
+                @else
+                <li class="login">
+                    <a href="{{ route('login') }}">
                         <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
+                        <p class="links_name">Login</p>
                     </a>
                 </li>
+                @endauth
+
                 <li class="SidebarBottomText">
                     <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
                         Terms of Service
@@ -709,7 +725,7 @@
                         Accessibility
                         Ads info
                         More
-                        © 2024 Amanah Corp.
+                        © 2024 Sosmed
                     </p>
                 </li>
             </ul>
@@ -810,12 +826,13 @@
                                             </div>
                                         </div>
                                         <!-- Foreach Suggest Following dari sini -->
+                                        @foreach ($suggested as $people)
                                         <div class="row" style="max-height: 7rem; margin-bottom: 0.7rem;">
                                             <div class="row">
-                                                <a href="index.php"
+                                                <a href="{{ route('seeProfile',['people' => $people->id]) }}"
                                                     style="text-decoration: none; display:flex; color: black;">
                                                     <div class="col-1">
-                                                        <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"
+                                                        <i><img src="{{ asset('images/profile/'.$people->image) }}" alt="gambar postingan"
                                                                 style="width: 2.8rem; aspect-ratio: 1/1; background-color: white; border-radius: 50%;"></i>
                                                     </div>
                                                     <div class="col-9" style="margin-top: 4px;">
@@ -824,7 +841,7 @@
                                                                 <div class="col-12">
                                                                     <p style="font-weight: 700; margin-bottom: 2px; color: white; font-size: 0.8rem;"
                                                                         class="suggestedFollowing">
-                                                                        nozzents
+                                                                        {{ $people->username }}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -832,14 +849,14 @@
                                                                 <div class="col-12">
                                                                     <p style="font-weight: 400; margin-top: -2px; color: white; font-size: 0.5rem;"
                                                                         class="suggestedFollowing">
-                                                                        Naufal Fadhilah X PPLG 1
+                                                                        {{ $people->name }}
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
-                                                        <form action="" method="POST">
+                                                        <form action="{{ route('follow',['people' => $people->id]) }}" method="POST">
                                                             <p>
                                                                 <input type="submit" class="btn" name="follow"
                                                                     id="follow" value="Follow"
@@ -850,6 +867,8 @@
                                                 </a>
                                             </div>
                                         </div>
+                                        @endforeach
+
                                         <div class="row">
                                             <div class="col-12">
                                                 <p

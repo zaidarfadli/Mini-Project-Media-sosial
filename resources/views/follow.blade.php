@@ -1389,11 +1389,13 @@
                 </a>
             </li>
             <li>
-                <a href="search.php">
+                <a href="{{ route('explorePeople') }}">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <p class="links_name" id="explore">Explore</p>
                 </a>
             </li>
+            @auth
+                
             <li>
                 <a href="{{ route('myNotifikasi') }}">
                     <i class="fa-solid fa-bell"></i>
@@ -1412,18 +1414,26 @@
                     <p class="links_name" id="bookmarks">Bookmarks</p>
                 </a>
             </li>
-            <li>
-                <a href="dashboard_user.php">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <p class="links_name">Explore</p>
-                </a>
-            </li>
+            @endauth
+            @auth
             <li class="log_out">
-                <a href="{{ route('logout') }}">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Log out</p>
+                    </button>
+                </form>
+            </li>
+            @else
+            <li class="login">
+                <a href="{{ route('login') }}">
                     <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Log out</p>
+                    <p class="links_name">Login</p>
                 </a>
             </li>
+            @endauth
+
             <li class="SidebarBottomText">
                 <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
                     Terms of Service
@@ -1432,7 +1442,7 @@
                     Accessibility
                     Ads info
                     More
-                    © 2024 Amanah Corp.
+                    © 2024 Sosmed
                 </p>
             </li>
         </ul>
@@ -1456,13 +1466,13 @@
                         <div class="row navigasiFilter">
                             <ul class="navigasi" style="margin-top: 10px; margin-bottom: -20px;">
                                 <li class="navigasi-item NavFilter">
-                                    <a href="{{ route('seeFollower', ['people' => $user->id]) }}"
+                                    <a href="{{ route('seeFollower', ['people' => $people->id]) }}"
                                         class="navigasi-link pilihKategoriFollow kategoriFollowers" href="#">
                                         <p>Followers</p>
                                     </a>
                                 </li>
                                 <li class="navigasi-item">
-                                    <a href="{{ route('seeFollowing', ['people' => $user->id]) }}"
+                                    <a href="{{ route('seeFollowing', ['people' => $people->id]) }}"
                                         class="navigasi-link pilihKategoriFollow kategoriFollowing" href="#">
                                         <p>Following</p>
                                     </a>
@@ -1512,7 +1522,7 @@
                             <p id="listAll">List All {{ $judul }}</p>
                         </div>
                         @foreach ($follows as $follow)
-                            <a href="{{ $judul == 'Follower' ? route('seeFollower', ['people' => $follow->id]) : route('seeFollowing', ['people' => $follow->id]) }}"
+                            <a href="{{ route('seeProfile',['people' => $follow->id]) }}"
                                 style="display: flex;">
                                 <i><img src="{{ asset('images/profile/' . $follow->image) }}"
                                         alt="gambar postingan"></i>
@@ -1524,12 +1534,28 @@
                                         <span class="namaFollowers">{{ $follow->name }}</span>
                                     </div>
                                 </div>
-                                <form action="" method="POST">
-                                    <p>
-                                        <input type="submit" class="btn" name="follow" id="follow"
-                                            value="Follow">
-                                    </p>
-                                </form>
+                                @if ($follow->id != $user->id)
+                                    @if ($judul == 'Follower' && $people->id == Auth::user()->id )
+                                        <form action="{{ route('deleteFollower',['people' => $follow->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <p>
+                                                <input type="submit" class="btn" name="follow" id="follow"
+                                                    value="Hapus">
+                                            </p>
+                                        </form>
+                                        @else
+                                        <form action="{{ route('follow',['people' => $follow->id]) }}" method="POST">
+                                            @csrf
+                                            <p>
+                                                <input type="submit" class="btn" name="follow" id="follow"
+                                                value="{{ $follow->is_follow ? 'Unfollow' : 'Follow' }}">
+                                            </p>
+                                        </form>
+                                    @endif
+                                @else
+                                {{-- KOSONGIN AJA --}}
+                                @endif
                             </a>
                         @endforeach
 

@@ -966,16 +966,28 @@
 <body style="background-color: black;">
     <div class="sidebar">
         <div class="detail_logo">
-            <a href="profile.php" style="display: flex;">
-                <i><img src="{{ asset('images/smk1.jpg') }}" alt="gambar postingan"></i>
-                <div class="container-fluid rowUsername">
-                    <div class="row">
-                        <span id="usernameProfileAuthor">Naufal Fadhilah F</span>
+            <a href="{{ route('myProfile') }}" style="display: flex;">
+                @auth
+                    <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
+                    <div class="container-fluid rowUsername">
+                        <div class="row">
+                            <span id="usernameProfileAuthor">{{ $user->username }}</span>
+                        </div>
+                        <div class="row">
+                            <span id="namaProfileAuthor">{{ $user->name }}</span>
+                        </div>
                     </div>
-                    <div class="row">
-                        <span id="namaProfileAuthor">Naufal Fadhilah F</span>
+                @else
+                    <i><img src="{{ asset('images/logo-medsos.png') }}" alt="gambar foto profile"></i>
+                    <div class="container-fluid rowUsername">
+                        <div class="row">
+                            <span id="usernameProfileAuthor" style="margin-left: 0.2rem">Silahkan Login Dahulu</span>
+                        </div>
+                        <div class="row">
+                            <span id="namaProfileAuthor" style="margin-left: 0.2rem">Ayo Login</span>
+                        </div>
                     </div>
-                </div>
+                @endauth
             </a>
         </div>
         <hr
@@ -988,11 +1000,13 @@
                 </a>
             </li>
             <li>
-                <a href="search.php">
+                <a href="{{ route('explorePeople') }}">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <p class="links_name" id="explore">Explore</p>
                 </a>
             </li>
+            @auth
+                
             <li>
                 <a href="{{ route('myNotifikasi') }}">
                     <i class="fa-solid fa-bell"></i>
@@ -1011,12 +1025,26 @@
                     <p class="links_name" id="bookmarks">Bookmarks</p>
                 </a>
             </li>
+            @endauth
+            @auth
             <li class="log_out">
-                <a href="{{ route('logout') }}">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Log out</p>
+                    </button>
+                </form>
+            </li>
+            @else
+            <li class="login">
+                <a href="{{ route('login') }}">
                     <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Log out</p>
+                    <p class="links_name">Login</p>
                 </a>
             </li>
+            @endauth
+
             <li class="SidebarBottomText">
                 <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
                     Terms of Service
@@ -1025,7 +1053,7 @@
                     Accessibility
                     Ads info
                     More
-                    © 2024 Amanah Corp.
+                    © 2024 Sosmed
                 </p>
             </li>
         </ul>
@@ -1036,20 +1064,6 @@
                 <nav class="justify-content-center">
                     <div class="logoHomepage">
                         <img src="{{ asset('images/logo-medsos.png') }}" alt="logo homepage">
-                    </div>
-                    <div class="row">
-                        <ul class="navigasi" style="margin-top: 10px; margin-bottom: 0;">
-                            <li class="navigasi-item NavFilter">
-                                <a class="navigasi-link pilihKategoriPostingan active" href="#">
-                                    <p>For You</p>
-                                </a>
-                            </li>
-                            <li class="navigasi-item">
-                                <a class="navigasi-link pilihKategoriPostingan" href="#">
-                                    <p>Following</p>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </nav>
             </div>
@@ -1078,7 +1092,7 @@
                                             </div>
                                         </div>
                                         <div class="row" id="gambarKontenPostingan">
-                                            <img src="{{ $post->image }}" alt="gambar postingan">
+                                            <img src="{{ asset('images/post/'.$post->image)  }}" alt="gambar postingan">
                                         </div>
                                     </div>
                                     <div class="col-md-5" id="column-komentar-postingan">
@@ -1089,12 +1103,16 @@
                                             </div>
                                         </div>
                                         <div class="row" id="isi-komentar">
-
+                                        
+                                        @if (isset($message))
+                                            <p class="text-light text-center">Belum ada komen</p>
+                                        @elseif(isset($post->comment))
+                                            
                                             @foreach ($post->comment as $comment)
                                                 <div class="col-12">
                                                     <div class="row" id="profile-komentar">
                                                         <div class="col-12 d-flex">
-                                                            <img src="{{ $comment->user->image }}"
+                                                            <img src="{{ asset('images/profile/'.$comment->user->image)  }}"
                                                                 alt="ImageProfilKomentar">
                                                             <p>{{ $comment->user->username }}</p>
                                                         </div>
@@ -1107,7 +1125,8 @@
                                                     </div>
                                                 </div>
                                             @endforeach
-
+                                        
+                                        @endif
                                         </div>
                                         <div class="row justify-content-center">
                                             <hr style="width: 100%; color: white; margin-left: 22px;">

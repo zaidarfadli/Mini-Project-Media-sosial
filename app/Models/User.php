@@ -104,7 +104,7 @@ class User extends Authenticatable
     public function getIsMeAttribute()
     {
         $user = Auth::user();
-        return $this->id === $user->id;
+        return $user ?  $this->id === $user->id : false;
     }
 
     public function isLikedByUser()
@@ -123,6 +123,12 @@ class User extends Authenticatable
     {
         $user = Auth::user();
         return $user ? $this->followers()->where('user_id', $user->id)->exists() : false;
+    }
+
+    public function getIsMyFollowerAttribute()
+    {
+        $user = Auth::user();
+        return $user ? $this->followings()->where('following_id', $user->id)->exists() : false;
     }
 
     public function postCount()

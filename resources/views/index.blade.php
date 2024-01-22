@@ -692,11 +692,13 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('searchRoute') }}">
+                <a href="{{ route('explorePeople') }}">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <p class="links_name" id="explore">Explore</p>
                 </a>
             </li>
+            @auth
+                
             <li>
                 <a href="{{ route('myNotifikasi') }}">
                     <i class="fa-solid fa-bell"></i>
@@ -715,18 +717,26 @@
                     <p class="links_name" id="bookmarks">Bookmarks</p>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('searchRoute') }}">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <p class="links_name">Explore</p>
-                </a>
-            </li>
+            @endauth
+            @auth
             <li class="log_out">
-                <a href="{{ route('logout') }}">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Log out</p>
+                    </button>
+                </form>
+            </li>
+            @else
+            <li class="login">
+                <a href="{{ route('login') }}">
                     <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Log out</p>
+                    <p class="links_name">Login</p>
                 </a>
             </li>
+            @endauth
+
             <li class="SidebarBottomText">
                 <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
                     Terms of Service
@@ -772,93 +782,97 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="container container-lg">
-                            @foreach ($posts as $post)
-                                <a href="{{ route('seePost', ['post' => $post->id]) }}"
-                                    style="text-decoration: none; color: black;">
-                                    <div class="row" style="margin-bottom: 2rem;">
-                                        <div class="col-12">
-                                            <div class="konten-home">
-                                                <div class="row">
-                                                    <div class="container-fluid">
-                                                        <div class="card mx-auto">
-                                                            <div class="card-body cardContent">
-                                                                <div class="profileAuthor">
-                                                                    <a href="{{ route('seeProfile', ['user' => $post->user->id]) }}"
-                                                                        style="display: flex; text-decoration: none;">
-                                                                        <img class="imagesProfileAuthorPost"
-                                                                            src="{{ asset('images/profile/' . $post->user->image) }}"
-                                                                            alt="gambar profile">
-                                                                        <div class="container"
-                                                                            style="margin: 0rem 0rem 0rem -1.2rem;">
-                                                                            <div class="row">
-                                                                                <div class="col-12">
-                                                                                    <p id="UsernamePosting">
-                                                                                        {{ $post->user->username }}</p>
+                            @if (isset($message))
+                                <p class="text-center text-light">Anda belum memfollow siapapun</p>
+                            @elseif (isset($posts))
+                                @foreach ($posts as $post)
+                                    <a href="{{ route('seePost', ['post' => $post->id]) }}"
+                                        style="text-decoration: none; color: black;">
+                                        <div class="row" style="margin-bottom: 2rem;">
+                                            <div class="col-12">
+                                                <div class="konten-home">
+                                                    <div class="row">
+                                                        <div class="container-fluid">
+                                                            <div class="card mx-auto">
+                                                                <div class="card-body cardContent">
+                                                                    <div class="profileAuthor">
+                                                                        <a href="{{ route('seeProfile', ['people' => $post->user->id]) }}"
+                                                                            style="display: flex; text-decoration: none;">
+                                                                            <img class="imagesProfileAuthorPost"
+                                                                                src="{{ asset('images/profile/' . $post->user->image) }}"
+                                                                                alt="gambar profile">
+                                                                            <div class="container"
+                                                                                style="margin: 0rem 0rem 0rem -1.2rem;">
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <p id="UsernamePosting">
+                                                                                            {{ $post->user->username }}</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <p id="timePosting">
+                                                                                            {{ $post->created_at->diffForHumans() }}
+                                                                                        </p>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-12">
-                                                                                    <p id="timePosting">
-                                                                                        {{ $post->created_at->diffForHumans() }}
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
+                                                                        </a>
+                                                                    </div>
+                                                                    <form
+                                                                        action="{{ route('addBookmark', ['post' => $post->id]) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @if ($post->isBookmarkedByUser())
+                                                                            <button class="saveToBookmark" type="submit"
+                                                                                name="saveToBookmark">
+                                                                                <i
+                                                                                    class="fa-solid fa-bookmark bookmarkPost"></i>
+                                                                            </button>
+                                                                        @else
+                                                                            <button class="saveToBookmark" type="submit"
+                                                                                name="saveToBookmark">
+                                                                                <i
+                                                                                    class="fa-regular fa-bookmark bookmarkPost"></i>
+                                                                            </button>
+                                                                        @endif
+                                                                    </form>
                                                                 </div>
-                                                                <form
-                                                                    action="{{ route('addBookmark', ['post' => $post->id]) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @if ($post->isBookmarkedByUser())
-                                                                        <button class="saveToBookmark" type="submit"
-                                                                            name="saveToBookmark">
-                                                                            <i
-                                                                                class="fa-solid fa-bookmark bookmarkPost"></i>
-                                                                        </button>
-                                                                    @else
-                                                                        <button class="saveToBookmark" type="submit"
-                                                                            name="saveToBookmark">
-                                                                            <i
-                                                                                class="fa-regular fa-bookmark bookmarkPost"></i>
-                                                                        </button>
-                                                                    @endif
-                                                                </form>
-                                                            </div>
-                                                            <p class="card-text">{{ $post->content }}</p>
-                                                            <img style="border-radius: 8px;"
-                                                                src="{{ $post->image }}" class="card-img-top"
-                                                                alt="Gambar Postingan">
-                                                            <hr
-                                                                style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">
-                                                            <div class="container fiturPostingan d-flex"
-                                                                style="margin-left: -4rem; font-size: 1rem;">
-                                                                <form
-                                                                    action="{{ route('likePost', ['post' => $post->id]) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @if ($post->isLikedByUser())
-                                                                        <button type="submit" class="btn-heart">
-                                                                            <i class="fa-solid fa-heart"></i>
-                                                                        </button>
-                                                                    @else
-                                                                        <button type="submit" class="btn-heart">
-                                                                            <i class="fa-regular fa-heart"></i>
-                                                                        </button>
-                                                                    @endif
-                                                                </form>
-                                                                <p>{{ $post->likes_count }} Likes</p>
-                                                                <i class="fa-regular fa-comment"></i>
-                                                                <p>{{ $post->comments_count }} Comments</p>
+                                                                <p class="card-text">{{ $post->content }}</p>
+                                                                <img style="border-radius: 8px;"
+                                                                    src="{{ $post->image }}" class="card-img-top"
+                                                                    alt="Gambar Postingan">
+                                                                <hr
+                                                                    style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">
+                                                                <div class="container fiturPostingan d-flex"
+                                                                    style="margin-left: -4rem; font-size: 1rem;">
+                                                                    <form
+                                                                        action="{{ route('likePost', ['post' => $post->id]) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @if ($post->isLikedByUser())
+                                                                            <button type="submit" class="btn-heart">
+                                                                                <i class="fa-solid fa-heart"></i>
+                                                                            </button>
+                                                                        @else
+                                                                            <button type="submit" class="btn-heart">
+                                                                                <i class="fa-regular fa-heart"></i>
+                                                                            </button>
+                                                                        @endif
+                                                                    </form>
+                                                                    <p>{{ $post->likes_count }} Likes</p>
+                                                                    <i class="fa-regular fa-comment"></i>
+                                                                    <p>{{ $post->comments_count }} Comments</p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            @endforeach
+                                    </a>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="col-4">
@@ -876,10 +890,10 @@
                                             </p>
                                         </div>
                                     </div>
-                                    @foreach ($peoples as $people)
+                                    @foreach ($suggested as $people)
                                         <div class="row" style="max-height: 7rem; margin-bottom: 0.7rem;">
                                             <div class="row">
-                                                <a href="{{ route('seeProfile', ['user' => $people->id]) }}"
+                                                <a href="{{ route('seeProfile', ['people' => $people->id]) }}"
                                                     style="text-decoration: none; display:flex; color: black;">
                                                     <div class="col-1">
                                                         <i><img src="{{ asset('images/profile/' . $people->image) }}"
@@ -912,13 +926,10 @@
                                                             method="POST">
                                                             @csrf
                                                             <p>
-                                                                @if ($people->is_follow)
+                                                    
                                                                     <button type="submit" class="btn"
-                                                                        style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); margin-left: -8px; ">Followed</button>
-                                                                @else
-                                                                    <button type="submit" class="btn"
-                                                                        style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); ">Follow</button>
-                                                                @endif
+                                                                        style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); margin-left: -8px; ">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
+                                                           
                                                             </p>
                                                         </form>
                                                     </div>

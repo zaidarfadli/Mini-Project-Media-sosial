@@ -15,6 +15,14 @@ class NotifController extends Controller
         $notifs = Notif::with('comment.post')
             ->where('receiver_id', $user->id)
             ->latest()->get();
+
+        if ($notifs->isEmpty()) {
+            return view('notifikasi', [
+                'message' => 'active',
+                'user' => $user
+
+            ]);
+        }
         return view('notifikasi', [
             'notifs' => $notifs
         ]);

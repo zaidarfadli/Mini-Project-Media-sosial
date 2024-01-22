@@ -10,29 +10,39 @@
     <div class="container" style="max-width: 800px;margin:auto">
 
 
-        <form action="{{ route('createPost') }}" method="post">
+        <form action="{{ route('ubahProfile') }}" method="post">
           @csrf
+          @method('put')
             <h1>Tambah Postingan</h1>
             <div class="mb-3">
-                <label for="form-Name" class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" id="form-Name" value="{{ $user->name }}" placeholder="Iamge Link">
+                <label for="form-Name" class="form-label"  class=" @error('name') is-invalid border-danger @enderror" >Name</label>
+                <input type="text" name="name" class="form-control" id="form-Name" value="{{ old('name',$user->name) }}" placeholder="Iamge Link">
+                @error('name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="form-username" class="form-label"  class=" @error('username') is-invalid border-danger @enderror">username </label>
+                <input type="text" name="username" class="form-control" id="form-username" value="{{ old('username',$user->username)  }}" placeholder="username">
+                @error('username')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
             <div class="mb-3">
-                <label for="form-username" class="form-label">username </label>
-                <input type="text" name="username" class="form-control" id="form-username" value="{{ $user->username }}" placeholder="username">
+                <label for="form-bio" class="form-label"  class=" @error('bio') is-invalid border-danger @enderror">bio </label>
+                <textarea name="bio" id="" class="form-control" cols="30" rows="10">{{ old('bio',$user->bio) }}</textarea>
+                @error('bio')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
-            <div class="mb-3">
-                <label for="form-bio" class="form-label">bio </label>
-                <input type="text" name="bio" class="form-control" id="form-bio" value="{{ $user->bio }}" placeholder="bio">
-            </div>
-            <div class="mb-3">
-                <label for="form-email" class="form-label">email </label>
-                <input type="text" name="email" class="form-control" id="form-email" value="{{ $user->email }}" placeholder="bio">
-            </div>
-            <div class="mb-3">
-                <label for="form-password" class="form-label">password </label>
-                <input type="text" name="password" class="form-control" id="form-password"  placeholder="password">
-            </div>
+
 
 
 

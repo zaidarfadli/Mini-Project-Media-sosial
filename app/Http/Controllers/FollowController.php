@@ -64,7 +64,9 @@ class FollowController extends Controller
     {
 
         $user = Auth::user();
-        $follows = Follow::where('following_id', $people->id)->latest()->get();
+        $follows = Follow::where('following_id', $people->id)
+            ->latest()
+            ->get();
         $followers = $follows->map(function ($follow) {
             return $follow->follower;
         });

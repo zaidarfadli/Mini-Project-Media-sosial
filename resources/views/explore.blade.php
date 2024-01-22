@@ -722,18 +722,20 @@
         <hr
             style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
         <ul class="link-navigasi">
-            <li>
+            <li class="sidebarActive">
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
                     <p class="links_name" id="beranda">Beranda</p>
                 </a>
             </li>
-            <li class="sidebarActive">
-                <a href="{{ route('searchRoute') }}">
+            <li>
+                <a href="{{ route('explorePeople') }}">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <p class="links_name" id="explore">Explore</p>
                 </a>
             </li>
+            @auth
+                
             <li>
                 <a href="{{ route('myNotifikasi') }}">
                     <i class="fa-solid fa-bell"></i>
@@ -752,12 +754,26 @@
                     <p class="links_name" id="bookmarks">Bookmarks</p>
                 </a>
             </li>
+            @endauth
+            @auth
             <li class="log_out">
-                <a href="{{ route('logout') }}">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Log out</p>
+                    </button>
+                </form>
+            </li>
+            @else
+            <li class="login">
+                <a href="{{ route('login') }}">
                     <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Log out</p>
+                    <p class="links_name">Login</p>
                 </a>
             </li>
+            @endauth
+
             <li class="SidebarBottomText">
                 <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
                     Terms of Service
@@ -779,8 +795,8 @@
                     <div class="logoHomepage">
                         <img src="images/logo-medsos.png" alt="logo homepage">
                     </div>
-                    <form action="" method="POST" class="form-search">
-                        <input type="text" name="search" id="search" placeholder="Cari user">
+                    <form action="{{ route('search') }}" method="get" class="form-search">
+                        <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Cari user">
                         <button type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -795,117 +811,43 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="container container-lg">
-                            <!-- Foreach card dimulai dari sini -->
-                            <div class="col-lg-12 listFollowers">
-                                <div class="col-12"
-                                    style="position: fixed; background-color: black; margin-top: -20px;">
-                                    <p id="listAll">Hasil pencarianmu</p>
+                            @if(isset($message))
+
+                            <p class="text-center text-light" >{{ $message }}</p>
+
+                            @elseif(isset($peoples))
+                                <!-- Foreach card dimulai dari sini -->
+    
+                                <div class="col-lg-12 listFollowers">
+                                    <div class="col-12"
+                                        style="position: fixed; background-color: black; margin-top: -20px;">
+                                        <p id="listAll">Hasil pencarianmu</p>
+                                    </div>
+                                    <div class="col-12" style="margin-top: 2.4rem;">
+                                        @foreach ($peoples as $people)
+                                        <a href="{{ route('seeProfile',['people'=> $people->id]) }}" style="display: flex;">
+                                            <i><img src="{{ asset('images/profile/'.$people->image) }}" alt="gambar postingan"></i>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <span class="usernameFollowers">{{ $people->username }}</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="namaFollowers">{{ $people->name  }}</span>
+                                                </div>
+                                            </div>
+                                            <form action="{{ route('follow',['people' => $people->id]) }}" method="POST">
+                                                @csrf
+                                                <p>
+                                                    <input type="submit" class="btn" name="follow" id="follow"
+                                                        value=" {{ $people->is_follow ? 'Unfollow' : 'Follow' }}">
+
+                                                </p>
+                                            </form>
+                                        @endforeach
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-12" style="margin-top: 2.4rem;">
-                                    <a href="profile.php" style="display: flex;">
-                                        <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"></i>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <span class="usernameFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="namaFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                        </div>
-                                        <form action="" method="POST">
-                                            <p>
-                                                <input type="submit" class="btn" name="follow" id="follow"
-                                                    value="Follow">
-                                            </p>
-                                        </form>
-                                    </a>
-                                    <a href="profile.php" style="display: flex;">
-                                        <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"></i>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <span class="usernameFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="namaFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                        </div>
-                                        <form action="" method="POST">
-                                            <p>
-                                                <input type="submit" class="btn" name="follow" id="follow"
-                                                    value="Follow">
-                                            </p>
-                                        </form>
-                                    </a>
-                                    <a href="profile.php" style="display: flex;">
-                                        <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"></i>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <span class="usernameFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="namaFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                        </div>
-                                        <form action="" method="POST">
-                                            <p>
-                                                <input type="submit" class="btn" name="follow" id="follow"
-                                                    value="Follow">
-                                            </p>
-                                        </form>
-                                    </a>
-                                    <a href="profile.php" style="display: flex;">
-                                        <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"></i>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <span class="usernameFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="namaFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                        </div>
-                                        <form action="" method="POST">
-                                            <p>
-                                                <input type="submit" class="btn" name="follow" id="follow"
-                                                    value="Follow">
-                                            </p>
-                                        </form>
-                                    </a>
-                                    <a href="profile.php" style="display: flex;">
-                                        <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"></i>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <span class="usernameFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="namaFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                        </div>
-                                        <form action="" method="POST">
-                                            <p>
-                                                <input type="submit" class="btn" name="follow" id="follow"
-                                                    value="Follow">
-                                            </p>
-                                        </form>
-                                    </a>
-                                    <a href="profile.php" style="display: flex;">
-                                        <i><img src="images/sambut_pagi.jpg" alt="gambar postingan"></i>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <span class="usernameFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="namaFollowers">Naufal Fadhilah F</span>
-                                            </div>
-                                        </div>
-                                        <form action="" method="POST">
-                                            <p>
-                                                <input type="submit" class="btn" name="follow" id="follow"
-                                                    value="Follow">
-                                            </p>
-                                        </form>
-                                    </a>
-                                </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-4">
@@ -924,10 +866,10 @@
                                         </div>
                                     </div>
                                     <!-- Foreach Suggest Following dari sini -->
-                                    @foreach ($peoples as $people)
+                                    @foreach ($suggested as $people)
                                         <div class="row" style="max-height: 7rem; margin-bottom: 0.7rem;">
                                             <div class="row">
-                                                <a href="{{ route('seeProfile', ['user' => $people->id]) }}"
+                                                <a href="{{ route('seeProfile', ['people' => $people->id]) }}"
                                                     style="text-decoration: none; display:flex; color: black;">
                                                     <div class="col-1">
                                                         <i><img src="{{ asset('images/profile/' . $people->image) }}"

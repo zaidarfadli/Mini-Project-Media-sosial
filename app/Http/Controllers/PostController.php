@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\Reply;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,6 +38,18 @@ class PostController extends Controller
     //     ]);
     // }
 
+    public function formPost()
+    {
+        $user = Auth::user();
+        $suggested =  $this->suggestionFollow($user);
+
+        return view('formPost', [
+            'user' => $user,
+            'suggested' => $suggested
+        ]);
+    }
+
+
 
 
     public function deletePost(Post $post)
@@ -56,19 +69,30 @@ class PostController extends Controller
 
     public function seePost(Post $post)
     {
+        $user = Auth::user();
         $post = $post->load(['user', 'comment']);
 
         // mengambil berdasar id post
         $likes = Like::where('likeable_type', 'App\Models\Post')
             ->where('likeable_id', $post->id)->latest()->get();
 
-
         // Variabel dengan usernya
         $listwholikes = $likes->load(['user']);
 
+        if ($post->comment->isEmpty()) {
+            return view('post', [
+                'post' => $post,
+                'message' => 'active',
+                'likes' => $listwholikes,
+                'user' => $user
+
+            ]);
+        }
+
         return view('post', [
             'post' => $post,
-            'likes' => $listwholikes
+            'likes' => $listwholikes,
+            'user' => $user
 
         ]);
     }
@@ -83,12 +107,15 @@ class PostController extends Controller
             ]);
 
             $user = Auth::user();
-            $imagePath = $request->file('image')->store('public');
+
+            $imageName = time() . '.' . $request->image->extension();
+
+            $request->image->move(public_path('images/post'), $imageName);
 
             Post::create([
                 'user_id' => $user->id,
                 'content' => $request->content,
-                'image' => $imagePath,
+                'image' => $imageName,
             ]);
 
             return redirect()->route('home')->with('success', 'Post berhasil dibuat!');
@@ -96,5 +123,23 @@ class PostController extends Controller
             // Tangkap eksepsi dan redirect kembali dengan pesan kesalahan
             return back()->with('error', 'Terjadi kesalahan. Posting gagal dibuat.');
         }
+    }
+
+
+
+
+    // SUGESTION FOLLOW
+    public function suggestionFollow($user)
+    {
+        $suggested  = User::whereNotIn('id', function ($query) use ($user) {
+            $query->select('following_id')
+                ->from('follows')
+                ->where('user_id', $user->id);
+        })->where('id', '!=', $user->id)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return $suggested;
     }
 }

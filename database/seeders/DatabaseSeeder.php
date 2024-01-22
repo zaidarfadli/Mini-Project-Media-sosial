@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Comment;
+use App\Models\Follow;
 use App\Models\Post;
 use App\Models\Reply;
 use App\Models\User;
@@ -34,10 +35,24 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        User::factory(5)->create();
-        Post::factory(10)->create();
+        // User::factory(5)->create();
+        // Post::factory(10)->create();
         Comment::factory(30)->create();
         Reply::factory(60)->create();
+
+        // Follow::factory(30)->create([
+        //     'user_id' => function () {
+        //         return User::inRandomOrder()->first()->id;
+        //     },
+        //     'following_id' => function ($attributes) {
+        //         // ini fungsinya untuk bikin ID pengguna acak yang tidak sama dengan user_id
+        //         do {
+        //             $followingUser = User::inRandomOrder()->first();
+        //         } while ($followingUser->id == $attributes['user_id']);
+
+        //         return $followingUser->id;
+        //     },
+        // ]);
 
         // User::factory()->create([
         //     'id' => Uuid::uuid4()->toString(),

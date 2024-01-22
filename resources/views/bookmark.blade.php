@@ -631,54 +631,70 @@
             <hr
                 style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
             <ul class="link-navigasi">
-                <li>
-                    <a href="{{ route('home') }}">
-                        <i class="fa-solid fa-house aktif"></i>
-                        <p class="links_name" id="beranda">Beranda</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="search.php">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <p class="links_name" id="explore">Explore</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('myNotifikasi') }}">
-                        <i class="fa-solid fa-bell"></i>
-                        <p class="links_name" id="notifikasi">Notifikasi</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('formPost') }}">
-                        <i class="fa-solid fa-plus"></i>
-                        <p class="links_name" id="posting">Posting</p>
-                    </a>
-                </li>
-                <li class="sidebarActive">
-                    <a href="{{ route('myBookmark') }}">
-                        <i class="fa-solid fa-bookmark"></i>
-                        <p class="links_name" id="bookmarks">Bookmarks</p>
-                    </a>
-                </li>
-                <li class="log_out">
-                    <a href="{{ route('logout') }}">
+            <li class="sidebarActive">
+                <a href="{{ route('home') }}">
+                    <i class="fa-solid fa-house aktif"></i>
+                    <p class="links_name" id="beranda">Beranda</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('explorePeople') }}">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p class="links_name" id="explore">Explore</p>
+                </a>
+            </li>
+            @auth
+                
+            <li>
+                <a href="{{ route('myNotifikasi') }}">
+                    <i class="fa-solid fa-bell"></i>
+                    <p class="links_name" id="notifikasi">Notifikasi</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('formPost') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    <p class="links_name" id="posting">Posting</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('myBookmark') }}">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <p class="links_name" id="bookmarks">Bookmarks</p>
+                </a>
+            </li>
+            @endauth
+            @auth
+            <li class="log_out">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p class="links_name">Log out</p>
-                    </a>
-                </li>
-                <li class="SidebarBottomText">
-                    <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
-                        Terms of Service
-                        Privacy Policy
-                        Cookie Policy
-                        Accessibility
-                        Ads info
-                        More
-                        © 2024 Amanah Corp.
-                    </p>
-                </li>
-            </ul>
+                    </button>
+                </form>
+            </li>
+            @else
+            <li class="login">
+                <a href="{{ route('login') }}">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <p class="links_name">Login</p>
+                </a>
+            </li>
+            @endauth
+
+            <li class="SidebarBottomText">
+                <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
+                    Terms of Service
+                    Privacy Policy
+                    Cookie Policy
+                    Accessibility
+                    Ads info
+                    More
+                    © 2024 Sosmed
+                </p>
+            </li>
+        </ul>
         </div>
         <!-- <h1 style="transform: translateX(5rem); padding-top: 20px; margin-bottom: -0.4rem; letter-spacing: 3; color: var(--main_color-2); font-weight: 800;">Sosmed</h1> -->
         <section class="nav-section" style="z-index: 99; position: fixed; background-color: black;">
@@ -693,6 +709,7 @@
                         </div>
                     </nav>
                 </div>
+
             </div>
         </section>
         <section class="home-section" style="background-color: black;">
@@ -703,7 +720,13 @@
                             style="text-decoration: none; color: black;">
                             <div class="konten-home">
                                 <div class="container">
+
+                                    @if (isset($message))
+                                    <h5 class="text-light text-center mt-5 ">BELUM ADA POSTINGAN YANG DI BOOKMARK</h5>
+                                    
+                                    @elseif(isset($bookmarks))
                                     <div class="row">
+                                       
                                         @foreach ($bookmarks as $bookmark)
                                             
                                         <div class="col-lg-3 col-xl-3 col-md-4 col-6" style="margin-bottom: 3rem;">
@@ -744,9 +767,8 @@
                                                 </div>
                                         </div>
                                         @endforeach
-
-
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                     </div>
