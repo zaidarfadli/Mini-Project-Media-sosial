@@ -768,11 +768,10 @@
         font-size: 0.7rem;
     }
 
-    #isi-komentar #reply {
+    #isi-komentar .reply {
         float: right;
         color: var(--main_color-3);
         font-size: 0.7rem;
-        margin-right: -2rem;
         cursor: pointer;
     }
 
@@ -969,9 +968,10 @@
         aspect-ratio: 1/1;
     }
 
-    .footer{
+    .footer {
         max-width: 50rem;
     }
+
     .footer p {
         font-size: 0.6rem;
         color: white;
@@ -1162,7 +1162,8 @@
                                                 alt="gambar postingan">
                                         </div>
                                     </div>
-                                    <div class="col-md-5" id="column-komentar-postingan" style="overflow-x: hidden; max-height: 52rem;" >
+                                    <div class="col-md-5" id="column-komentar-postingan"
+                                        style="overflow-x: hidden; max-height: 52rem;">
                                         <div class="row" id="header-komentar">
                                             <div class="col-12">
                                                 <p>komentar</p>
@@ -1176,49 +1177,8 @@
                                                     Belum ada komentar</p>
                                             @elseif(isset($post->comment))
                                                 @foreach ($post->comment as $comment)
-                                                    <div class="col-12">
-                                                        <div class="row" id="profile-komentar">
-                                                            <div class="col-12 d-flex">
-                                                                <img src="{{ asset('images/profile/' . $comment->user->image) }}"
-                                                                    alt="ImageProfilKomentar">
-                                                                <p>{{ $comment->user->username }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <p id="komentar">{{ $comment->comment }}</p>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <form action="" style="display: flex;">
-                                                                <button
-                                                                    style="background: unset; border: unset; padding: 5px;"
-                                                                    type="submit"><i
-                                                                        style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
-                                                                        class="fa-regular fa-thumbs-up"
-                                                                        id="btnLikes"></i></button>
-                                                                <p
-                                                                    style="font-size: 0.7rem; margin: 0px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
-                                                                    20 Likes</p>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p id="reply">Reply</p>
-                                                        </div>
-                                                        <div class="row" id="balasKomentar"
-                                                            style="display: none;">
-                                                            <div class="col-12" style="margin-bottom: 0.8rem;">
-                                                                <form action="" style="display: flex;">
-                                                                    <input type="text" name="repyComment"
-                                                                        placeholder="Balas komentar {{ $comment->user->username }}"
-                                                                        id="replyComment">
-                                                                    <button type="submit"
-                                                                        style="color: var(--main_color-3); font-size: 0.7rem; padding: 5px 15px 5px 15px; background-color: unset; border: unset;">Kirim</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12"
-                                                            style="max-width: 20rem; margin-left: 2rem;">
+                                                    <span id="{{ $comment->id }}">
+                                                        <div class="col-12">
                                                             <div class="row" id="profile-komentar">
                                                                 <div class="col-12 d-flex">
                                                                     <img src="{{ asset('images/profile/' . $comment->user->image) }}"
@@ -1226,10 +1186,54 @@
                                                                     <p>{{ $comment->user->username }}</p>
                                                                 </div>
                                                             </div>
-                                                            <p id="komentar"><span style="font-weight: 700;">{{ $comment->user->username }} </span>{{ $comment->comment }}</p>
+                                                            <p id="komentar">{{ $comment->comment }}</p>
                                                         </div>
-                                                    </div>
-                                            <hr style="width: 100%; color: white; margin-left: 22px;">
+                                                        <div class="row idForm">
+                                                            <div class="col-6">
+                                                                <form action="" style="display: flex;">
+                                                                    <button
+                                                                        style="background: unset; border: unset; padding: 5px;"
+                                                                        type="submit"><i
+                                                                            style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
+                                                                            class="fa-regular fa-thumbs-up"
+                                                                            id="btnLikes"></i></button>
+                                                                    <p style="font-size: 0.7rem; margin: 0px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
+                                                                        20 Likes</p>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <p class="reply" id="{{ $comment->id }}">Reply</p>
+                                                            </div>
+                                                            <div class="row balasKomentar"
+                                                                style="display: none;">
+                                                                <div class="col-12" style="margin-bottom: 0.8rem;">
+                                                                    <form action="" style="display: flex;">
+                                                                        <input type="text" name="repyComment"
+                                                                            placeholder="Balas komentar {{ $comment->user->username }}"
+                                                                            id="replyComment">
+                                                                        <button type="submit"
+                                                                            style="color: var(--main_color-3); font-size: 0.7rem; padding: 5px 15px 5px 15px; background-color: unset; border: unset;">Kirim</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12"
+                                                                style="max-width: 20rem; margin-left: 2rem;">
+                                                                <div class="row" id="profile-komentar">
+                                                                    <div class="col-12 d-flex">
+                                                                        <img src="{{ asset('images/profile/' . $comment->user->image) }}"
+                                                                            alt="ImageProfilKomentar">
+                                                                        <p>{{ $comment->user->username }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <p id="komentar"><span
+                                                                        style="font-weight: 700;">{{ $comment->user->username }}
+                                                                    </span>{{ $comment->comment }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                    <hr style="width: 100%; color: white; margin-left: 22px;">
                                                 @endforeach
                                             @endif
                                         </div>
@@ -1430,9 +1434,10 @@
 </html>
 <script>
     $(document).ready(function() {
-        $('#balasKomentar').hide();
-        $('#reply').on('click', function() {
-            $('#balasKomentar').toggle();
+        $('.balasKomentar').hide();
+        $('.reply').on('click', function() {
+            let idParent = $(this).attr('id')
+            $('#' + idParent + ' .idForm .balasKomentar').toggle();
         });
         $('#tombol-muncul').on('click', function() {
             $('.coverAll').toggle();
