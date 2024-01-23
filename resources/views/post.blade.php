@@ -73,7 +73,7 @@
     }
 
     .konten-home .card {
-        max-width: 30rem;
+        width <= 30rem;
         color: white;
         background-color: black;
         border: 1.8px solid rgba(220, 220, 220, 0.3);
@@ -211,6 +211,7 @@
         left: 240px;
         transition: all 0.5s ease;
     }
+
     .logoHomepage {
         margin-left: -15rem;
     }
@@ -371,7 +372,7 @@
         margin-top: 0.2rem;
     }
 
-    @media (max-width: 991px) {
+    @media (width <= 991px) {
         .konten-postingan .card-postingan {
             margin-left: 0rem;
         }
@@ -436,14 +437,20 @@
         }
     }
 
-    @media (max-width: 576px) {
+    @media (width <=580px) {
+        .footer {
+            display: none;
+        }
+    }
+
+    @media (width <= 576px) {
 
         footer .row {
             margin-left: 0.5rem;
         }
     }
 
-    @media (max-width: 560px) {
+    @media (width <= 560px) {
         .card-postingan {
             width: 110%;
             transition: all 0.5s ease;
@@ -461,7 +468,7 @@
         }
     }
 
-    @media(max-width: 462px) {
+    @media(width <= 462px) {
         .card-postingan {
             width: 120%;
             transition: all 0.5s ease;
@@ -522,7 +529,7 @@
         }
     }
 
-    @media (max-width: 400px) {
+    @media (width <= 400px) {
         .card-postingan {
             width: 135%;
             transition: all 0.5s ease;
@@ -1310,38 +1317,38 @@
             </div>
         </div>
         <div class="container-fluid footer">
-                <div class="row d-flex">
-                    <div class="col-sm-1 offset-sm-2"> <!-- Menambahkan offset-md-4 untuk membuat jarak sebelumnya -->
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
+            <div class="row d-flex">
+                <div class="col-sm-1 offset-sm-2"> <!-- Menambahkan offset-md-4 untuk membuat jarak sebelumnya -->
+                    <p>lorem</p>
                 </div>
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center">
-                        <p id="copyright">Copyright 2023</p>
-                    </div>
+                <div class="col-sm-1">
+                    <p>lorem</p>
+                </div>
+                <div class="col-sm-1">
+                    <p>lorem</p>
+                </div>
+                <div class="col-sm-1">
+                    <p>lorem</p>
+                </div>
+                <div class="col-sm-1">
+                    <p>lorem</p>
+                </div>
+                <div class="col-sm-1">
+                    <p>lorem</p>
+                </div>
+                <div class="col-sm-1">
+                    <p>lorem</p>
+                </div>
+                <div class="col-sm-1">
+                    <p>lorem</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <p id="copyright">Copyright 2023</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     @guest

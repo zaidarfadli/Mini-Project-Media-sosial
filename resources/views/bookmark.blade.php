@@ -375,12 +375,11 @@
         margin-top: 0.2rem;
     }
 
-    @media (max-width: 991px) {
+    @media (width <= 991px) {
 
         .home-section #SuggestFollowing {
             display: none;
         }
-
 
         .sidebar {
             width: 60px;
@@ -433,14 +432,14 @@
         }
     }
 
-    @media (max-width: 576px) {
+    @media (width <= 576px) {
 
         footer .row {
             margin-left: 0.5rem;
         }
     }
 
-    @media (max-width: 560px) {
+    @media (width <= 560px) {
         .card {
             transform: translateX(-12%);
             width: 130%;
@@ -452,7 +451,7 @@
         }
     }
 
-    @media(max-width: 462px) {
+    @media(width <= 462px) {
         .konten-home .card {
             padding: 0.6rem 1.2rem 1.2rem 1.2rem;
             transition: all 0.5s ease;
@@ -495,7 +494,7 @@
         }
     }
 
-    @media (max-width: 400px) {
+    @media (width <= 400px) {
         .card {
             transform: translateX(-12%);
             width: 180%;

@@ -30,6 +30,7 @@
     ::-webkit-scrollbar-thumb {
         background: black;
     }
+
     .sidebar {
         background-color: var(--main_color-2);
         position: fixed;
@@ -196,14 +197,15 @@
         margin: 15px 0px 0px -32px;
         width: 100%;
     }
-    .sidebar .link-navigasi .log_out button{
+
+    .sidebar .link-navigasi .log_out button {
         border: unset;
         background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
         margin-top: -2px;
-        color:white;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -238,6 +240,12 @@
         width: calc(100% - 240px);
         left: 240px;
         padding: 2.5rem 5rem 0rem 5rem;
+        transition: all 0.5s ease;
+    }
+
+    .containerForm {
+        min-width: 30rem;
+        max-width: 45rem;
         transition: all 0.5s ease;
     }
 
@@ -432,7 +440,7 @@
         font-size: 1.2rem;
     }
 
-    @media (max-width: 991px) {
+    @media (width <=991px) {
 
         .home-section #SuggestFollowing {
             display: none;
@@ -489,20 +497,26 @@
         }
     }
 
-    @media(max-width: 768px) {
+    @media(width <=768px) {
         .card {
             transform: translateX(-10%);
             width: 130%;
         }
     }
 
-    @media (max-width: 560px) {
+    @media (width <=600px) {
+        .home-section .containerForm {
+            margin-left: -3rem;
+        }
+    }
+
+    @media (width <=560px) {
         .profileAuthor .namaProfileAuthorPost p {
             font-size: 0.7rem;
         }
     }
 
-    @media(max-width: 462px) {
+    @media(width <=462px) {
         .konten-home .card {
             padding: 0.6rem 1.2rem 1.2rem 1.2rem;
             transition: all 0.5s ease;
@@ -556,7 +570,7 @@
         text-overflow: ellipsis;
     }
 
-    @media (max-width: 400px) {
+    @media (width <=400px) {
         .card {
             transform: translateX(-15%);
             width: 150%;
@@ -1087,7 +1101,7 @@
         font-size: 1.2rem;
     }
 
-    @media (max-width: 991px) {
+    @media (width <=991px) {
 
         .home-section #SuggestFollowing {
             display: none;
@@ -1149,20 +1163,20 @@
         }
     }
 
-    @media(max-width: 768px) {
+    @media(width <=768px) {
         .card {
             transform: translateX(-10%);
             width: 130%;
         }
     }
 
-    @media (max-width: 560px) {
+    @media (width <=560px) {
         .profileAuthor .namaProfileAuthorPost p {
             font-size: 0.7rem;
         }
     }
 
-    @media(max-width: 462px) {
+    @media(width <=462px) {
         .konten-home .card {
             padding: 0.6rem 1.2rem 1.2rem 1.2rem;
             transition: all 0.5s ease;
@@ -1216,7 +1230,7 @@
         text-overflow: ellipsis;
     }
 
-    @media (max-width: 400px) {
+    @media (width <=400px) {
         .card {
             transform: translateX(-15%);
             width: 150%;
@@ -1706,7 +1720,7 @@
         font-size: 1.2rem;
     }
 
-    @media (max-width: 991px) {
+    @media (width <=991px) {
 
         .home-section #SuggestFollowing {
             display: none;
@@ -1763,27 +1777,27 @@
         }
     }
 
-    @media(max-width: 768px) {
+    @media(width <=768px) {
         .card {
             transform: translateX(-10%);
             width: 130%;
         }
     }
 
-    @media (max-width: 576px) {
+    @media (width <=576px) {
 
         footer .row {
             margin-left: 0.5rem;
         }
     }
 
-    @media (max-width: 560px) {
+    @media (width <=560px) {
         .profileAuthor .namaProfileAuthorPost p {
             font-size: 0.7rem;
         }
     }
 
-    @media(max-width: 462px) {
+    @media(width <=462px) {
         .konten-home .card {
             padding: 0.6rem 1.2rem 1.2rem 1.2rem;
             transition: all 0.5s ease;
@@ -1837,7 +1851,7 @@
         text-overflow: ellipsis;
     }
 
-    @media (max-width: 400px) {
+    @media (width <=400px) {
         .card {
             transform: translateX(-15%);
             width: 150%;
@@ -1951,15 +1965,15 @@
                 </li>
             @endauth
             @auth
-                 <li class="log_out">
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="d-flex">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
-                    </button>
-                </form>
-            </li>
+                <li class="log_out">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="d-flex">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
             @else
                 <li class="login">
                     <a href="{{ route('login') }}">
@@ -1983,95 +1997,73 @@
         </ul>
     </div>
     <section class="home-section">
-        <div class="container-fluid nav">
-            <div class="container-fluid container-xl">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="{{ route('editProfile') }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="container container-lg">
-                                <div class="row formEdtProfile">
-                                    <div class="col-xl-12">
-                                        <div class="container">
-                                            <div class="col-12">
-                                                <div class="col-12 fotoProfile text-center">
-                                                    <img id="isiGambar" src="images/smk1.jpg" alt="LogoProfile">
-                                                    <label for="btnUbahProfile">
-                                                        <i class="fa-solid fa-camera"></i>
-                                                        <input type="file" name="edtFotoProfile" id="btnUbahProfile">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12 headerEditProfile">
-                                                    <p>Edit Profile</p>
-                                                </div>
-                                                <hr>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <p id="edtUsername">Username</p>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p><input type="text" name="username" id="inpUsername"
-                                                            value="{{ old('username', $user->username) }}"></p>
-                                                    @error('username')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <p id="edtNama">Nama</p>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p><input type="text" name="name" id="inpNama"
-                                                            value="{{ old('name', $user->name) }}"></p>
-                                                    @error('name')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            {{-- <div class="row">
-                                                <div class="col-md-3">
-                                                    <p id="edtEmail">E - Mail</p>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p><input type="text" name="inpEmail" id="inpEmail" value="naufalfadhilahxpplg1@gmail.com"></p>
-                                                </div>
-                                            </div> --}}
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <p id="edtBio">Bio</p>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>
-                                                        <textarea type="text" name="bio" id="inpBio">.{{ old('bio', $user->bio) }}</textarea>
-                                                        @error('bio')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md edtData">
-                                                    <button type="submit" id="buttonEdit">Edit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+        <div class="container-fluid containerForm">
+            <form action="{{ route('editProfile') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="row formEdtProfile">
+                    <div class="col-12 fotoProfile text-center">
+                        <img id="isiGambar" src="images/smk1.jpg" alt="LogoProfile">
+                        <label for="btnUbahProfile">
+                            <i class="fa-solid fa-camera"></i>
+                            <input type="file" name="edtFotoProfile" id="btnUbahProfile">
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 headerEditProfile">
+                            <p>Edit Profile</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p id="edtUsername">Username</p>
+                        </div>
+                        <div class="col-md-9">
+                            <p><input type="text" name="username" id="inpUsername"
+                                    value="{{ old('username', $user->username) }}"></p>
+                            @error('username')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
                                 </div>
-                            </div>
-                        </form>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p id="edtNama">Nama</p>
+                        </div>
+                        <div class="col-md-9">
+                            <p><input type="text" name="name" id="inpNama"
+                                    value="{{ old('name', $user->name) }}"></p>
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p id="edtBio">Bio</p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                <textarea type="text" name="bio" id="inpBio">.{{ old('bio', $user->bio) }}</textarea>
+                                @error('bio')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md edtData">
+                            <button type="submit" id="buttonEdit">Edit</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 </body>
@@ -2092,7 +2084,7 @@
 
 </html>
 <script>
-    historyBack () => {
+    historyBack() => {
         window.history.back()
     }
     $('.pilihKategoriFollow').on('click', function() {
