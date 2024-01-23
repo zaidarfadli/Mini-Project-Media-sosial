@@ -86,12 +86,12 @@
     }
 
     .konten-home .card {
-        width: 11.2rem;
+        width: 100%;
         color: white;
         background-color: black;
         border: 1.8px solid rgba(220, 220, 220, 0.3);
         border-radius: 8px;
-        padding: 0.2rem 0.2rem 1rem 1rem;
+        padding: 0.8rem 0.2rem 0.8rem 1rem;
         margin-bottom: -1.3rem;
         transition: all 0.5s ease;
     }
@@ -160,6 +160,7 @@
         font-weight: 400;
         white-space: nowrap;
     }
+
     .sidebar .link-navigasi li .links_name {
         color: white;
         font-size: 13px;
@@ -171,14 +172,15 @@
         margin: 15px 0px 0px -32px;
         width: 100%;
     }
-    .sidebar .link-navigasi .log_out button{
+
+    .sidebar .link-navigasi .log_out button {
         border: unset;
         background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
         margin-top: -2px;
-        color:white;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -605,30 +607,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Beranda</title>
-        <link rel="icon" href="images/logo-medsos.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            if (window.history.replaceState) {
-                window.history.replaceState(null, null, window.location.href);
-            }
-        </script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Beranda</title>
+    <link rel="icon" href="images/logo-medsos.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+</head>
 
-    <body style="background-color: black;">
-        <div class="sidebar">
-            <div class="detail_logo">
-                <a href="{{ route('myProfile') }}" style="display: flex;">
+<body style="background-color: black;">
+    <div class="sidebar">
+        <div class="detail_logo">
+            <a href="{{ route('myProfile') }}" style="display: flex;">
                 @auth
                     <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
                     <div class="container-fluid rowUsername">
@@ -651,10 +653,10 @@
                     </div>
                 @endauth
             </a>
-            </div>
-            <hr
-                style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
-            <ul class="link-navigasi">
+        </div>
+        <hr
+            style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
+        <ul class="link-navigasi">
             <li>
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
@@ -668,43 +670,43 @@
                 </a>
             </li>
             @auth
-                
-            <li>
-                <a href="{{ route('myNotifikasi') }}">
-                    <i class="fa-solid fa-bell"></i>
-                    <p class="links_name" id="notifikasi">Notifikasi</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('formPost') }}">
-                    <i class="fa-solid fa-plus"></i>
-                    <p class="links_name" id="posting">Posting</p>
-                </a>
-            </li>
-            <li class="sidebarActive">
-                <a href="{{ route('myBookmark') }}">
-                    <i class="fa-solid fa-bookmark"></i>
-                    <p class="links_name" id="bookmarks">Bookmarks</p>
-                </a>
-            </li>
+
+                <li>
+                    <a href="{{ route('myNotifikasi') }}">
+                        <i class="fa-solid fa-bell"></i>
+                        <p class="links_name" id="notifikasi">Notifikasi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('formPost') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <p class="links_name" id="posting">Posting</p>
+                    </a>
+                </li>
+                <li class="sidebarActive">
+                    <a href="{{ route('myBookmark') }}">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="links_name" id="bookmarks">Bookmarks</p>
+                    </a>
+                </li>
             @endauth
             @auth
-             <li class="log_out">
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="d-flex">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
-                    </button>
-                </form>
-            </li>
+                <li class="log_out">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="d-flex">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
             @else
-            <li class="login">
-                <a href="{{ route('login') }}">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Login</p>
-                </a>
-            </li>
+                <li class="login">
+                    <a href="{{ route('login') }}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Login</p>
+                    </a>
+                </li>
             @endauth
 
             <li class="SidebarBottomText">
@@ -719,105 +721,99 @@
                 </p>
             </li>
         </ul>
-        </div>
-        <!-- <h1 style="transform: translateX(5rem); padding-top: 20px; margin-bottom: -0.4rem; letter-spacing: 3; color: var(--main_color-2); font-weight: 800;">Sosmed</h1> -->
-        <section class="nav-section" style="z-index: 99; position: fixed; background-color: black;">
-            <div class="container-fluid nav" style="background-color: black;">
-                <div class="container" style="background-color: black; transform: translateX(-1rem);">
-                    <nav class="justify-content-center">
-                        <div class="logoHomepage">
-                            <img src="images/logo-medsos.png" alt="logo homepage">
-                        </div>
-                        <div class="row">
-                            <h1>All Bookmarks</h1>
-                        </div>
-                    </nav>
-                </div>
-
+    </div>
+    <!-- <h1 style="transform: translateX(5rem); padding-top: 20px; margin-bottom: -0.4rem; letter-spacing: 3; color: var(--main_color-2); font-weight: 800;">Sosmed</h1> -->
+    <section class="nav-section" style="z-index: 99; position: fixed; background-color: black;">
+        <div class="container-fluid nav" style="background-color: black;">
+            <div class="container" style="background-color: black; transform: translateX(-1rem);">
+                <nav class="justify-content-center">
+                    <div class="logoHomepage">
+                        <img src="images/logo-medsos.png" alt="logo homepage">
+                    </div>
+                    <div class="row">
+                        <h1>All Bookmarks</h1>
+                    </div>
+                </nav>
             </div>
-        </section>
-        <section class="home-section" style="background-color: black;">
-            <div class="container-fluid nav" style="background-color: black;">
-                <div class="container-fluid container-xl">
-                    <!-- Foreach card dimulai dari sini -->
-                    <div class="row" style="margin-bottom: 2rem;"> <a href="postingan.php"
-                            style="text-decoration: none; color: black;">
-                            <div class="konten-home">
-                                <div class="container">
-
-                                    @if (isset($message))
+        </div>
+    </section>
+    <section class="home-section" style="background-color: black;">
+        <div class="container-fluid nav" style="background-color: black;">
+            <div class="container-fluid container-xl">
+                <div class="row" style="margin-bottom: 2rem;"> <a href="postingan.php"
+                        style="text-decoration: none; color: black;">
+                        <div class="konten-home">
+                            <div class="container">
+                                @if (isset($message))
                                     <h5 class="text-light text-center mt-5 ">BELUM ADA POSTINGAN YANG DI BOOKMARK</h5>
-                                    
-                                    @elseif(isset($bookmarks))
+                                @elseif(isset($bookmarks))
                                     <div class="row">
-                                       
                                         @foreach ($bookmarks as $bookmark)
-                                            
-                                        <div class="col-lg-3 col-xl-3 col-md-4 col-6" style="margin-bottom: 3rem;">
-                                            <a href="{{ route('seePost',['post' => $bookmark->post->id])  }}">
-                                                <div class="card mx-auto">
-                                                    <div class="card-body cardContent">
-                                                        <div class="profileAuthor">
-                                                            <a href="{{ route('seeProfile',['people' => $bookmark->post->user->id]) }}"
-                                                                style="display: flex; text-decoration: none;">
-                                                                <img class="imagesProfileAuthorPost"
-                                                                    src="{{ $bookmark->post->user->image }}"
-                                                                    alt="gambar profile">
-                                                                <div class="container"
-                                                                    style="margin: 0rem 0rem 0rem -1.2rem;">
-                                                                    <div class="row">
-                                                                        <div class="col-12">
-                                                                            <p id="UsernamePosting">
-                                                                                {{ $bookmark->post->user->username }}
-                                                                            </p>
+                                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6" style="margin-bottom: 3rem;">
+                                                <a href="{{ route('seePost', ['post' => $bookmark->post->id]) }}">
+                                                    <div class="card mx-auto">
+                                                        <div class="card-body cardContent">
+                                                            <div class="profileAuthor">
+                                                                <a href="{{ route('seeProfile', ['people' => $bookmark->post->user->id]) }}"
+                                                                    style="display: flex; text-decoration: none;">
+                                                                    <img src="{{ $bookmark->post->user->image }}"
+                                                                        alt="gambar profile">
+                                                                    <div class="container"
+                                                                        style="margin: 0rem 0rem 0rem -1.2rem;">
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <p id="UsernamePosting">
+                                                                                    {{ $bookmark->post->user->username }}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <p id="timePosting">
+                                                                                    {{ $bookmark->post->created_at->diffForHumans() }}
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-12">
-                                                                            <p id="timePosting">
-                                                                                {{ $bookmark->post->created_at->diffForHumans() }}
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                </a>
+                                                            </div>
+                                                            <a href="{{ route('seePost', ['post' => $bookmark->post->id]) }}">
+                                                                <img style="width: 100%; aspect-ratio: 1/1; margin: 0rem 0rem 0rem -0.5rem;"
+                                                                    src="{{ $bookmark->post->image }}" alt="Gambar Postingan">
                                                             </a>
                                                         </div>
+
                                                     </div>
-                                                    <a href="{{ route('seePost',['post' => $bookmark->post->id]) }}">
-                                                        <img style="border-radius: 8px;"
-                                                            src="{{ $bookmark->post->image }}" class="card-img-top"
-                                                            alt="Gambar Postingan">
-                                                    </a>
-                                                </div>
-                                        </div>
+                                                </a>
+                                            </div>
                                         @endforeach
                                     </div>
-                                    @endif
-                                </div>
+                                @endif
                             </div>
-                    </div>
+                        </div>
                 </div>
             </div>
-        </section>
-    </body>
+        </div>
+    </section>
+</body>
 
-    @guest
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 column-text-footer">
-                        <p id="text-1">Jangan ketinggalan berita terbaru</p>
-                        <p id="text-2">login, untuk pengalaman yang baru</p>
-                    </div>
-                    <div class="col-lg-4 col-12 d-flex column-btn">
-                        <a href="login.php" class="btn btn-login-footer">Login</a>
-                        <a href="register.php" class="btn btn-regist-footer">Register</a>
-                    </div>
+@guest
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 column-text-footer">
+                    <p id="text-1">Jangan ketinggalan berita terbaru</p>
+                    <p id="text-2">login, untuk pengalaman yang baru</p>
                 </div>
-        </footer>
-    @endguest
+                <div class="col-lg-4 col-12 d-flex column-btn">
+                    <a href="login.php" class="btn btn-login-footer">Login</a>
+                    <a href="register.php" class="btn btn-regist-footer">Register</a>
+                </div>
+            </div>
+    </footer>
+@endguest
 
-    </div>
+</div>
 
 </html>
 <script>
@@ -843,12 +839,12 @@
     // let kategori = $(this).html();
     // $('#namaKategori').html(kategori);
 
-    $('.pilihKategoriPostingan').on('click', function () {
+    $('.pilihKategoriPostingan').on('click', function() {
         $('.pilihKategoriPostingan').removeClass('active');
         $(this).addClass('active');
     });
 
-    $('.sidebarActive').on('click', function () {
+    $('.sidebarActive').on('click', function() {
         $('.sidebarActive').removeClass('sidebarActive').$(this).addClass('sidebarActive');
     })
 </script>

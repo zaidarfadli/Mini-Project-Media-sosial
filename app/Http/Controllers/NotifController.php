@@ -24,7 +24,8 @@ class NotifController extends Controller
             ]);
         }
         return view('notifikasi', [
-            'notifs' => $notifs
+            'notifs' => $notifs,
+            'user' => $user
         ]);
     }
 }

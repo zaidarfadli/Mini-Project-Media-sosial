@@ -398,7 +398,7 @@
     }
 
     .home-section .container-lg .listFollowers {
-        margin-left: -2rem;
+        margin-left: -1rem;
         width: 25rem;
     }
 

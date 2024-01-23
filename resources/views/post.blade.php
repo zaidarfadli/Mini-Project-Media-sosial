@@ -211,7 +211,6 @@
         left: 240px;
         transition: all 0.5s ease;
     }
-
     .logoHomepage {
         margin-left: -15rem;
     }
@@ -1310,26 +1309,39 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center footer">
-                    <p>Naufal</p>
-                    <p>Fadhilah</p>
-                    <p>Fitrah</p>
-                    <p>Naufal</p>
-                    <p>Fadhilah</p>
-                    <p>Fitrah</p>
-                    <p>Naufal</p>
-                    <p>Fadhilah</p>
-                    <p>Fitrah</p>
+        <div class="container-fluid footer">
+                <div class="row d-flex">
+                    <div class="col-sm-1 offset-sm-2"> <!-- Menambahkan offset-md-4 untuk membuat jarak sebelumnya -->
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <p id="copyright">Copyright 2023</p>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center footer">
-                    <p id="copyright">Copyright 2023</p>
-                </div>
-            </div>
-        </div>
     </section>
 
     @guest

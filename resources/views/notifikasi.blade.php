@@ -1433,7 +1433,7 @@
                             @elseif(isset($notifs))
                                 @foreach ($notifs as $notif)
                                     @if ($notif->type == 'Follow')
-                                        <a href="{{ route('seeProfile', ['user' => $notif->user->id]) }}"
+                                        <a href="{{ route('seeProfile', ['people' => $notif->user->id]) }}"
                                             style="display: flex; margin-bottom: 1rem;">
                                             <img src="{{ $notif->user->image }}" alt="gambar postingan">
                                             <div class="container-fluid d-flex mt-2">

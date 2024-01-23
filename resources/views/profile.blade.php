@@ -6,6 +6,7 @@
         --main_color-2: black;
         --main_color-3: #3F979B;
         --main_color-4: #3F979B;
+        --main_color-5: #FF004D;
         --text-color: #D9D9D9;
     }
 
@@ -24,7 +25,7 @@
     }
 
     * {
-        /* border: 1px solid black; */
+        /* border: 1px solid white; */
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -188,6 +189,57 @@
         margin-left: -15rem;
     }
 
+    @keyframes animationERROR_DOWN {
+        from {
+            transform: translateY(-20vh);
+        }
+
+        to {
+            transform: translateY(0vh);
+        }
+    }
+    @keyframes animationERROR_UP {
+        from {
+            transform: translateY(0vh);
+        }
+
+        to {
+            transform: translateY(-20vh);
+        }
+    }
+
+    .alertError {
+        background-color: var(--main_color-5);
+        position: relative;
+        width: calc(100% - 240px);
+        left: 240px;
+        padding: 1rem 0rem 0rem 3rem;
+    }
+
+    .animationERROR_DOWN{
+        animation: animationERROR_DOWN 0.7s ease;
+    }
+
+    .animationERROR_UP{
+        animation: animationERROR_UP 0.7s ease;
+    }
+
+    .alertError .container {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .alertError p {
+        font-weight: 600;
+        letter-spacing: 1;
+        color: white;
+    }
+
+    .alertError i {
+        margin: 5px 20px 0px 5px;
+        color: white;
+    }
+
     .home-section {
         position: relative;
         width: calc(100% - 240px);
@@ -283,7 +335,6 @@
         bottom: 0;
         position: relative;
         width: calc(100% - 240px);
-        left: 150px;
         padding: 2.5rem 5rem 0rem 5rem;
         transition: all 0.5s ease;
     }
@@ -427,7 +478,8 @@
         }
 
         .home-section,
-        .nav-section {
+        .nav-section,
+        .alertError {
             width: calc(100% - 60px);
             left: 60px;
         }
@@ -644,27 +696,37 @@
         padding: 10px 20px 10px 20px;
         border-radius: 15px;
     }
+
     @keyframes animasiModalUp {
-        from{
+        from {
             transform: translateY(-20rem);
-        } to{
+        }
+
+        to {
             transform: translateY(0rem);
         }
     }
+
     @keyframes animasiModalDown {
-        from{
+        from {
             transform: translateY(0rem);
-        } to{
+        }
+
+        to {
             transform: translateY(-20rem);
         }
     }
-    .animasiModalUp{
+
+    .animasiModalUp {
         animation: animasiModalUp 0.5s ease;
     }
-    .animasiModalDown{
+
+    .animasiModalDown {
         animation: animasiModalDown 0.5s ease;
     }
-    .fa-xmark, .fa-gear:hover{
+
+    .fa-xmark,
+    .fa-gear:hover {
         cursor: pointer;
     }
 </style>
@@ -771,7 +833,6 @@
                     </a>
                 </li>
             @endauth
-
             <li class="SidebarBottomText">
                 <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
                     Terms of Service
@@ -785,30 +846,29 @@
             </li>
         </ul>
     </div>
+
+    @if (session()->has('failed'))
+    <div class="containerErorr alertError animationERROR_DOWN">
+        <div class="container d-flex">
+            <p>Password tidak sesuai</p>
+            <i class="fa-solid fa-xmark btnCloseError"></i>
+        </div>
+    </div>
+    @endif
     <section class="home-section">
-        <div class="container-fluid nav" style="background-color: black; max-width: 55rem;">
-            <div class="container modalEdit"
-                style="margin:auto; width: 50rem; background-color: white; z-index: 999; padding: 1.5rem; position:fixed;">
-                @if (session()->has('failed'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{ session('failed') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
-                    </div>
-                @endif
+        <div class="container-fluid nav" style="max-width: 55rem; display: flex; justify-content: center;">
+            <div class="container modalEdit" style="margin: auto; max-width: 32rem; border-radius: 6px; background-color: black; border: 1.8px solid rgba(220, 220, 220, 0.3); z-index: 999; padding: 1.2rem; position:fixed;">
                 <form action="{{ route('confirmPassword') }}" method="post">
                     @csrf
                     <div class="col-12 d-flex justify-content-between align-items-center">
-                        <h1>Password</h1>
-                        <i class="fa-solid fa-xmark btn-edit-akun" style="font-size: 1.5rem;"></i>
+                        <h6 style="color: white; font-weight: 800; letter-spacing: 1; margin-bottom: 0.5rem;">Konfirmasi Password</h6>
+                        <i class="fa-solid fa-xmark btn-edit-akun" style="font-size: 1rem; margin: -8px 0px 0px 0px; color: white;"></i>
                     </div>
                     <div class="mb-3">
-                        <label for="form-password" class="form-label">password</label>
-                        <input type="password" name="password" class="form-control" id="form-password"
+                        <input  style="font-size: 0.6rem;" type="password" name="password" class="form-control" id="form-password"
                             placeholder="Masukan Password">
                     </div>
-
-                    <button class="btn btn-primary w-100" type="submit">Konfirmasi itu
-                        anda</button>
+                    <button style="background-color: unset; float: right; border: unset; padding: 6px 04 px 5px 12px; border-radius: 3px; font-size: 0.7rem; color: var(--main_color); font-weight: 600;" type="submit">Konfirmasi</button>
                 </form>
             </div>
             <div class="col-md-3 col-12">
@@ -872,28 +932,41 @@
                     </div>
                 @endforeach
             </div>
+            <div class="container-fluid footer">
+                <div class="row d-flex">
+                    <div class="col-sm-1 offset-sm-2"> <!-- Menambahkan offset-md-4 untuk membuat jarak sebelumnya -->
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p>lorem</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <p id="copyright">Copyright 2023</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <div class="container footer">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center ">
-                <p>Naufal</p>
-                <p>Fadhilah</p>
-                <p>Fitrah</p>
-                <p>Naufal</p>
-                <p>Fadhilah</p>
-                <p>Fitrah</p>
-                <p>Naufal</p>
-                <p>Fadhilah</p>
-                <p>Fitrah</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center ">
-                <p id="copyright">Copyright 2023</p>
-            </div>
-        </div>
-    </div>
 </body>
 @guest
     <footer>
@@ -921,9 +994,15 @@
         })
         $('.fa-xmark').on('click', () => {
             $('.modalEdit').removeClass('animasiModalUp').addClass('animasiModalDown'),
-            setTimeout(() => {
-                $('.modalEdit').removeClass('animasiModalDown').hide()
-            }, 400);
+                setTimeout(() => {
+                    $('.modalEdit').removeClass('animasiModalDown').hide()
+                }, 400);
+        })
+        $('.btnCloseError').on('click', () => {
+            $('.alertError').removeClass('animationERROR_DOWN').addClass('animationERROR_UP'),
+                setTimeout(() => {
+                    $('.alertError').removeClass('animationERROR_UP').hide();
+                }, 700);
         })
     })
     $('.pilihKategoriPostingan').on('click', function() {

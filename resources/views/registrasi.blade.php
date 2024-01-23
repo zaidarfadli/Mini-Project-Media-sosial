@@ -98,7 +98,9 @@
         box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.2);
         border: transparent;
     }
-
+    .showPassword, .hidePassword:hover{
+        cursor: pointer;
+    }
     .row_input3 input[type='submit'] {
         border-radius: 5px;
         margin-top: 30px;

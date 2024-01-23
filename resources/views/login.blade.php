@@ -255,7 +255,7 @@
                                 </div>
                             </div>
                             <div class="row mt-4">
-                                <p style="font-size: 0.7rem; ">
+                                <p style="font-size: 0.7rem;">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vel eaque
                                     quasi perspiciatis, placeat maiores eligendi minima rem iure similique minus
                                     perferendis reprehenderit inventore ab ipsum excepturi! Voluptate vitae

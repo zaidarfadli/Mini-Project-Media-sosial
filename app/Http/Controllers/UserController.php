@@ -125,7 +125,7 @@ class UserController extends Controller
 
         if ($peoples->isEmpty()) {
             return view('explore', [
-                'message' => 'User yang dicari tidak ada',
+                'message' => 'User tidak ditemukan',
                 'user' => $user,
                 'suggested' => $suggested
             ]);
