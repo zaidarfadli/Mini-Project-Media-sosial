@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class NotifController extends Controller
 {
-    public function myNotifikasi()
+    public function myNotifikasi(Request $request)
     {
         $user = Auth::user();
 
+        $type = $request->query('type', 'all');
         $notifs = Notif::with('comment.post')
+            ->type($type)
             ->where('receiver_id', $user->id)
             ->latest()->get();
 

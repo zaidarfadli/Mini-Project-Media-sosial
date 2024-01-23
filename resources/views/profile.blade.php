@@ -917,8 +917,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p id="namaLengkapProfile">{{ $people->name }}</p>
-                        <p id="bioProfile">Lorem, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo eius
-                            ut asperiores, sint ab dicta saepe laboriosam soluta quae hic..</p>
+                        <p id="bioProfile">{{ $people->bio}}</p>
                     </div>
                 </div>
             </div>

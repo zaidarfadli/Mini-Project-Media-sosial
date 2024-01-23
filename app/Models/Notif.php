@@ -10,6 +10,18 @@ class Notif extends Model
     use HasFactory;
 
 
+    // Notif.php
+    public function scopeType($query, $type)
+    {
+        if ($type === 'Comment') {
+            return $query->whereIn('type', ['Comment', 'Reply']);
+        } elseif ($type === 'Like') {
+            return $query->where('type', ['LikePost', 'LikeComment']);
+        }
+
+        return $query; // Default: Show all
+    }
+
     public function notifable()
     {
 

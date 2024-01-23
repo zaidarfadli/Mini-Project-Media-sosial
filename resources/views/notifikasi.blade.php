@@ -1404,17 +1404,17 @@
                         <div class="row">
                             <ul class="navigasi" style="margin-top: 10px; margin-bottom: -20px;">
                                 <li class="navigasi-item">
-                                    <a class="navigasi-link navigasiFilter active" href="#">
+                                    <a class="navigasi-link navigasiFilter active" href="{{ route('myNotifikasi',['type' => 'all']) }}">
                                         <p>Semua</p>
                                     </a>
                                 </li>
                                 <li class="navigasi-item">
-                                    <a class="navigasi-link navigasiFilter" href="#">
+                                    <a class="navigasi-link navigasiFilter" href="{{ route('myNotifikasi',['type' => 'Comment']) }}">
                                         <p>Komentar</p>
                                     </a>
                                 </li>
                                 <li class="navigasi-item">
-                                    <a class="navigasi-link navigasiFilter" href="#">
+                                    <a class="navigasi-link navigasiFilter"  href="{{ route('myNotifikasi',['type' => 'Like']) }}">
                                         <p>Disukai</p>
                                     </a>
                                 </li>
@@ -1435,7 +1435,7 @@
                                     @if ($notif->type == 'Follow')
                                         <a href="{{ route('seeProfile', ['people' => $notif->user->id]) }}"
                                             style="display: flex; margin-bottom: 1rem;">
-                                            <img src="{{ $notif->user->image }}" alt="gambar postingan">
+                                            <img src="{{asset('images/profile/'.$notif->user->image)  }}" alt="gambar postingan">
                                             <div class="container-fluid d-flex mt-2">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> mulai mengikuti anda</p>
