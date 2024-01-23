@@ -1190,15 +1190,26 @@
                                                         </div>
                                                         <div class="row idForm">
                                                             <div class="col-6">
-                                                                <form action="" style="display: flex;">
+                                                                <form action="{{ route('likeComment',['post' => $post->id,'comment'=> $comment->id]) }}" style="display: flex;" method="post">
+                                                                    @csrf
+                                                                    @if ($comment->isLikedCommentByUser())
                                                                     <button
-                                                                        style="background: unset; border: unset; padding: 5px;"
-                                                                        type="submit"><i
-                                                                            style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
-                                                                            class="fa-regular fa-thumbs-up"
-                                                                            id="btnLikes"></i></button>
+                                                                    style="background: unset; border: unset; padding: 5px;"
+                                                                    type="submit"><i
+                                                                        style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
+                                                                        class="fa-solid fa-thumbs-up"
+                                                                        id="btnLikes"></i></button>
+                                                                    @else
+                                                                    <button
+                                                                    style="background: unset; border: unset; padding: 5px;"
+                                                                    type="submit"><i
+                                                                        style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
+                                                                        class="fa-regular fa-thumbs-up"
+                                                                        id="btnLikes"></i></button>
+                                                                    @endif
+                                                                    
                                                                     <p style="font-size: 0.7rem; margin: 0px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
-                                                                        20 Likes</p>
+                                                                        {{ $comment->likes_count }} Likes</p>
                                                                 </form>
                                                             </div>
                                                             <div class="col-6">
@@ -1207,8 +1218,9 @@
                                                             <div class="row balasKomentar"
                                                                 style="display: none;">
                                                                 <div class="col-12" style="margin-bottom: 0.8rem;">
-                                                                    <form action="" style="display: flex;">
-                                                                        <input type="text" name="repyComment"
+                                                                    <form action="{{ route('sendReply',['post' => $post->id ,'comment' => $comment->id]) }}" style="display: flex;" method="post">
+                                                                        @csrf
+                                                                        <input type="text" name="reply"
                                                                             placeholder="Balas komentar {{ $comment->user->username }}"
                                                                             id="replyComment">
                                                                         <button type="submit"
@@ -1218,19 +1230,19 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
+                                                            @foreach ($comment->reply as $reply)
                                                             <div class="col-12"
                                                                 style="max-width: 20rem; margin-left: 2rem;">
                                                                 <div class="row" id="profile-komentar">
                                                                     <div class="col-12 d-flex">
-                                                                        <img src="{{ asset('images/profile/' . $comment->user->image) }}"
+                                                                        <img src="{{ asset('images/profile/' . $reply->user->image) }}"
                                                                             alt="ImageProfilKomentar">
-                                                                        <p>{{ $comment->user->username }}</p>
+                                                                        <p>{{ $reply->user->username }}</p>
                                                                     </div>
                                                                 </div>
-                                                                <p id="komentar"><span
-                                                                        style="font-weight: 700;">{{ $comment->user->username }}
-                                                                    </span>{{ $comment->comment }}</p>
+                                                                <p id="komentar">{{ $reply->reply }}</p>
                                                             </div>
+                                                            @endforeach
                                                         </div>
                                                     </span>
                                                     <hr style="width: 100%; color: white; margin-left: 22px;">

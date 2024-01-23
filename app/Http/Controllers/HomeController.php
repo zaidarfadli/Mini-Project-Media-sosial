@@ -15,6 +15,8 @@ class HomeController extends Controller
     public function index()
     {
 
+        $user = Auth::user();
+
         $posts = Post::select(
             'posts.*',
             DB::raw('COUNT(likes.id) as like_count'),
@@ -24,27 +26,20 @@ class HomeController extends Controller
             ->leftJoin('comments', 'posts.id', '=', 'comments.post_id')
             ->leftJoin('replies', 'posts.id', '=', 'replies.post_id')
             ->groupBy('posts.id', 'posts.user_id', 'posts.image', 'posts.content', 'posts.created_at', 'posts.updated_at')
+            ->orderByDesc('created_at')
             ->orderByDesc('comment_count')
             ->orderByDesc('like_count')
             ->get();
 
 
-        if (Auth::check()) {
 
-            $user = Auth::user();
-            $suggested =  $this->suggestionFollow($user);
-            return view('index', [
-                'posts' => $posts,
-                'user' => $user,
-                'suggested' => $suggested
-            ]);
-        } else {
-            $suggested = User::latest()->get();
-            return view('index', [
-                'posts' => $posts,
-                'suggested' => $suggested
-            ]);
-        }
+        $suggested = Auth::check() ? $this->suggestionFollow($user) : User::latest()->get();
+
+        return view('index', [
+            'posts' => $posts,
+            'user' => $user,
+            'suggested' => $suggested
+        ]);
     }
 
 

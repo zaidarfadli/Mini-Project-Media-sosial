@@ -112,15 +112,17 @@ class PostController extends Controller
 
             $request->image->move(public_path('images/post'), $imageName);
 
-            Post::create([
+            $newPost = Post::create([
                 'user_id' => $user->id,
                 'content' => $request->content,
                 'image' => $imageName,
             ]);
 
-            return redirect()->route('home')->with('success', 'Post berhasil dibuat!');
+            return redirect()->route('home', [
+                'newPostId' => $newPost->id
+            ])->with('success', 'Post berhasil dibuat!');
         } catch (\Exception $e) {
-            // Tangkap eksepsi dan redirect kembali dengan pesan kesalahan
+
             return back()->with('error', 'Terjadi kesalahan. Posting gagal dibuat.');
         }
     }

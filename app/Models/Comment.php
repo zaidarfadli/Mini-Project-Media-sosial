@@ -65,6 +65,12 @@ class Comment extends Model
         return false;
     }
 
+    public function getLikesCountAttribute()
+    {
+        return $this->like()->count();
+    }
+
+
 
     protected static function boot()
     {

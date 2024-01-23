@@ -70,14 +70,17 @@ class UserController extends Controller
         ]);
     }
 
-    public function editProfile(Request $request)
+  public function editProfile(Request $request)
     {
         $user = Auth::user();
 
         $rules = [
             'bio' => 'required',
             'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000'
         ];
+
+
 
         if ($request->username != $user->username) {
             $rules['username'] = 'required|unique:users,username';
@@ -94,11 +97,19 @@ class UserController extends Controller
         $validatedData['email'] = $user->email;
         $validatedData['password'] = $user->password;
 
+        $imageName = time() . '.' . $request->image->extension();
+
+        $request->image->move(public_path('images/profile'), $imageName);
+
+        $validatedData['image'] = $imageName;
+
         User::where('id', $user->id)
             ->update($validatedData);
 
         return redirect()->route('myProfile');
     }
+
+
 
 
 

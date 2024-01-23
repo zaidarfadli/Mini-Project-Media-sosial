@@ -870,7 +870,7 @@
                                                                 </div>
                                                                 <p class="card-text">{{ $post->content }}</p>
                                                                 <img style="border-radius: 8px;"
-                                                                    src="{{ $post->image }}" class="card-img-top"
+                                                                    src="{{ asset('images/post/'.$post->image) }}" class="card-img-top"
                                                                     alt="Gambar Postingan">
                                                                 <hr
                                                                     style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">

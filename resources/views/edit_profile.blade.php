@@ -1998,15 +1998,15 @@
     </div>
     <section class="home-section">
         <div class="container-fluid containerForm">
-            <form action="{{ route('editProfile') }}" method="POST">
+            <form action="{{ route('editProfile') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row formEdtProfile">
                     <div class="col-12 fotoProfile text-center">
-                        <img id="isiGambar" src="images/smk1.jpg" alt="LogoProfile">
+                        <img id="isiGambar" src="{{ asset('images/profile/'.old('image',$user->image)) }}" alt="LogoProfile">
                         <label for="btnUbahProfile">
                             <i class="fa-solid fa-camera"></i>
-                            <input type="file" name="edtFotoProfile" id="btnUbahProfile">
+                            <input type="file" name="image" id="btnUbahProfile">
                         </label>
                     </div>
                     <div class="row">
