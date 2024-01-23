@@ -425,6 +425,17 @@
         }
     }
 
+    @media(width <=600px) {
+        .fiturPostingan i {
+            margin-right: -1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .fiturPostingan p {
+            display: none;
+        }
+    }
+
     @media (max-width: 576px) {
         footer .row {
             margin-left: 0.5rem;
@@ -446,6 +457,7 @@
             margin-right: -1.5rem;
             font-size: 1.4rem;
         }
+
         .fiturPostingan p {
             display: none;
         }
@@ -474,13 +486,16 @@
             width: 50px;
             height: 50px;
         }
+
         .fiturPostingan i {
             margin-right: -2rem;
             font-size: 1.2rem;
         }
+
         .fiturPostingan p {
             display: none;
         }
+
         .profileAuthor #usernamePosting {
             font-size: 0.7rem;
         }
