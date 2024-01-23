@@ -167,14 +167,15 @@
         margin: 15px 0px 0px -32px;
         width: 100%;
     }
-    .sidebar .link-navigasi .log_out button{
+
+    .sidebar .link-navigasi .log_out button {
         border: unset;
         background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
         margin-top: -2px;
-        color:white;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -704,43 +705,43 @@
                 </a>
             </li>
             @auth
-                
-            <li>
-                <a href="{{ route('myNotifikasi') }}">
-                    <i class="fa-solid fa-bell"></i>
-                    <p class="links_name" id="notifikasi">Notifikasi</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('formPost') }}">
-                    <i class="fa-solid fa-plus"></i>
-                    <p class="links_name" id="posting">Posting</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('myBookmark') }}">
-                    <i class="fa-solid fa-bookmark"></i>
-                    <p class="links_name" id="bookmarks">Bookmarks</p>
-                </a>
-            </li>
+
+                <li>
+                    <a href="{{ route('myNotifikasi') }}">
+                        <i class="fa-solid fa-bell"></i>
+                        <p class="links_name" id="notifikasi">Notifikasi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('formPost') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <p class="links_name" id="posting">Posting</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('myBookmark') }}">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="links_name" id="bookmarks">Bookmarks</p>
+                    </a>
+                </li>
             @endauth
             @auth
-            <li class="log_out">
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="d-flex">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
-                    </button>
-                </form>
-            </li>
+                <li class="log_out">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="d-flex">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
             @else
-            <li class="login">
-                <a href="{{ route('login') }}">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Login</p>
-                </a>
-            </li>
+                <li class="login">
+                    <a href="{{ route('login') }}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Login</p>
+                    </a>
+                </li>
             @endauth
 
             <li class="SidebarBottomText">
@@ -767,12 +768,14 @@
                     <div class="row">
                         <ul class="navigasi" style="margin-top: 10px; margin-bottom: 0;">
                             <li class="navigasi-item NavFilter">
-                                <a class="navigasi-link pilihKategoriPostingan KategoriFollowers" href="{{ route('home') }}">
+                                <a class="navigasi-link pilihKategoriPostingan KategoriFollowers"
+                                    href="{{ route('home') }}">
                                     <p>For You</p>
                                 </a>
                             </li>
                             <li class="navigasi-item">
-                                <a class="navigasi-link pilihKategoriPostingan KategoriFollowing" href="{{ route('home2') }}">
+                                <a class="navigasi-link pilihKategoriPostingan KategoriFollowing"
+                                    href="{{ route('home2') }}">
                                     <p>Following</p>
                                 </a>
                             </li>
@@ -812,7 +815,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-12">
                                                                                         <p id="UsernamePosting">
-                                                                                            {{ $post->user->username }}</p>
+                                                                                            {{ $post->user->username }}
+                                                                                        </p>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row">
@@ -830,14 +834,14 @@
                                                                         method="POST">
                                                                         @csrf
                                                                         @if ($post->isBookmarkedByUser())
-                                                                            <button class="saveToBookmark" type="submit"
-                                                                                name="saveToBookmark">
+                                                                            <button class="saveToBookmark"
+                                                                                type="submit" name="saveToBookmark">
                                                                                 <i
                                                                                     class="fa-solid fa-bookmark bookmarkPost"></i>
                                                                             </button>
                                                                         @else
-                                                                            <button class="saveToBookmark" type="submit"
-                                                                                name="saveToBookmark">
+                                                                            <button class="saveToBookmark"
+                                                                                type="submit" name="saveToBookmark">
                                                                                 <i
                                                                                     class="fa-regular fa-bookmark bookmarkPost"></i>
                                                                             </button>
@@ -896,8 +900,9 @@
                                             </p>
                                         </div>
                                     </div>
-                                    @foreach ($suggested as $people)
-                                        <div class="row" style="max-height: 7rem; margin-bottom: 0.7rem;">
+                                    <div class="row"
+                                        style="max-height: 16rem; margin-bottom: 0.7rem; overflow: auto;">
+                                        @foreach ($suggested as $people)
                                             <div class="row">
                                                 <a href="{{ route('seeProfile', ['people' => $people->id]) }}"
                                                     style="text-decoration: none; display:flex; color: black;">
@@ -932,21 +937,20 @@
                                                             method="POST">
                                                             @csrf
                                                             <p>
-                                                    
-                                                                    <button type="submit" class="btn"
-                                                                        style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); margin-left: -8px; ">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
-                                                           
+                                                                <button type="submit" class="btn"
+                                                                    style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); margin-left: -8px; ">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
                                                             </p>
                                                         </form>
                                                     </div>
                                                 </a>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                     <div class="row">
-                                        <div class="col-12" style="margin-top: -15px;">
+                                        <div class="col-12" style="margin-top: -25px;">
                                             <hr style="color: white;">
-                                            <p style="font-size:0.6rem; width: 100%; color: grey; margin-top: 1rem;">
+                                            <p
+                                                style="font-size:0.6rem; width: 100%; color: grey; margin-top: -0.5rem;">
                                                 Terms of Service
                                                 Privacy Policy
                                                 Cookie Policy
@@ -1004,7 +1008,7 @@
     const elements2 = $('.KategoriFollowers')
     if (currentUrl.includes("home2")) {
         elements1.addClass("active")
-    } else if(currentUrl.includes("home")){
+    } else if (currentUrl.includes("home")) {
         elements2.addClass("active")
     }
 

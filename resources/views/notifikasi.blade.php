@@ -1299,16 +1299,28 @@
 <body style="background-color: black;">
     <div class="sidebar">
         <div class="detail_logo">
-            <a href="profile.php" style="display: flex;">
-                <i><img src="{{ asset('images/profile' . $user->image) }}" alt="gambar postingan"></i>
-                <div class="container-fluid rowUsername">
-                    <div class="row">
-                        <span id="usernameProfileAuthor">{{ $user->username }}</span>
+            <a href="{{ route('myProfile') }}" style="display: flex;">
+                @auth
+                    <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
+                    <div class="container-fluid rowUsername">
+                        <div class="row">
+                            <span id="usernameProfileAuthor">{{ $user->username }}</span>
+                        </div>
+                        <div class="row">
+                            <span id="namaProfileAuthor">{{ $user->name }}</span>
+                        </div>
                     </div>
-                    <div class="row">
-                        <span id="namaProfileAuthor">{{ $user->name }}</span>
+                @else
+                    <i><img src="{{ asset('images/logo-medsos.png') }}" alt="gambar foto profile"></i>
+                    <div class="container-fluid rowUsername">
+                        <div class="row">
+                            <span id="usernameProfileAuthor" style="margin-left: 0.2rem">Silahkan Login Dahulu</span>
+                        </div>
+                        <div class="row">
+                            <span id="namaProfileAuthor" style="margin-left: 0.2rem">Ayo Login</span>
+                        </div>
                     </div>
-                </div>
+                @endauth
             </a>
         </div>
         <hr

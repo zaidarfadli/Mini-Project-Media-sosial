@@ -152,14 +152,15 @@
         margin: 15px 0px 0px -32px;
         width: 100%;
     }
-    .sidebar .link-navigasi .log_out button{
+
+    .sidebar .link-navigasi .log_out button {
         border: unset;
         background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
         margin-top: -2px;
-        color:white;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -178,6 +179,13 @@
         position: relative;
         width: calc(100% - 10px);
         left: 280px;
+        transition: all 0.5s ease;
+    }
+
+    .nav-section .backRow {
+        position: relative;
+        width: calc(100% - 100px);
+        left: -1rem;
         transition: all 0.5s ease;
     }
 
@@ -233,9 +241,25 @@
         width: calc(100% - 60px);
     }
 
-    .home-section .konten-home {
+    .nav-section .konten-home {
         position: relative;
         margin: 0rem 2rem 0rem 2rem;
+    }
+
+    .nav-section #arrowLeft {
+        color: var(--main_color);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    .nav-section #back {
+        color: var(--main_color);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-top: 0.4rem;
+        margin-left: 0.6rem;
     }
 
     .konten-home h3 {
@@ -377,6 +401,11 @@
         .nav-section {
             width: calc(100% - 60px);
             left: 60px;
+        }
+
+        .nav-section .backRow {
+            width: calc(100% - 60px);
+            left: 20px;
         }
 
         .nav-section {
@@ -970,8 +999,8 @@
 </head>
 
 <body style="background-color: black;">
-    <div class="sidebar">
-        <div class="detail_logo">
+    <div class="sidebar" style="background-color: black;">
+        <div class="detail_logo" style="background-color: black;">
             <a href="{{ route('myProfile') }}" style="display: flex;">
                 @auth
                     <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
@@ -1012,43 +1041,43 @@
                 </a>
             </li>
             @auth
-                
-            <li>
-                <a href="{{ route('myNotifikasi') }}">
-                    <i class="fa-solid fa-bell"></i>
-                    <p class="links_name" id="notifikasi">Notifikasi</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('formPost') }}">
-                    <i class="fa-solid fa-plus"></i>
-                    <p class="links_name" id="posting">Posting</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('myBookmark') }}">
-                    <i class="fa-solid fa-bookmark"></i>
-                    <p class="links_name" id="bookmarks">Bookmarks</p>
-                </a>
-            </li>
+
+                <li>
+                    <a href="{{ route('myNotifikasi') }}">
+                        <i class="fa-solid fa-bell"></i>
+                        <p class="links_name" id="notifikasi">Notifikasi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('formPost') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <p class="links_name" id="posting">Posting</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('myBookmark') }}">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="links_name" id="bookmarks">Bookmarks</p>
+                    </a>
+                </li>
             @endauth
             @auth
-            <li class="log_out">
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="d-flex">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <p class="links_name">Log out</p>
-                    </button>
-                </form>
-            </li>
+                <li class="log_out">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="d-flex">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
             @else
-            <li class="login">
-                <a href="{{ route('login') }}">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <p class="links_name">Login</p>
-                </a>
-            </li>
+                <li class="login">
+                    <a href="{{ route('login') }}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Login</p>
+                    </a>
+                </li>
             @endauth
 
             <li class="SidebarBottomText">
@@ -1070,13 +1099,17 @@
                 <nav class="justify-content-center">
                     <div class="logoHomepage">
                         <img src="{{ asset('images/logo-medsos.png') }}" alt="logo homepage">
-                    </div>
                 </nav>
+                <div class="col-12 d-flex backRow">
+                    <p id="arrowLeft">
+                        < </p>
+                            <p id="back">Back</p>
+                </div>
             </div>
         </div>
     </section>
     <section class="home-section">
-        <div class="container-fluid nav" style="background-color: black;">
+        <div class="container-fluid nav">
             <div class="container-fluid container-xl">
                 <div class="row">
                     <div class="container-fluid konten-postingan">
@@ -1098,7 +1131,8 @@
                                             </div>
                                         </div>
                                         <div class="row" id="gambarKontenPostingan">
-                                            <img src="{{ asset('images/post/'.$post->image)  }}" alt="gambar postingan">
+                                            <img src="{{ asset('images/post/' . $post->image) }}"
+                                                alt="gambar postingan">
                                         </div>
                                     </div>
                                     <div class="col-md-5" id="column-komentar-postingan">
@@ -1109,30 +1143,31 @@
                                             </div>
                                         </div>
                                         <div class="row" id="isi-komentar">
-                                        
-                                        @if (isset($message))
-                                            <p class="text-light text-center">Belum ada komen</p>
-                                        @elseif(isset($post->comment))
-                                            
-                                            @foreach ($post->comment as $comment)
-                                                <div class="col-12">
-                                                    <div class="row" id="profile-komentar">
-                                                        <div class="col-12 d-flex">
-                                                            <img src="{{ asset('images/profile/'.$comment->user->image)  }}"
-                                                                alt="ImageProfilKomentar">
-                                                            <p>{{ $comment->user->username }}</p>
+
+                                            @if (isset($message))
+                                                <p
+                                                    style="text-align: left; color: var(--text-color); margin-left: -10px; opacity: 0.7; font-size: 0.8rem;">
+                                                    Belum ada komentar</p>
+                                            @elseif(isset($post->comment))
+                                                @foreach ($post->comment as $comment)
+                                                    <div class="col-12">
+                                                        <div class="row" id="profile-komentar">
+                                                            <div class="col-12 d-flex">
+                                                                <img src="{{ asset('images/profile/' . $comment->user->image) }}"
+                                                                    alt="ImageProfilKomentar">
+                                                                <p>{{ $comment->user->username }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <p id="komentar">{{ $comment->comment }}</p>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <p id="reply">Reply</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <p id="komentar">{{ $comment->comment }}</p>
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <p id="reply">Reply</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        
-                                        @endif
+                                                @endforeach
+
+                                            @endif
                                         </div>
                                         <div class="row justify-content-center">
                                             <hr style="width: 100%; color: white; margin-left: 22px;">
@@ -1312,8 +1347,6 @@
                 </div>
         </footer>
     @endguest
-
-
     </div>
 </body>
 

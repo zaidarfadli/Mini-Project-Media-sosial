@@ -1507,11 +1507,8 @@
                         </form>
     
                         @if (!$search)
-                            <p class="text-light">Masukan nama user</p>
-                        
                         @else
                             @forelse($sFollows as $follow)
-                        
                             <a href="{{ route('seeProfile',['people' => $people->id]) }}" style="display: flex;">
                                 <i><img src="{{ asset('images/profile/'.$follow->image) }}" alt="gambar postingan"></i>
                                 <div class="container-fluid">
@@ -1547,7 +1544,7 @@
                                 @endif
                             </a>
                             @empty
-                            <p>No followers found</p>
+                            <p style="color: var(--text-color); margin-left: 1rem; font-size: 0.8rem; opacity: 0.7;">User tidak ditemukan</p>
                             @endforelse
                         @endif
                     </div>
@@ -1627,9 +1624,9 @@
     let url = window.location.href
     const kategori = $('.kategoriFollowing');
     const kategori2 = $('.kategoriFollowers');
-    if (url.includes('seeFollowing')) {
+    if (url.includes('seeFollowing') || url.includes('searchFollowing')) {
         kategori.addClass('active')
-    } else if (url.includes('seeFollower')) {
+    } else if (url.includes('seeFollower') || url.includes('searchFollower')) {
         kategori2.addClass('active')
     }
 

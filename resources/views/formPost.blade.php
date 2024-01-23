@@ -86,11 +86,11 @@
     }
 
     .konten-home .card {
-        max-width: 37rem;
+        max-width: 25rem;
         color: white;
         background-color: black;
         border: 1px solid rgba(220, 220, 220, 0.3);
-        padding: 0.7rem 0.7rem 1rem 1rem;
+        padding: 0.6rem 0.2rem 0rem 0.2rem;
         border-radius: 15px;
         margin-bottom: -1.3rem;
         transition: all 0.5s ease;
@@ -104,8 +104,7 @@
         border-radius: 5px;
         font-size: 0.8rem;
         color: var(--text-color);
-        margin: 1rem 0rem 1rem 0rem;
-        padding: 0.3rem 0.5rem;
+        margin-bottom: 0.4rem;
     }
 
     .card #post {
@@ -116,7 +115,7 @@
         padding: 5px 15px 5px 15px;
         border-radius: 5px;
         font-weight: 600;
-        font-size: 0.8rem
+        font-size: 0.6rem
     }
 
     .rowUsername span {
@@ -182,14 +181,15 @@
         margin: 15px 0px 0px -32px;
         width: 100%;
     }
-    .sidebar .link-navigasi .log_out button{
+
+    .sidebar .link-navigasi .log_out button {
         border: unset;
         background: unset;
     }
 
     .sidebar .link-navigasi .log_out p {
         margin-top: -2px;
-        color:white;
+        color: white;
     }
 
     .sidebar .link-navigasi .SidebarBottomText {
@@ -230,7 +230,7 @@
     .nav-section {
         position: relative;
         width: calc(100% - 240px);
-        left: 280px;
+        left: 340px;
         transition: all 0.5s ease;
     }
 
@@ -311,8 +311,8 @@
     }
 
     .card-body .profileAuthor img {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         aspect-ratio: 1/1;
         margin-left: -10px;
         padding: 10px;
@@ -321,16 +321,9 @@
     }
 
     .profileAuthor #usernamePosting {
-        margin-top: -3px;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         font-weight: 700;
         color: var(--main_color);
-    }
-
-    .profileAuthor #timePosting {
-        color: var(--main_color);
-        margin-top: -18px;
-        font-size: 0.7rem;
     }
 
     .profileAuthor span {
@@ -338,7 +331,8 @@
     }
 
     .profileAuthor p {
-        margin-left: -3rem;
+        margin-top: -0.2rem;
+        margin-left: -2rem;
         color: var(--main_color);
         font-weight: 600;
     }
@@ -394,7 +388,6 @@
             display: none;
         }
 
-
         .sidebar {
             width: 60px;
         }
@@ -419,7 +412,7 @@
 
         .nav-section {
             width: calc(100% - 60px);
-            left: 60px;
+            left: 80px;
         }
 
         .logoHomepage {
@@ -445,12 +438,14 @@
             left: 220px;
         }
     }
+
     @media (max-width: 576px) {
 
-        footer .row{
+        footer .row {
             margin-left: 0.5rem;
         }
     }
+
     @media (max-width: 560px) {
         .card {
             transform: translateX(-12%);
@@ -465,12 +460,10 @@
 
     @media(max-width: 462px) {
         .konten-home .card {
-            padding: 0.6rem 1.2rem 1.2rem 1.2rem;
             transition: all 0.5s ease;
         }
 
         .card .card-text {
-            margin-top: -1rem;
             font-size: 0.7rem;
         }
 
@@ -509,7 +502,7 @@
     @media (max-width: 400px) {
         .card {
             transform: translateX(-12%);
-            width: 180%;
+            width: 160%;
             transition: all 0.5s ease;
         }
 
@@ -633,58 +626,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Beranda</title>
-        <link rel="icon" href="images/logo-medsos.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            if (window.history.replaceState) {
-                window.history.replaceState(null, null, window.location.href);
-            }
-        </script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Beranda</title>
+    <link rel="icon" href="images/logo-medsos.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+</head>
 
-    <body style="background-color: black;">
-        <div class="sidebar">
-            <div class="detail_logo">
-                <a href="profile.php" style="display: flex;">
-                    <i><img src="{{ asset('images/profile/'.$user->image) }}" alt="gambar postingan"></i>
-                    <div class="container-fluid rowUsername">
-                        <div class="row">
-                            <span id="usernameProfileAuthor">{{ $user->username }}</span>
-                        </div>
-                        <div class="row">
-                            <span id="namaProfileAuthor">{{ $user->name }}</span>
-                        </div>
+<body style="background-color: black;">
+    <div class="sidebar">
+        <div class="detail_logo">
+            <a href="profile.php" style="display: flex;">
+                <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
+                <div class="container-fluid rowUsername">
+                    <div class="row">
+                        <span id="usernameProfileAuthor">{{ $user->username }}</span>
                     </div>
+                    <div class="row">
+                        <span id="namaProfileAuthor">{{ $user->name }}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <hr
+            style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
+        <ul class="link-navigasi">
+            <li>
+                <a href="{{ route('home') }}">
+                    <i class="fa-solid fa-house aktif"></i>
+                    <p class="links_name" id="beranda">Beranda</p>
                 </a>
-            </div>
-            <hr
-                style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
-            <ul class="link-navigasi">
-                <li>
-                    <a href="{{ route('home') }}">
-                        <i class="fa-solid fa-house aktif"></i>
-                        <p class="links_name" id="beranda">Beranda</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('explorePeople') }}">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <p class="links_name" id="explore">Explore</p>
-                    </a>
-                </li>
-                @auth
-                    
+            </li>
+            <li>
+                <a href="{{ route('explorePeople') }}">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p class="links_name" id="explore">Explore</p>
+                </a>
+            </li>
+            @auth
+
                 <li>
                     <a href="{{ route('myNotifikasi') }}">
                         <i class="fa-solid fa-bell"></i>
@@ -703,8 +696,8 @@
                         <p class="links_name" id="bookmarks">Bookmarks</p>
                     </a>
                 </li>
-                @endauth
-                @auth
+            @endauth
+            @auth
                 <li class="log_out">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
@@ -714,193 +707,104 @@
                         </button>
                     </form>
                 </li>
-                @else
+            @else
                 <li class="login">
                     <a href="{{ route('login') }}">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p class="links_name">Login</p>
                     </a>
                 </li>
-                @endauth
+            @endauth
 
-                <li class="SidebarBottomText">
-                    <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
-                        Terms of Service
-                        Privacy Policy
-                        Cookie Policy
-                        Accessibility
-                        Ads info
-                        More
-                        © 2024 Sosmed
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <!-- <h1 style="transform: translateX(5rem); padding-top: 20px; margin-bottom: -0.4rem; letter-spacing: 3; color: var(--main_color-2); font-weight: 800;">Sosmed</h1> -->
-        <section class="nav-section" style="z-index: 99; position: fixed; background-color: black;">
-            <div class="container-fluid nav" style="background-color: black;">
-                <div class="container" style="background-color: black; transform: translateX(-1rem);">
-                    <nav class="justify-content-center">
-                        <div class="logoHomepage">
-                            <img src="images/logo-medsos.png" alt="logo homepage">
-                        </div>
-                        <div class="row">
-                            <ul class="navigasi" style="margin-top: 10px; margin-bottom: 0;">
-                                <li class="navigasi-item NavFilter">
-                                    <a class="navigasi-link pilihKategoriPostingan active" href="#">
-                                        <p>For You</p>
-                                    </a>
-                                </li>
-                                <li class="navigasi-item">
-                                    <a class="navigasi-link pilihKategoriPostingan" href="#">
-                                        <p>Following</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </section>
-        <section class="home-section" style="background-color: black;">
-            <div class="container-fluid nav" style="background-color: black;">
-                <div class="container-fluid container-xl">
+            <li class="SidebarBottomText">
+                <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
+                    Terms of Service
+                    Privacy Policy
+                    Cookie Policy
+                    Accessibility
+                    Ads info
+                    More
+                    © 2024 Sosmed
+                </p>
+            </li>
+        </ul>
+    </div>
+    <!-- <h1 style="transform: translateX(5rem); padding-top: 20px; margin-bottom: -0.4rem; letter-spacing: 3; color: var(--main_color-2); font-weight: 800;">Sosmed</h1> -->
+    <section class="nav-section" style="z-index: 99; position: fixed; background-color: black;">
+        <div class="container-fluid nav" style="background-color: black;">
+            <div class="container" style="background-color: black; transform: translateX(-1rem);">
+                <nav class="justify-content-center">
+                    <div class="logoHomepage">
+                        <img src="images/logo-medsos.png" alt="logo homepage">
+                    </div>
                     <div class="row">
-                        <div class="col-lg-9">
-                            <div class="container container-lg">
-                                <div class="row" style="margin-bottom: 2rem;">
-                                    <div class="col-12">
-                                        <div class="konten-home">
-                                            <div class="row">
-                                                <div class="container-fluid">
-                                                    <div class="card mx-auto">
-                                                        <form action="{{ route('createPost') }}" method="POST"  enctype="multipart/form-data">
-                                                            @csrf
-                                                            <div class="card-body cardContent">
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="profileAuthor">
-                                                                            <img class="imagesProfileAuthorPost"
-                                                                                src="{{asset('images/profile/' . $user->image) }}"
-                                                                                alt="gambar profile">
-                                                                            <p>{{ $user->username }}</p>
-                                                                            <i class="fa-solid fa-ellipsis"
-                                                                                style="float: right;"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-12 column-input">
-                                                                        <textarea class="card-text" name="content"
-                                                                            id="inpDeskripsi"
-                                                                            placeholder="Deskripsi postingan"></textarea>
-                                                                        <label for="btnUbahProfile">
-                                                                            <img id="isiGambar" src="{{asset('images/default_profile.png') }}" alt="Pilih gambar"
-                                                                                style="width: 100%;">
-                                                                            <input type="file" name="image"
-                                                                                id="btnUbahProfile">
-                                                                        </label>
-                                                                        <hr
-                                                                            style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">
-                                                                    </div>
-                                                                    <div class="col-12">
-                                                                        <button class="btn" type="submit" name="posting" id="post">Posting</button>
-                                                                       
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                        <ul class="navigasi" style="margin-top: 10px; margin-bottom: 0;">
+                            <li class="navigasi-item NavFilter">
+                                <a class="navigasi-link pilihKategoriPostingan active" href="#">
+                                    <p>For You</p>
+                                </a>
+                            </li>
+                            <li class="navigasi-item">
+                                <a class="navigasi-link pilihKategoriPostingan" href="#">
+                                    <p>Following</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section class="home-section" style="background-color: black;">
+        <div class="container-fluid nav" style="background-color: black;">
+            <div class="container-fluid container-xl">
+                <div class="col-lg-12">
+                    <div class="konten-home">
+                        <div class="container-fluid">
+                            <div class="card mx-auto">
+                                <form action="{{ route('createPost') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="card-body cardContent">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="profileAuthor">
+                                                    <img class="imagesProfileAuthorPost"
+                                                        src="{{ asset('images/profile/' . $user->image) }}"
+                                                        alt="gambar profile">
+                                                    <p>{{ $user->username }}</p>
+                                                    <i class="fa-solid fa-ellipsis" style="float: right; margin-top: 5px;"></i>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="row" style="position: fixed; max-width: 19rem; margin-left: -3rem;">
-                                <div class="col-12" id="SuggestFollowing">
-                                    <div class="container"
-                                        style="height: 50rem; width: 120%; margin-left: -3rem; border: 1px solid var(--main_color-2); border-radius: 10px;">
-                                        <div class="row">
+                                            <div class="col-12 column-input">
+                                                <textarea class="card-text" name="content" id="inpDeskripsi" placeholder="Deskripsi postingan"></textarea>
+                                                <label for="btnUbahProfile">
+                                                    <img id="isiGambar"
+                                                        src="{{ asset('images/post/no-images.png') }}"
+                                                        alt="Pilih gambar" style="width: 100%;">
+                                                    <input type="file" name="image" id="btnUbahProfile">
+                                                </label>
+                                                <hr
+                                                    style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">
+                                            </div>
                                             <div class="col-12">
-                                                <h1 id="header-suggested">
-                                                    Siapa yang harus diikuti
-                                                </h1>
-                                                <p id="child-header-suggested">
-                                                    Orang yang mungkin anda kenal
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-- Foreach Suggest Following dari sini -->
-                                        @foreach ($suggested as $people)
-                                        <div class="row" style="max-height: 7rem; margin-bottom: 0.7rem;">
-                                            <div class="row">
-                                                <a href="{{ route('seeProfile',['people' => $people->id]) }}"
-                                                    style="text-decoration: none; display:flex; color: black;">
-                                                    <div class="col-1">
-                                                        <i><img src="{{ asset('images/profile/'.$people->image) }}" alt="gambar postingan"
-                                                                style="width: 2.8rem; aspect-ratio: 1/1; background-color: white; border-radius: 50%;"></i>
-                                                    </div>
-                                                    <div class="col-9" style="margin-top: 4px;">
-                                                        <div class="container" style="margin-left: 1rem;">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p style="font-weight: 700; margin-bottom: 2px; color: white; font-size: 0.8rem;"
-                                                                        class="suggestedFollowing">
-                                                                        {{ $people->username }}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p style="font-weight: 400; margin-top: -2px; color: white; font-size: 0.5rem;"
-                                                                        class="suggestedFollowing">
-                                                                        {{ $people->name }}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <form action="{{ route('follow',['people' => $people->id]) }}" method="POST">
-                                                            <p>
-                                                                <input type="submit" class="btn" name="follow"
-                                                                    id="follow" value="Follow"
-                                                                    style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color); ">
-                                                            </p>
-                                                        </form>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                                <button class="btn" type="submit" name="posting"
+                                                    id="post">Posting</button>
 
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <p
-                                                    style="font-size:0.6rem; width: 100%; color: grey; margin-top: 1rem;">
-                                                    Terms of Service
-                                                    Privacy Policy
-                                                    Cookie Policy
-                                                    Accessibility
-                                                    Ads info
-                                                    More
-                                                    © 2024 Amanah Corp.
-                                                </p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </body>
-    
-    @guest
-        
+        </div>
+    </section>
+</body>
+
+@guest
+
     <footer>
         <div class="container">
             <div class="row">
@@ -916,7 +820,7 @@
     </footer>
     </div>
 
-    @endguest
+@endguest
 
 </html>
 <script>
@@ -942,12 +846,12 @@
     // let kategori = $(this).html();
     // $('#namaKategori').html(kategori);
 
-    $('.pilihKategoriPostingan').on('click', function () {
+    $('.pilihKategoriPostingan').on('click', function() {
         $('.pilihKategoriPostingan').removeClass('active');
         $(this).addClass('active');
     });
 
-    $('.sidebarActive').on('click', function () {
+    $('.sidebarActive').on('click', function() {
         $('.sidebarActive').removeClass('sidebarActive').$(this).addClass('sidebarActive');
     })
 

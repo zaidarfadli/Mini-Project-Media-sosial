@@ -230,7 +230,7 @@
     }
 
     .logoHomepage {
-        margin-left: -15rem;
+        margin-left: -5rem;
     }
 
     .sidebar.active~.home-section {
@@ -628,22 +628,34 @@
     <body style="background-color: black;">
         <div class="sidebar">
             <div class="detail_logo">
-                <a href="profile.php" style="display: flex;">
-                    <i><img src="images/smk1.jpg" alt="gambar postingan"></i>
+                <a href="{{ route('myProfile') }}" style="display: flex;">
+                @auth
+                    <i><img src="{{ asset('images/profile/' . $user->image) }}" alt="gambar postingan"></i>
                     <div class="container-fluid rowUsername">
                         <div class="row">
-                            <span id="usernameProfileAuthor">Naufal Fadhilah F</span>
+                            <span id="usernameProfileAuthor">{{ $user->username }}</span>
                         </div>
                         <div class="row">
-                            <span id="namaProfileAuthor">Naufal Fadhilah F</span>
+                            <span id="namaProfileAuthor">{{ $user->name }}</span>
                         </div>
                     </div>
-                </a>
+                @else
+                    <i><img src="{{ asset('images/logo-medsos.png') }}" alt="gambar foto profile"></i>
+                    <div class="container-fluid rowUsername">
+                        <div class="row">
+                            <span id="usernameProfileAuthor" style="margin-left: 0.2rem">Silahkan Login Dahulu</span>
+                        </div>
+                        <div class="row">
+                            <span id="namaProfileAuthor" style="margin-left: 0.2rem">Ayo Login</span>
+                        </div>
+                    </div>
+                @endauth
+            </a>
             </div>
             <hr
                 style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
             <ul class="link-navigasi">
-            <li class="sidebarActive">
+            <li>
                 <a href="{{ route('home') }}">
                     <i class="fa-solid fa-house aktif"></i>
                     <p class="links_name" id="beranda">Beranda</p>
@@ -669,7 +681,7 @@
                     <p class="links_name" id="posting">Posting</p>
                 </a>
             </li>
-            <li>
+            <li class="sidebarActive">
                 <a href="{{ route('myBookmark') }}">
                     <i class="fa-solid fa-bookmark"></i>
                     <p class="links_name" id="bookmarks">Bookmarks</p>

@@ -24,7 +24,7 @@
     }
 
     * {
-        /* border: 1px solid white; */
+        /* border: 1px solid black; */
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -271,11 +271,21 @@
     }
 
     #feeds {
-        margin: 0rem -0.2rem 0rem 1rem;
+        margin: 2rem -0.2rem 0rem 1rem;
     }
 
     #feeds .col-4 {
         margin: 0px -10px 4px -10px;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        position: relative;
+        width: calc(100% - 240px);
+        left: 150px;
+        padding: 2.5rem 5rem 0rem 5rem;
+        transition: all 0.5s ease;
     }
 
     .home-section #countProfile {
@@ -634,6 +644,29 @@
         padding: 10px 20px 10px 20px;
         border-radius: 15px;
     }
+    @keyframes animasiModalUp {
+        from{
+            transform: translateY(-20rem);
+        } to{
+            transform: translateY(0rem);
+        }
+    }
+    @keyframes animasiModalDown {
+        from{
+            transform: translateY(0rem);
+        } to{
+            transform: translateY(-20rem);
+        }
+    }
+    .animasiModalUp{
+        animation: animasiModalUp 0.5s ease;
+    }
+    .animasiModalDown{
+        animation: animasiModalDown 0.5s ease;
+    }
+    .fa-xmark, .fa-gear:hover{
+        cursor: pointer;
+    }
 </style>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -687,177 +720,180 @@
         </div>
         <hr
             style="color: var(--main_color); opacity: 0.3; width: 100%; margin-top: -0px; height: 1.6px; justify-content: center;">
-            <ul class="link-navigasi">
-                <li class="sidebarActive">
-                    <a href="{{ route('home') }}">
-                        <i class="fa-solid fa-house aktif"></i>
-                        <p class="links_name" id="beranda">Beranda</p>
+        <ul class="link-navigasi">
+            <li class="sidebarActive">
+                <a href="{{ route('home') }}">
+                    <i class="fa-solid fa-house aktif"></i>
+                    <p class="links_name" id="beranda">Beranda</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('explorePeople') }}">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p class="links_name" id="explore">Explore</p>
+                </a>
+            </li>
+            @auth
+                <li>
+                    <a href="{{ route('myNotifikasi') }}">
+                        <i class="fa-solid fa-bell"></i>
+                        <p class="links_name" id="notifikasi">Notifikasi</p>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('explorePeople') }}">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <p class="links_name" id="explore">Explore</p>
+                    <a href="{{ route('formPost') }}">
+                        <i class="fa-solid fa-plus"></i>
+                        <p class="links_name" id="posting">Posting</p>
                     </a>
                 </li>
-                @auth
-                    <li>
-                        <a href="{{ route('myNotifikasi') }}">
-                            <i class="fa-solid fa-bell"></i>
-                            <p class="links_name" id="notifikasi">Notifikasi</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('formPost') }}">
-                            <i class="fa-solid fa-plus"></i>
-                            <p class="links_name" id="posting">Posting</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('myBookmark') }}">
-                            <i class="fa-solid fa-bookmark"></i>
-                            <p class="links_name" id="bookmarks">Bookmarks</p>
-                        </a>
-                    </li>
-                @endauth
-                @auth
-                    <li class="log_out">
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button type="submit" class="d-flex">
-                                <i class="fa-solid fa-arrow-left"></i>
-                                <p class="links_name">Log out</p>
-                            </button>
-                        </form>
-                    </li>
-                @else
-                    <li class="login">
-                        <a href="{{ route('login') }}">
-                            <i class="fa-solid fa-arrow-left"></i>
-                            <p class="links_name">Login</p>
-                        </a>
-                    </li>
-                @endauth
-
-                <li class="SidebarBottomText">
-                    <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
-                        Terms of Service
-                        Privacy Policy
-                        Cookie Policy
-                        Accessibility
-                        Ads info
-                        More
-                        © 2024 Sosmed
-                    </p>
+                <li>
+                    <a href="{{ route('myBookmark') }}">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="links_name" id="bookmarks">Bookmarks</p>
+                    </a>
                 </li>
-            </ul>
+            @endauth
+            @auth
+                <li class="log_out">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="d-flex">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <p class="links_name">Log out</p>
+                        </button>
+                    </form>
+                </li>
+            @else
+                <li class="login">
+                    <a href="{{ route('login') }}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <p class="links_name">Login</p>
+                    </a>
+                </li>
+            @endauth
+
+            <li class="SidebarBottomText">
+                <p style="font-size: 0.48rem; width: 100%; color: grey; margin-top: 1rem;">
+                    Terms of Service
+                    Privacy Policy
+                    Cookie Policy
+                    Accessibility
+                    Ads info
+                    More
+                    © 2024 Sosmed
+                </p>
+            </li>
+        </ul>
     </div>
     <section class="home-section">
-        <div class="container-fluid nav" style="background-color: black;">
-            <div class="row">
-                <div class="col-12">
-                    <div class="container container-lg">
-                        <div class="row">
-                            <div class="col-xl-3">
-                                <div class="col-12 fotoProfile text-center">
-                                    <img src="{{ asset('images/profile/' . $people->image) }}" alt="LogoProfile">
-                                </div>
-                            </div>
-                            <div class="col-xl-9">
-                                <div class="row d-flex">
-                                    <div class="col-12 d-flex">
-                                        <div class="col-8 d-flex">
-                                            <p id="usernameProfile">{{ $people->username }}</p>
-                                            @if ($people->is_me)
-                                            {{-- kosongin saja --}}
-                                            @else
-                                                <form action="{{ route('follow', ['people' => $people->id]) }}"
-                                                    method="post">
-                                                    @csrf
-                                                         <button type="submit" class="btn"
-                                                            style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
-                                                </form>
-                                            @endif
-                                        </div>
-                                        <div class="col-4">
-                                            @if ($people->is_me)
-                                                <a href="{{ route('formConfirmPassword') }}">
-                                                    <i class="fa-solid fa-gear btn-edit-akun"></i>
-                                                </a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 d-flex" class="dataInformation">
-                                        <a href="" id="wrapAnker">
-                                            <p id="countProfile">{{ $people->postCount() }}</p>
-                                            <p id="InformationProfile">Posts</p>
-                                        </a>
-                                        <a href="{{ route('seeFollower', ['people' => $people->id]) }}" id="wrapAnker">
-                                            <p id="countProfile"> {{ $people->followerCount() }}</p>
-                                            <p id="InformationProfile">Followers</p>
-                                        </a>
-                                        <a href="{{ route('seeFollowing', ['people' => $people->id]) }}" id="wrapAnker">
-                                            <p id="countProfile"> {{ $people->followingCount() }}</p>
-                                            <p id="InformationProfile">Following</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p id="namaLengkapProfile">{{ $people->name}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        {{-- bio masih belum responsive --}}
-                                        <p id="bioProfile">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Expedita placeat distinctio perspiciatis aspernatur nulla
-                                            praesentium et quas natus tempora adipisci.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <hr style="margin-right: 15px;">
-                                </div>
-                            </div>
+        <div class="container-fluid nav" style="background-color: black; max-width: 55rem;">
+            <div class="container modalEdit"
+                style="margin:auto; width: 50rem; background-color: white; z-index: 999; padding: 1.5rem; position:fixed;">
+                @if (session()->has('failed'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('failed') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+                    </div>
+                @endif
+                <form action="{{ route('confirmPassword') }}" method="post">
+                    @csrf
+                    <div class="col-12 d-flex justify-content-between align-items-center">
+                        <h1>Password</h1>
+                        <i class="fa-solid fa-xmark btn-edit-akun" style="font-size: 1.5rem;"></i>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label">password</label>
+                        <input type="password" name="password" class="form-control" id="form-password"
+                            placeholder="Masukan Password">
+                    </div>
+
+                    <button class="btn btn-primary w-100" type="submit">Konfirmasi itu
+                        anda</button>
+                </form>
+            </div>
+            <div class="col-md-3 col-12">
+                <div class="col-12 fotoProfile text-center">
+                    <img src="{{ asset('images/profile/' . $people->image) }}" alt="LogoProfile">
+                </div>
+            </div>
+            <div class="col-md-9 col-12">
+                <div class="row d-flex">
+                    <div class="col-12 d-flex">
+                        <div class="col-8 d-flex">
+                            <p id="usernameProfile">{{ $people->username }}</p>
+                            @if ($people->is_me)
+                                {{-- kosongin saja --}}
+                            @else
+                                <form action="{{ route('follow', ['people' => $people->id]) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn"
+                                        style="font-weight: 700; font-size: 0.7rem; color: var(--main_color-3); margin-left: 3px;">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
+                                </form>
+                            @endif
                         </div>
-                        <div class="row" id="feeds">
-                            @foreach ($people->post as $post)
-                                <div class="col-4">
-                                    <a href="{{ route('seePost', ['post' => $post->id]) }}">
-                                        <img style="aspect-ratio: 1/1; width: 100%;" src="{{ asset('images/post/'.$post->image) }}"
-                                            alt="Image Postingan Feeds">
-                                    </a>
-                                </div>
-                            @endforeach
+                        <div class="col-4">
+                            @if ($people->is_me)
+                                <i class="fa-solid fa-gear btn-edit-akun"></i>
+                            @endif
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
                 <div class="row">
-                    <div class="col-12 d-flex justify-content-center footer">
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
-                        <p>Naufal</p>
-                        <p>Fadhilah</p>
-                        <p>Fitrah</p>
+                    <div class="col-12 d-flex" class="dataInformation">
+                        <a href="" id="wrapAnker">
+                            <p id="countProfile">{{ $people->postCount() }}</p>
+                            <p id="InformationProfile">Posts</p>
+                        </a>
+                        <a href="{{ route('seeFollower', ['people' => $people->id]) }}" id="wrapAnker">
+                            <p id="countProfile"> {{ $people->followerCount() }}</p>
+                            <p id="InformationProfile">Followers</p>
+                        </a>
+                        <a href="{{ route('seeFollowing', ['people' => $people->id]) }}" id="wrapAnker">
+                            <p id="countProfile"> {{ $people->followingCount() }}</p>
+                            <p id="InformationProfile">Following</p>
+                        </a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 d-lex justify-content-center footer">
-                        <p id="copyright">Copyright 2023</p>
+                    <div class="col-12">
+                        <p id="namaLengkapProfile">{{ $people->name }}</p>
+                        <p id="bioProfile">Lorem, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo eius
+                            ut asperiores, sint ab dicta saepe laboriosam soluta quae hic..</p>
                     </div>
                 </div>
             </div>
+            <div class="row" id="feeds">
+                @foreach ($people->post as $post)
+                    <div class="col-4">
+                        <a href="{{ route('seePost', ['post' => $post->id]) }}">
+                            <img style="aspect-ratio: 1/1; width: 100%;"
+                                src="{{ asset('images/post/' . $post->image) }}" alt="Image Postingan Feeds">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </section>
+    <div class="container footer">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center ">
+                <p>Naufal</p>
+                <p>Fadhilah</p>
+                <p>Fitrah</p>
+                <p>Naufal</p>
+                <p>Fadhilah</p>
+                <p>Fitrah</p>
+                <p>Naufal</p>
+                <p>Fadhilah</p>
+                <p>Fitrah</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center ">
+                <p id="copyright">Copyright 2023</p>
+            </div>
+        </div>
+    </div>
 </body>
 @guest
     <footer>
@@ -878,6 +914,18 @@
 
 </html>
 <script>
+    $(document).ready(() => {
+        $('.modalEdit').hide();
+        $('.fa-gear').on('click', () => {
+            $('.modalEdit').show().addClass('animasiModalUp')
+        })
+        $('.fa-xmark').on('click', () => {
+            $('.modalEdit').removeClass('animasiModalUp').addClass('animasiModalDown'),
+            setTimeout(() => {
+                $('.modalEdit').removeClass('animasiModalDown').hide()
+            }, 400);
+        })
+    })
     $('.pilihKategoriPostingan').on('click', function() {
         $('.pilihKategoriPostingan').removeClass('active');
         $(this).addClass('active');

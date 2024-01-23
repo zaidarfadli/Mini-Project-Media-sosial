@@ -46,13 +46,6 @@ class UserController extends Controller
     }
 
 
-    public function formConfirmPassword()
-    {
-
-        return view('formConfirm');
-    }
-
-
     public function confirmPassword(Request $request)
     {
         $inputPassword = $request->input('password');

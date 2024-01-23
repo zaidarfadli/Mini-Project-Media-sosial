@@ -867,10 +867,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="row" style="position: fixed; max-width: 20rem; margin-left: -3rem;">
+                        <div class="row" style="position: fixed; max-width: 18rem; margin-left: -3rem;">
                             <div class="col-12" id="SuggestFollowing">
                                 <div class="container"
-                                    style="height: 50rem; width: 120%; margin-left: -3rem; border: 1px solid var(--main_color-2); border-radius: 10px;">
+                                    style="height: 50rem; width: 120%; margin-left: -2rem; border: 1px solid var(--main_color-2); border-radius: 10px;">
                                     <div class="row">
                                         <div class="col-12">
                                             <h1 id="header-suggested">
@@ -881,9 +881,9 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <!-- Foreach Suggest Following dari sini -->
-                                    @foreach ($suggested as $people)
-                                        <div class="row" style="max-height: 7rem; margin-bottom: 0.7rem;">
+                                    <div class="row"
+                                        style="max-height: 16rem; margin-bottom: 0.7rem; overflow: auto;">
+                                        @foreach ($suggested as $people)
                                             <div class="row">
                                                 <a href="{{ route('seeProfile', ['people' => $people->id]) }}"
                                                     style="text-decoration: none; display:flex; color: black;">
@@ -918,26 +918,20 @@
                                                             method="POST">
                                                             @csrf
                                                             <p>
-                                                                @if ($people->is_follow)
-                                                                    <button type="submit" class="btn"
-                                                                        style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); margin-left: -5px; ">Unfollow</button>
-                                                                @else
-                                                                    <button type="submit" class="btn"
-                                                                        style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); ">Follow</button>
-                                                                @endif
-
-                                                                {{-- <input type="submit" class="btn" name="follow" id="follow" value="Follow" > --}}
+                                                                <button type="submit" class="btn"
+                                                                    style="font-weight: 700; margin-top: 7px; font-size: 0.7rem; color: var(--main_color-3); margin-left: -8px; ">{{ $people->is_follow ? 'Unfollow' : 'Follow' }}</button>
                                                             </p>
                                                         </form>
                                                     </div>
                                                 </a>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                     <div class="row">
-                                        <div class="col-12" style="margin-top: -15px;">
+                                        <div class="col-12" style="margin-top: -25px;">
                                             <hr style="color: white;">
-                                            <p style="font-size:0.6rem; width: 100%; color: grey; margin-top: 1rem;">
+                                            <p
+                                                style="font-size:0.6rem; width: 100%; color: grey; margin-top: -0.5rem;">
                                                 Terms of Service
                                                 Privacy Policy
                                                 Cookie Policy

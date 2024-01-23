@@ -2092,8 +2092,8 @@
 
 </html>
 <script>
-    function backToHistory() {
-        window.history.back();
+    historyBack () => {
+        window.history.back()
     }
     $('.pilihKategoriFollow').on('click', function() {
         $('.pilihKategoriFollow').removeClass('active');
