@@ -73,7 +73,7 @@
     }
 
     .konten-home .card {
-        width <= 30rem;
+        width <=30rem;
         color: white;
         background-color: black;
         border: 1.8px solid rgba(220, 220, 220, 0.3);
@@ -372,7 +372,7 @@
         margin-top: 0.2rem;
     }
 
-    @media (width <= 991px) {
+    @media (width <=991px) {
         .konten-postingan .card-postingan {
             margin-left: 0rem;
         }
@@ -443,14 +443,14 @@
         }
     }
 
-    @media (width <= 576px) {
+    @media (width <=576px) {
 
         footer .row {
             margin-left: 0.5rem;
         }
     }
 
-    @media (width <= 560px) {
+    @media (width <=560px) {
         .card-postingan {
             width: 110%;
             transition: all 0.5s ease;
@@ -468,7 +468,7 @@
         }
     }
 
-    @media(width <= 462px) {
+    @media(width <=462px) {
         .card-postingan {
             width: 120%;
             transition: all 0.5s ease;
@@ -529,7 +529,7 @@
         }
     }
 
-    @media (width <= 400px) {
+    @media (width <=400px) {
         .card-postingan {
             width: 135%;
             transition: all 0.5s ease;
@@ -753,6 +753,7 @@
 
     .card-postingan #isi-komentar {
         overflow: auto;
+        overflow-x: hidden;
         max-height: 50%;
         margin-bottom: 5px;
     }
@@ -769,9 +770,10 @@
 
     #isi-komentar #reply {
         float: right;
-        margin: -10px 0px 10px 0px;
         color: var(--main_color-3);
         font-size: 0.7rem;
+        margin-right: -2rem;
+        cursor: pointer;
     }
 
     .input-komentar #btnKirimKomentar {
@@ -967,6 +969,9 @@
         aspect-ratio: 1/1;
     }
 
+    .footer{
+        max-width: 50rem;
+    }
     .footer p {
         font-size: 0.6rem;
         color: white;
@@ -975,6 +980,22 @@
 
     .footer #copyright {
         margin: 20px 0px 20px 0px;
+    }
+
+    .row .col-12 #replyComment {
+        border: unset;
+        border-bottom: 1.8px solid rgba(220, 220, 220, 0.3);
+        color: var(--text-color);
+        background-color: unset;
+        outline: unset;
+        width: 100%;
+        color: var(--text-color);
+        font-size: 0.7rem;
+        padding-bottom: 5px;
+    }
+
+    .row .col-12 #replyComment:focus {
+        outline: unset
     }
 </style>
 <!DOCTYPE html>
@@ -1141,7 +1162,7 @@
                                                 alt="gambar postingan">
                                         </div>
                                     </div>
-                                    <div class="col-md-5" id="column-komentar-postingan">
+                                    <div class="col-md-5" id="column-komentar-postingan" style="overflow-x: hidden; max-height: 52rem;" >
                                         <div class="row" id="header-komentar">
                                             <div class="col-12">
                                                 <p>komentar</p>
@@ -1149,7 +1170,6 @@
                                             </div>
                                         </div>
                                         <div class="row" id="isi-komentar">
-
                                             @if (isset($message))
                                                 <p
                                                     style="text-align: left; color: var(--text-color); margin-left: -10px; opacity: 0.7; font-size: 0.8rem;">
@@ -1165,14 +1185,52 @@
                                                             </div>
                                                         </div>
                                                         <p id="komentar">{{ $comment->comment }}</p>
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <p id="reply">Reply</p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <form action="" style="display: flex;">
+                                                                <button
+                                                                    style="background: unset; border: unset; padding: 5px;"
+                                                                    type="submit"><i
+                                                                        style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
+                                                                        class="fa-regular fa-thumbs-up"
+                                                                        id="btnLikes"></i></button>
+                                                                <p
+                                                                    style="font-size: 0.7rem; margin: 0px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
+                                                                    20 Likes</p>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p id="reply">Reply</p>
+                                                        </div>
+                                                        <div class="row" id="balasKomentar"
+                                                            style="display: none;">
+                                                            <div class="col-12" style="margin-bottom: 0.8rem;">
+                                                                <form action="" style="display: flex;">
+                                                                    <input type="text" name="repyComment"
+                                                                        placeholder="Balas komentar {{ $comment->user->username }}"
+                                                                        id="replyComment">
+                                                                    <button type="submit"
+                                                                        style="color: var(--main_color-3); font-size: 0.7rem; padding: 5px 15px 5px 15px; background-color: unset; border: unset;">Kirim</button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-12"
+                                                            style="max-width: 20rem; margin-left: 2rem;">
+                                                            <div class="row" id="profile-komentar">
+                                                                <div class="col-12 d-flex">
+                                                                    <img src="{{ asset('images/profile/' . $comment->user->image) }}"
+                                                                        alt="ImageProfilKomentar">
+                                                                    <p>{{ $comment->user->username }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <p id="komentar"><span style="font-weight: 700;">{{ $comment->user->username }} </span>{{ $comment->comment }}</p>
+                                                        </div>
+                                                    </div>
+                                            <hr style="width: 100%; color: white; margin-left: 22px;">
                                                 @endforeach
-
                                             @endif
                                         </div>
                                         <div class="row justify-content-center">
@@ -1318,7 +1376,7 @@
         </div>
         <div class="container-fluid footer">
             <div class="row d-flex">
-                <div class="col-sm-1 offset-sm-2"> <!-- Menambahkan offset-md-4 untuk membuat jarak sebelumnya -->
+                <div class="col-sm-1 offset-sm-2">
                     <p>lorem</p>
                 </div>
                 <div class="col-sm-1">
@@ -1372,6 +1430,10 @@
 </html>
 <script>
     $(document).ready(function() {
+        $('#balasKomentar').hide();
+        $('#reply').on('click', function() {
+            $('#balasKomentar').toggle();
+        });
         $('#tombol-muncul').on('click', function() {
             $('.coverAll').toggle();
             $('.wrapperModal').toggle();

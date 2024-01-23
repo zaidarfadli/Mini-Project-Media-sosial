@@ -99,12 +99,13 @@
     .card .card-text {
         width: 100%;
         height: 2rem;
+        padding-top: 3px;
         background-color: black;
+        outline: unset;
         border: unset;
         border-radius: 5px;
         font-size: 0.8rem;
         color: var(--text-color);
-        margin-bottom: 0.4rem;
     }
 
     .card #post {
