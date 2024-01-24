@@ -2067,24 +2067,11 @@
         </div>
     </section>
 </body>
-<!-- <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 column-text-footer">
-                <p id="text-1">Jangan ketinggalan berita terbaru</p>
-                <p id="text-2">login, untuk pengalaman yang baru</p>
-            </div>
-            <div class="col-lg-4 col-12 d-flex column-btn">
-                <a href="login" class="btn btn-login-footer">Login</a>
-                <a href="login" class="btn btn-edit-akun">Register</a>
-            </div>
-        </div>
-</footer> -->
 </div>
 
 </html>
 <script>
-    historyBack() => {
+    historyBack= () => {
         window.history.back()
     }
     $('.pilihKategoriFollow').on('click', function() {

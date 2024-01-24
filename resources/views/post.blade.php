@@ -337,7 +337,7 @@
 
     .saveToBookmark {
         float: right;
-        margin-right: -1rem;
+        margin-right: -0.3rem;
         font-size: 1.3rem;
         color: var(--main_color);
         margin-top: -3rem;
@@ -703,10 +703,11 @@
     }
 
     #teks-deskripsi-postingan {
+        word-wrap: break-word;
         color: var(--text-color);
         letter-spacing: 0.3;
         font-size: 0.7rem;
-        margin: 1rem 0rem 1rem 0rem
+        margin: 1rem 0rem;
     }
 
     .input-komentar .saveToBookmark {
@@ -728,6 +729,10 @@
         font-weight: 700;
         margin: 5px 0px 0px -10px;
         font-size: 1rem;
+    }
+
+    .card-postingan #header-komentar {
+        justify-content: space-between;
     }
 
     .card-postingan #column-konten-postingan {
@@ -1143,6 +1148,14 @@
                         <div class="container">
                             <div class="col-12">
                                 <div class="row card-postingan">
+                                    <div class="col-12">
+                                        <form action="">
+                                            <button type="submit"
+                                                style="background-color: unset; border:none; float: right; color: red; opacity: 0.8; margin-right: -1.4rem;">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                     <div class="col-md-7" id="column-konten-postingan">
                                         <div class="row">
                                             <div class="col-12 profile-author">
@@ -1165,7 +1178,7 @@
                                     <div class="col-md-5" id="column-komentar-postingan"
                                         style="overflow-x: hidden; max-height: 52rem;">
                                         <div class="row" id="header-komentar">
-                                            <div class="col-12">
+                                            <div class="col-12 d-flex">
                                                 <p>komentar</p>
                                                 <hr style="margin-top: -15px; color: var(--main_color-3);">
                                             </div>
@@ -1190,35 +1203,39 @@
                                                         </div>
                                                         <div class="row idForm">
                                                             <div class="col-6">
-                                                                <form action="{{ route('likeComment',['post' => $post->id,'comment'=> $comment->id]) }}" style="display: flex;" method="post">
+                                                                <form
+                                                                    action="{{ route('likeComment', ['post' => $post->id, 'comment' => $comment->id]) }}"
+                                                                    style="display: flex;" method="post">
                                                                     @csrf
                                                                     @if ($comment->isLikedCommentByUser())
-                                                                    <button
-                                                                    style="background: unset; border: unset; padding: 5px;"
-                                                                    type="submit"><i
-                                                                        style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
-                                                                        class="fa-solid fa-thumbs-up"
-                                                                        id="btnLikes"></i></button>
+                                                                        <button
+                                                                            style="background: unset; border: unset; padding: 5px;"
+                                                                            type="submit"><i
+                                                                                style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
+                                                                                class="fa-solid fa-thumbs-up"
+                                                                                id="btnLikes"></i></button>
                                                                     @else
-                                                                    <button
-                                                                    style="background: unset; border: unset; padding: 5px;"
-                                                                    type="submit"><i
-                                                                        style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
-                                                                        class="fa-regular fa-thumbs-up"
-                                                                        id="btnLikes"></i></button>
+                                                                        <button
+                                                                            style="background: unset; border: unset; padding: 5px;"
+                                                                            type="submit"><i
+                                                                                style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
+                                                                                class="fa-regular fa-thumbs-up"
+                                                                                id="btnLikes"></i></button>
                                                                     @endif
-                                                                    
-                                                                    <p style="font-size: 0.7rem; margin: 0px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
+
+                                                                    <p
+                                                                        style="font-size: 0.7rem; margin: 0px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
                                                                         {{ $comment->likes_count }} Likes</p>
                                                                 </form>
                                                             </div>
                                                             <div class="col-6">
                                                                 <p class="reply" id="{{ $comment->id }}">Reply</p>
                                                             </div>
-                                                            <div class="row balasKomentar"
-                                                                style="display: none;">
+                                                            <div class="row balasKomentar" style="display: none;">
                                                                 <div class="col-12" style="margin-bottom: 0.8rem;">
-                                                                    <form action="{{ route('sendReply',['post' => $post->id ,'comment' => $comment->id]) }}" style="display: flex;" method="post">
+                                                                    <form
+                                                                        action="{{ route('sendReply', ['post' => $post->id, 'comment' => $comment->id]) }}"
+                                                                        style="display: flex;" method="post">
                                                                         @csrf
                                                                         <input type="text" name="reply"
                                                                             placeholder="Balas komentar {{ $comment->user->username }}"
@@ -1231,17 +1248,17 @@
                                                         </div>
                                                         <div class="row">
                                                             @foreach ($comment->reply as $reply)
-                                                            <div class="col-12"
-                                                                style="max-width: 20rem; margin-left: 2rem;">
-                                                                <div class="row" id="profile-komentar">
-                                                                    <div class="col-12 d-flex">
-                                                                        <img src="{{ asset('images/profile/' . $reply->user->image) }}"
-                                                                            alt="ImageProfilKomentar">
-                                                                        <p>{{ $reply->user->username }}</p>
+                                                                <div class="col-12"
+                                                                    style="max-width: 20rem; margin-left: 2rem;">
+                                                                    <div class="row" id="profile-komentar">
+                                                                        <div class="col-12 d-flex">
+                                                                            <img src="{{ asset('images/profile/' . $reply->user->image) }}"
+                                                                                alt="ImageProfilKomentar">
+                                                                            <p>{{ $reply->user->username }}</p>
+                                                                        </div>
                                                                     </div>
+                                                                    <p id="komentar">{{ $reply->reply }}</p>
                                                                 </div>
-                                                                <p id="komentar">{{ $reply->reply }}</p>
-                                                            </div>
                                                             @endforeach
                                                         </div>
                                                     </span>

@@ -725,7 +725,6 @@
                 </a>
             </li>
             @auth
-
                 <li>
                     <a href="{{ route('myNotifikasi') }}">
                         <i class="fa-solid fa-bell"></i>
@@ -870,8 +869,8 @@
                                                                 </div>
                                                                 <p class="card-text">{{ $post->content }}</p>
                                                                 <img style="border-radius: 8px;"
-                                                                    src="{{ asset('images/post/'.$post->image) }}" class="card-img-top"
-                                                                    alt="Gambar Postingan">
+                                                                    src="{{ asset('images/post/' . $post->image) }}"
+                                                                    class="card-img-top" alt="Gambar Postingan">
                                                                 <hr
                                                                     style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">
                                                                 <div class="container fiturPostingan d-flex"
@@ -1012,6 +1011,10 @@
 
 </html>
 <script>
+    $('.sidebarActive').on('click', function() {
+        $('.sidebarActive').removeClass('sidebarActive').$(this).addClass('sidebarActive');
+    })
+    
     $('.bookmarkPost').on('click', function() {
         $(this).toggleClass('animationBookmark');
     });
@@ -1022,7 +1025,7 @@
         $('.pilihKategoriPostingan').removeClass('active');
         $(this).addClass('active');
     });
-
+    
     var currentUrl = window.location.href
     const elements1 = $('.KategoriFollowing')
     const elements2 = $('.KategoriFollowers')
@@ -1030,9 +1033,14 @@
         elements1.addClass("active")
     } else if (currentUrl.includes("home")) {
         elements2.addClass("active")
+    } else if (currentUrl.includes("")){
+        elements2.addClass('active')
     }
 
-    $('.sidebarActive').on('click', function() {
-        $('.sidebarActive').removeClass('sidebarActive').$(this).addClass('sidebarActive');
-    })
+    const image = document.getElementById("isiGambar");
+    const input = document.getElementById("btnUbahProfile");
+
+    input.addEventListener("change", () => {
+        image.src = URL.createObjectURL(input.files[0]);
+    });
 </script>

@@ -825,28 +825,6 @@
 
 </html>
 <script>
-    // let sidebar = document.querySelector(".sidebar");
-    // let sidebarBtn = document.querySelector(".sidebarBtn");
-    // sidebarBtn.onclick = function () {
-    //     sidebar.classList.toggle("active");
-    //     if (sidebar.classList.contains("active")) {
-    //         sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-    //     } else
-    //         sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    // }   
-    // $('.nav-link').on('click', function () {
-    // $('.nav-link').removeClass('active');
-    // $(this).addClass('active');
-
-    // let kategori = $(this).html();
-    // $('#namaKategori').html(kategori);
-    // $('.nav-link').on('click', function () {
-    // $('.nav-link').removeClass('active');
-    // $(this).addClass('active');
-
-    // let kategori = $(this).html();
-    // $('#namaKategori').html(kategori);
-
     $('.pilihKategoriPostingan').on('click', function() {
         $('.pilihKategoriPostingan').removeClass('active');
         $(this).addClass('active');
