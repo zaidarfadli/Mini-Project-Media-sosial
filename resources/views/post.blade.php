@@ -1017,6 +1017,22 @@
     .row .col-12 #replyComment:focus {
         outline: unset
     }
+
+    @keyframes animationBerhasil {
+        0% {
+            transform: translateY(-5rem);
+            opacity: 0.5;
+        }
+
+        100% {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
+
+    .alertBerhasil {
+        animation: animationBerhasil 1s ease-out;
+    }
 </style>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -1179,7 +1195,8 @@
                                     <div class="col-md-7" id="column-konten-postingan">
                                         <div class="row">
                                             <div class="col-12 profile-author">
-                                                <img src="{{ asset('images/profile/'.$post->user->image)  }}" alt="ImageProfilePostingan">
+                                                <img src="{{ asset('images/profile/' . $post->user->image) }}"
+                                                    alt="ImageProfilePostingan">
                                                 <p>{{ $post->user->username }}</p>
                                             </div>
                                         </div>
@@ -1195,10 +1212,14 @@
                                                 alt="gambar postingan">
                                         </div>
                                     </div>
-                                    <div class="col-md-5" id="column-komentar-postingan"
+                                    <div class="col-md-5" class="column-komentar-postingan"
                                         style="overflow-x: hidden; max-height: 52rem;">
                                         @if (session()->has('message'))
-                                            <p class="text-light">{{ session('message') }}</p>
+                                            <div class="row PesanBerhasil"
+                                                style="display: none; background-color: var(--main_color-3); border-radius: 5px;">
+                                                <p style="color: white; margin-top: 1rem; font-size: 0.7rem;">
+                                                    {{ session('message') }}</p>
+                                            </div>
                                         @endif
                                         <div class="row" id="header-komentar">
                                             <div class="col-12 d-flex">
@@ -1296,18 +1317,17 @@
                                                                     <p id="komentar">{{ $reply->reply }}</p>
                                                                 </div>
                                                                 @if ($reply->my_reply)
-                                                                
-                                                                <div class="col-12">
-                                                                    <form style="float: right; margin-top: -15px;"
-                                                                        action="{{ route('deleteReply', ['comment' => $comment->id,'reply'=> $reply->id]) }}"
-                                                                        method="post" class="ml-auto">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit">
-                                                                            <p class="hapus">Hapus</p>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
+                                                                    <div class="col-12">
+                                                                        <form style="float: right; margin-top: -15px;"
+                                                                            action="{{ route('deleteReply', ['comment' => $comment->id, 'reply' => $reply->id]) }}"
+                                                                            method="post" class="ml-auto">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit">
+                                                                                <p class="hapus">Hapus</p>
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
                                                                 @endif
                                                             @endforeach
                                                         </div>
@@ -1513,11 +1533,19 @@
 </html>
 <script>
     $(document).ready(function() {
+        //Toggle untuk menampilkan input type balasan komentar
         $('.balasKomentar').hide();
         $('.reply').on('click', function() {
             let idParent = $(this).attr('id')
             $('#' + idParent + ' .idForm .balasKomentar').toggle();
         });
+        //Timeout yang digunakan untuk mengatur timeout dari alert hapus komentar
+        $('.PesanBerhasil').show()
+        $('.PesanBerhasil').addClass('alertBerhasil');
+        setTimeout(() => {
+            $('.PesanBerhasil').hide();
+        }, 4000);
+        // Toggle yang digunakan untuk memunculkan element dari jumlah likes
         $('#tombol-muncul').on('click', function() {
             $('.coverAll').toggle();
             $('.wrapperModal').toggle();
@@ -1526,10 +1554,12 @@
             $('.coverAll').toggle();
             $('.wrapperModal').toggle();
         });
+        //Toggle yang digunakan untuk menutup element dari jumlah likes
         $('#tutupModal').on('click', function() {
             $('.coverAll').toggle();
             $('.wrapperModal').toggle();
         });
+        //Toggle yang digunakan untuk mengkondisikan button dari suatu navigasi
         $('.pilihKategoriPostingan').on('click', function() {
             $('.pilihKategoriPostingan').removeClass('active');
             $(this).addClass('active');
