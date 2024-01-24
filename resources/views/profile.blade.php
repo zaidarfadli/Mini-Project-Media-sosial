@@ -855,6 +855,15 @@
         </div>
     </div>
     @endif
+
+    @if (session()->has('message'))
+    <div class="containerErorr alertError animationERROR_DOWN">
+        <div class="container d-flex">
+            <p>{{ session('message') }}</p>
+            <i class="fa-solid fa-xmark btnCloseError"></i>
+        </div>
+    </div>
+    @endif
     <section class="home-section">
         <div class="container-fluid nav" style="max-width: 55rem; display: flex; justify-content: center;">
             <div class="container modalEdit" style="margin: auto; max-width: 32rem; border-radius: 6px; background-color: black; border: 1.8px solid rgba(220, 220, 220, 0.3); z-index: 999; padding: 1.2rem; position:fixed;">

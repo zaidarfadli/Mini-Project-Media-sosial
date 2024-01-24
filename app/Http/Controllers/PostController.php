@@ -60,7 +60,9 @@ class PostController extends Controller
         if ($post->user_id === $user->id) {
 
             $post->delete();
-            return redirect()->back()->with('message', 'berhasil menghapus postingan');
+            return redirect()
+                ->route('myProfile')
+                ->with('message', 'berhasil menghapus postingan');
         } else {
             return redirect()->back()->with('message', "Anda Tidak punya hak akses");
         }

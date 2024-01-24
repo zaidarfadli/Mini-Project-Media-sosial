@@ -1148,14 +1148,19 @@
                         <div class="container">
                             <div class="col-12">
                                 <div class="row card-postingan">
+                                    @if ($post->my_post)
+                                        
                                     <div class="col-12">
-                                        <form action="">
+                                        <form action="{{ route('deletePost',['post' => $post->id]) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
                                             <button type="submit"
                                                 style="background-color: unset; border:none; float: right; color: red; opacity: 0.8; margin-right: -1.4rem;">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>
                                     </div>
+                                    @endif
                                     <div class="col-md-7" id="column-konten-postingan">
                                         <div class="row">
                                             <div class="col-12 profile-author">

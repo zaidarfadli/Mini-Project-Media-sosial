@@ -74,6 +74,11 @@ class Post extends Model
         return false;
     }
 
+    public function getMyPostAttribute()
+    {
+        $user = Auth::user();
+        return $user ? $this->user_id == $user->id : false;
+    }
 
 
     public function getLikesCountAttribute()
