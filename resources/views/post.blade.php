@@ -781,10 +781,11 @@
         cursor: pointer;
     }
 
-    #isi-komentar button{
+    #isi-komentar button {
         background-color: unset;
         border: none;
     }
+
     #isi-komentar .hapus {
         float: right;
         color: red;
@@ -1197,13 +1198,13 @@
                                     <div class="col-md-5" id="column-komentar-postingan"
                                         style="overflow-x: hidden; max-height: 52rem;">
                                         @if (session()->has('message'))
-                                           <p class="text-light">{{ session('message') }}</p>    
+                                            <p class="text-light">{{ session('message') }}</p>
                                         @endif
                                         <div class="row" id="header-komentar">
                                             <div class="col-12 d-flex">
                                                 <p>komentar</p>
                                                 <hr style="margin-top: -15px; color: var(--main_color-3);">
-                                            </div>                                            
+                                            </div>
                                         </div>
                                         <div class="row" id="isi-komentar">
                                             @if (isset($message))
@@ -1254,18 +1255,17 @@
                                                                 <p class="reply" id="{{ $comment->id }}">Reply</p>
                                                             </div>
                                                             @if ($comment->my_comment)
-                                                                
-                                                            <div class="col-1">
-                                                                <form
-                                                                    action="{{ route('deleteComment', ['comment' => $comment->id,'post' => $post->id]) }}"
-                                                                    method="post" class="ml-auto">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit">
-                                                                        <p class="hapus">Hapus</p>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
+                                                                <div class="col-1">
+                                                                    <form
+                                                                        action="{{ route('deleteComment', ['comment' => $comment->id, 'post' => $post->id]) }}"
+                                                                        method="post" class="ml-auto">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit">
+                                                                            <p class="hapus">Hapus</p>
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
                                                             @endif
                                                             <div class="row balasKomentar" style="display: none;">
                                                                 <div class="col-12" style="margin-bottom: 0.8rem;">
@@ -1294,6 +1294,17 @@
                                                                         </div>
                                                                     </div>
                                                                     <p id="komentar">{{ $reply->reply }}</p>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <form style="float: right; margin-top: -15px;"
+                                                                        action="{{ route('deleteComment', ['comment' => $comment->id, 'post' => $post->id]) }}"
+                                                                        method="post" class="ml-auto">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit">
+                                                                            <p class="hapus">Hapus</p>
+                                                                        </button>
+                                                                    </form>
                                                                 </div>
                                                             @endforeach
                                                         </div>
