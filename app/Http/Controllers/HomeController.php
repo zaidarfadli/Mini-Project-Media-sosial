@@ -50,17 +50,8 @@ class HomeController extends Controller
         $posts = Post::whereIn('user_id', $user->followings()->pluck('following_id'))
             ->latest()->get();
 
-        $suggested =  $this->suggestionFollow($user);
+        $suggested = Auth::check() ? $this->suggestionFollow($user) : User::latest()->get();
 
-
-
-        if ($posts->isEmpty()) {
-            return view('index', [
-                'message' => 'Anda Belum memfollow siapapun',
-                'user' => $user,
-                'suggested ' => $suggested
-            ]);
-        }
 
         return view('index', [
             'posts' => $posts,

@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/MyProfile', [UserController::class, 'myProfile'])->name('myProfile');
     Route::post('/confirmPassword', [UserController::class, 'confirmPassword'])->name('confirmPassword');
     Route::get('/editProfile', [UserController::class, 'editProfileForm'])->name('editProfileForm');
-    Route::put('/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
+    Route::post('/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
     Route::post('/confirmPassword', [UserController::class, 'confirmPassword'])->name('confirmPassword');
 
     // All Route Follow

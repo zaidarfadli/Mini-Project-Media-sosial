@@ -2000,14 +2000,20 @@
         <div class="container-fluid containerForm">
             <form action="{{ route('editProfile') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+                @method('POST')
                 <div class="row formEdtProfile">
                     <div class="col-12 fotoProfile text-center">
                         <img id="isiGambar" src="{{ asset('images/profile/'.old('image',$user->image)) }}" alt="LogoProfile">
                         <label for="btnUbahProfile">
                             <i class="fa-solid fa-camera"></i>
-                            <input type="file" name="image" id="btnUbahProfile">
+                            <input type="file" name="image" value="{{ old('image',$user->image) }}" id="btnUbahProfile">
                         </label>
+                          @error('image')
+                                <div class="invalid-feedback">
+                                    <p class="text-light">{{ $message }}</p>
+                                </div>
+                            @enderror
+
                     </div>
                     <div class="row">
                         <div class="col-12 headerEditProfile">
@@ -2049,7 +2055,7 @@
                         </div>
                         <div class="col-md-9">
                             <p>
-                                <textarea type="text" name="bio" id="inpBio">.{{ old('bio', $user->bio) }}</textarea>
+                                <textarea type="text" name="bio" id="inpBio">{{ old('bio', $user->bio) }}</textarea>
                                 @error('bio')
                                 <div class="invalid-feedback">
                                     {{ $message }}

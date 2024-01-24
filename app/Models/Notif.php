@@ -16,7 +16,7 @@ class Notif extends Model
         if ($type === 'Comment') {
             return $query->whereIn('type', ['Comment', 'Reply']);
         } elseif ($type === 'Like') {
-            return $query->where('type', ['LikePost', 'LikeComment']);
+            return $query->whereIn('type', ['LikePost', 'LikeComment']);
         }
 
         return $query; // Default: Show all

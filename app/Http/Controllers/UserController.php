@@ -77,7 +77,7 @@ class UserController extends Controller
         $rules = [
             'bio' => 'required',
             'name' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000'
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:5000'
         ];
 
 
@@ -93,13 +93,21 @@ class UserController extends Controller
 
         $validatedData = $request->validate($rules, $customMessages);
 
+        
+
 
         $validatedData['email'] = $user->email;
         $validatedData['password'] = $user->password;
 
-        $imageName = time() . '.' . $request->image->extension();
 
-        $request->image->move(public_path('images/profile'), $imageName);
+        // Set default image if no new image is uploaded
+        $imageName = $user->image;
+
+        if ($request->hasFile('image')) {
+            // Handle image upload if a new image is provided
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/profile'), $imageName);
+        }
 
         $validatedData['image'] = $imageName;
 

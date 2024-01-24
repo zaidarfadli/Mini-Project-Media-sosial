@@ -1375,12 +1375,12 @@
                                                             @if ($post->isBookmarkedByUser())
                                                                 <button class="saveToBookmark" type="submit"
                                                                     name="saveToBookmark">
-                                                                    <i class="fa-regular fa-bookmark"></i>
+                                                                    <i class="fa-solid fa-bookmark"></i>
                                                                 </button>
                                                             @else
                                                                 <button class="saveToBookmark" type="submit"
                                                                     name="saveToBookmark">
-                                                                    <i class="fa-solid fa-bookmark"></i>
+                                                                    <i class="fa-regular fa-bookmark"></i>
                                                                 </button>
                                                             @endif
                                                         </form>
@@ -1511,7 +1511,6 @@
             </div>
         </div>
     </section>
-
     @guest
         <footer>
             <div class="container">
@@ -1521,8 +1520,8 @@
                         <p id="text-2">login, untuk pengalaman yang baru</p>
                     </div>
                     <div class="col-lg-4 col-12 d-flex column-btn">
-                        <a href="login" class="btn btn-login-footer">Login</a>
-                        <a href="login" class="btn btn-regist-footer">Register</a>
+                        <a href="{{ route('login') }}" class="btn btn-login-footer">Login</a>
+                        <a href="{{ route('registrasi') }}" class="btn btn-regist-footer">Register</a>
                     </div>
                 </div>
         </footer>

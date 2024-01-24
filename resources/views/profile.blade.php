@@ -613,7 +613,7 @@
         text-overflow: ellipsis;
     }
 
-    footer {
+       footer {
         background-color: var(--main_color-3);
         bottom: 0;
         z-index: 101;
@@ -659,13 +659,12 @@
         transition: all ease 0.2s;
     }
 
-    footer .btn-edit-akun:hover {
+    footer .btn-regist-footer:hover {
         box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.4);
         transition: all ease 0.2s;
     }
 
-    footer .btn-edit-akun {
-        float: right;
+    footer .btn-regist-footer {
         font-size: 0.9rem;
         margin-bottom: 24px;
         background-color: white;
@@ -683,18 +682,7 @@
     }
 
     .footer #copyright {
-        margin-top: 20px;
-    }
-
-    footer .btn-edit-akun {
-        font-size: 0.9rem;
-        margin-bottom: 24px;
-        background-color: white;
-        margin-top: 20px;
-        color: black;
-        font-weight: 600;
-        padding: 10px 20px 10px 20px;
-        border-radius: 15px;
+        margin: 20px 0px 20px 0px;
     }
 
     @keyframes animasiModalUp {
@@ -984,8 +972,8 @@
                     <p id="text-2">login, untuk pengalaman yang baru</p>
                 </div>
                 <div class="col-lg-4 col-12 d-flex column-btn">
-                    <a href="login" class="btn btn-login-footer">Login</a>
-                    <a href="login" class="btn btn-edit-akun">Register</a>
+                    <a href="{{ route('login') }}" class="btn btn-login-footer">Login</a>
+                    <a href="{{ route('registrasi') }}" class="btn btn-regist-footer">Register</a>
                 </div>
             </div>
     </footer>

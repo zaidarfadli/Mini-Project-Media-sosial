@@ -1404,17 +1404,20 @@
                         <div class="row">
                             <ul class="navigasi" style="margin-top: 10px; margin-bottom: -20px;">
                                 <li class="navigasi-item">
-                                    <a class="navigasi-link navigasiFilter active" href="{{ route('myNotifikasi',['type' => 'all']) }}">
+                                    <a class="navigasi-link navigasiFilter all active"
+                                        href="{{ route('myNotifikasi', ['type' => 'all']) }}">
                                         <p>Semua</p>
                                     </a>
                                 </li>
                                 <li class="navigasi-item">
-                                    <a class="navigasi-link navigasiFilter" href="{{ route('myNotifikasi',['type' => 'Comment']) }}">
+                                    <a class="navigasi-link navigasiFilter comment"
+                                        href="{{ route('myNotifikasi', ['type' => 'Comment']) }}">
                                         <p>Komentar</p>
                                     </a>
                                 </li>
                                 <li class="navigasi-item">
-                                    <a class="navigasi-link navigasiFilter"  href="{{ route('myNotifikasi',['type' => 'Like']) }}">
+                                    <a class="navigasi-link navigasiFilter likes"
+                                        href="{{ route('myNotifikasi', ['type' => 'Like']) }}">
                                         <p>Disukai</p>
                                     </a>
                                 </li>
@@ -1435,63 +1438,67 @@
                                     @if ($notif->type == 'Follow')
                                         <a href="{{ route('seeProfile', ['people' => $notif->user->id]) }}"
                                             style="display: flex; margin-bottom: 1rem;">
-                                            <img src="{{asset('images/profile/'.$notif->user->image)  }}" alt="gambar postingan">
+                                            <img src="{{ asset('images/profile/' . $notif->user->image) }}"
+                                                alt="gambar postingan">
                                             <div class="container-fluid d-flex mt-2">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> mulai mengikuti anda</p>
                                             </div>
                                         </a>
                                     @endif
-
                                     @if ($notif->type == 'Comment')
                                         <a href="{{ route('seePost', ['post' => $notif->comment->post->id]) }}"
                                             style="display: flex; margin-bottom: 1rem;">
-                                            <img src="{{ asset('images/profile/'.$notif->user->image)  }}" alt="gambar postingan">
+                                            <img src="{{ asset('images/profile/' . $notif->user->image) }}"
+                                                alt="gambar postingan">
                                             <div class="container-fluid d-flex mt-2">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                                <p class="namaFollowers"> komen di postingan anda</p>
+                                                <p class="namaFollowers"> mengomentari postingan anda</p>
                                             </div>
-                                            <img src="{{ asset('images/post/'.$notif->comment->post->image)   }}" alt="gambar postingan"
-                                                style="border-radius: 0px;">
+                                            <img src="{{ asset('images/post/' . $notif->comment->post->image) }}"
+                                                alt="gambar postingan" style="border-radius: 0px;">
                                         </a>
                                     @endif
 
                                     @if ($notif->type == 'Reply')
                                         <a href="{{ route('seePost', ['post' => $notif->reply->post->id]) }}"
                                             style="display: flex; margin-bottom: 1rem;">
-                                            <img src="{{ asset('images/profile/'. $notif->user->image) }}" alt="gambar postingan">
+                                            <img src="{{ asset('images/profile/' . $notif->user->image) }}"
+                                                alt="gambar postingan">
                                             <div class="container-fluid d-flex mt-2">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> membalas komentar anda</p>
                                             </div>
-                                            <img src="{{ asset('images/post/'.$notif->reply->post->image)  }}" alt="gambar postingan"
-                                                style="border-radius: 0px;">
+                                            <img src="{{ asset('images/post/' . $notif->reply->post->image) }}"
+                                                alt="gambar postingan" style="border-radius: 0px;">
                                         </a>
                                     @endif
 
                                     @if ($notif->type == 'LikePost')
                                         <a href="{{ route('seePost', ['post' => $notif->like->post->id]) }}"
                                             style="display: flex; margin-bottom: 1rem;">
-                                            <img src="{{  asset('images/profile/'. $notif->user->image) }}" alt="gambar postingan">
+                                            <img src="{{ asset('images/profile/' . $notif->user->image) }}"
+                                                alt="gambar postingan">
                                             <div class="container-fluid d-flex mt-2">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                                <p class="namaFollowers"> melike postingan anda</p>
+                                                <p class="namaFollowers"> menyukai postingan anda</p>
                                             </div>
-                                            <img src="{{ asset('images/post/'.$notif->like->post->image)  }}" alt="gambar postingan"
-                                                style="border-radius: 0px;">
+                                            <img src="{{ asset('images/post/' . $notif->like->post->image) }}"
+                                                alt="gambar postingan" style="border-radius: 0px;">
                                         </a>
                                     @endif
 
                                     @if ($notif->type == 'LikeComment')
                                         <a href="{{ route('seePost', ['post' => $notif->like->comment->post->id]) }}"
                                             style="display: flex; margin-bottom: 1rem;">
-                                            <img src="{{  asset('images/profile/'. $notif->user->image) }}" alt="gambar postingan">
+                                            <img src="{{ asset('images/profile/' . $notif->user->image) }}"
+                                                alt="gambar postingan">
                                             <div class="container-fluid d-flex mt-2">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
-                                                <p class="namaFollowers"> melike komentar anda</p>
+                                                <p class="namaFollowers"> menyukai komentar anda</p>
                                             </div>
-                                            <img src="{{ asset('images/post/'.$notif->like->comment->post->image) }}" alt="gambar postingan"
-                                                style="border-radius: 0px;">
+                                            <img src="{{ asset('images/post/' . $notif->like->comment->post->image) }}"
+                                                alt="gambar postingan" style="border-radius: 0px;">
                                         </a>
                                     @endif
                                 @endforeach
@@ -1525,6 +1532,21 @@
 <script>
     function backToHistory() {
         window.history.back();
+    }
+    var currentUrl = window.location.href
+    const elements1 = $('.all')
+    const elements2 = $('.comment')
+    const elements3 = $('.likes')
+    if (currentUrl.includes("Comment")) {
+        elements1.removeClass('active')
+        elements2.addClass("active")
+    } else if (currentUrl.includes("Like")) {
+        elements1.removeClass('active')
+        elements3.addClass("active")
+    } else if (currentUrl.includes("all")) {
+        elements1.addClass("active")
+    } else if (currentUrl.includes("")) {
+        elements1.addClass('active')
     }
     $('.navigasiFilter').on('click', function() {
         $('.navigasiFilter').removeClass('active');

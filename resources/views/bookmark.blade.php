@@ -755,7 +755,7 @@
                                                             <div class="profileAuthor">
                                                                 <a href="{{ route('seeProfile', ['people' => $bookmark->post->user->id]) }}"
                                                                     style="display: flex; text-decoration: none;">
-                                                                    <img src="{{ $bookmark->post->user->image }}"
+                                                                    <img src="{{asset('images/profile/'.$bookmark->post->user->image)}}"
                                                                         alt="gambar profile">
                                                                     <div class="container"
                                                                         style="margin: 0rem 0rem 0rem -1.2rem;">
@@ -778,7 +778,7 @@
                                                             </div>
                                                             <a href="{{ route('seePost', ['post' => $bookmark->post->id]) }}">
                                                                 <img style="width: 100%; aspect-ratio: 1/1; margin: 0rem 0rem 0rem -0.5rem;"
-                                                                    src="{{ $bookmark->post->image }}" alt="Gambar Postingan">
+                                                                    src="{{asset('images/post/'.$bookmark->post->image)}}" alt="Gambar Postingan">
                                                             </a>
                                                         </div>
 
