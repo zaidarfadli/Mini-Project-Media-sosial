@@ -1179,7 +1179,7 @@
                                     <div class="col-md-7" id="column-konten-postingan">
                                         <div class="row">
                                             <div class="col-12 profile-author">
-                                                <img src="{{ $post->user->image }}" alt="ImageProfilePostingan">
+                                                <img src="{{ asset('images/profile/'.$post->user->image)  }}" alt="ImageProfilePostingan">
                                                 <p>{{ $post->user->username }}</p>
                                             </div>
                                         </div>
@@ -1295,9 +1295,11 @@
                                                                     </div>
                                                                     <p id="komentar">{{ $reply->reply }}</p>
                                                                 </div>
+                                                                @if ($reply->my_reply)
+                                                                
                                                                 <div class="col-12">
                                                                     <form style="float: right; margin-top: -15px;"
-                                                                        action="{{ route('deleteComment', ['comment' => $comment->id, 'post' => $post->id]) }}"
+                                                                        action="{{ route('deleteReply', ['comment' => $comment->id,'reply'=> $reply->id]) }}"
                                                                         method="post" class="ml-auto">
                                                                         @csrf
                                                                         @method('DELETE')
@@ -1306,6 +1308,7 @@
                                                                         </button>
                                                                     </form>
                                                                 </div>
+                                                                @endif
                                                             @endforeach
                                                         </div>
                                                     </span>

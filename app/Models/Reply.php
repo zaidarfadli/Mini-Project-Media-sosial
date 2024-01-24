@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class Reply extends Model
@@ -41,7 +42,11 @@ class Reply extends Model
         return $this->morphMany(Follow::class, 'notifable');
     }
 
-
+    public function getMyReplyAttribute()
+    {
+        $user = Auth::user();
+        return $user ? $this->user_id == $user->id : false;
+    }
     protected static function boot()
     {
         parent::boot();
