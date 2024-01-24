@@ -769,6 +769,7 @@
     }
 
     #isi-komentar #komentar {
+        word-wrap: break-word;
         color: var(--text-color);
         font-size: 0.7rem;
     }
@@ -776,7 +777,20 @@
     #isi-komentar .reply {
         float: right;
         color: var(--main_color-3);
-        font-size: 0.7rem;
+        font-size: 0.6rem;
+        cursor: pointer;
+    }
+
+    #isi-komentar button{
+        background-color: unset;
+        border: none;
+    }
+    #isi-komentar .hapus {
+        float: right;
+        color: red;
+        margin-left: -1rem;
+        opacity: 0.9;
+        font-size: 0.6rem;
         cursor: pointer;
     }
 
@@ -1149,17 +1163,17 @@
                             <div class="col-12">
                                 <div class="row card-postingan">
                                     @if ($post->my_post)
-                                        
-                                    <div class="col-12">
-                                        <form action="{{ route('deletePost',['post' => $post->id]) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                style="background-color: unset; border:none; float: right; color: red; opacity: 0.8; margin-right: -1.4rem;">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </div>
+                                        <div class="col-12">
+                                            <form action="{{ route('deletePost', ['post' => $post->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    style="background-color: unset; border:none; float: right; color: red; opacity: 0.7; margin-right: -1.4rem;">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     @endif
                                     <div class="col-md-7" id="column-konten-postingan">
                                         <div class="row">
@@ -1217,24 +1231,35 @@
                                                                             style="background: unset; border: unset; padding: 5px;"
                                                                             type="submit"><i
                                                                                 style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
-                                                                                class="fa-solid fa-thumbs-up"
+                                                                                class="fa-solid fa-heart"
                                                                                 id="btnLikes"></i></button>
                                                                     @else
                                                                         <button
                                                                             style="background: unset; border: unset; padding: 5px;"
                                                                             type="submit"><i
-                                                                                style="font-size: 1.2rem; margin-top: -8px; color: var(--main_color-3);"
-                                                                                class="fa-regular fa-thumbs-up"
+                                                                                style="font-size: 1rem; margin-top: -8px; color: var(--main_color-3);"
+                                                                                class="fa-regular fa-heart"
                                                                                 id="btnLikes"></i></button>
                                                                     @endif
 
                                                                     <p
-                                                                        style="font-size: 0.7rem; margin: 0px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
+                                                                        style="font-size: 0.6rem; margin: -1px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
                                                                         {{ $comment->likes_count }} Likes</p>
                                                                 </form>
                                                             </div>
-                                                            <div class="col-6">
+                                                            <div class="col-5">
                                                                 <p class="reply" id="{{ $comment->id }}">Reply</p>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <form
+                                                                    action="{{ route('deletePost', ['post' => $post->id]) }}"
+                                                                    method="post" class="ml-auto">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit">
+                                                                        <p class="hapus">Hapus</p>
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                             <div class="row balasKomentar" style="display: none;">
                                                                 <div class="col-12" style="margin-bottom: 0.8rem;">

@@ -855,9 +855,8 @@
         </div>
     </div>
     @endif
-
     @if (session()->has('message'))
-    <div class="containerErorr alertError animationERROR_DOWN">
+    <div class="containerErorr alertError animationERROR_DOWN" style="background-color: #3F979B">
         <div class="container d-flex">
             <p>{{ session('message') }}</p>
             <i class="fa-solid fa-xmark btnCloseError"></i>

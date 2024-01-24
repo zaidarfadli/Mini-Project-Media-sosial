@@ -58,7 +58,6 @@ class PostController extends Controller
         $user = Auth::user();
 
         if ($post->user_id === $user->id) {
-
             $post->delete();
             return redirect()
                 ->route('myProfile')
