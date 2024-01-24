@@ -34,7 +34,7 @@ class CommentController extends Controller
             $this->deleteNotif($user, $post, $comment);
             $comment->delete();
             return redirect()->back()->with([
-                'message' => 'berhasil menghapus komen',
+                'message' => 'berhasil menghapus komentar',
             ]);
         } else {
 

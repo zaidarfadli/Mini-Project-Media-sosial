@@ -1196,11 +1196,14 @@
                                     </div>
                                     <div class="col-md-5" id="column-komentar-postingan"
                                         style="overflow-x: hidden; max-height: 52rem;">
+                                        @if (session()->has('message'))
+                                           <p class="text-light">{{ session('message') }}</p>    
+                                        @endif
                                         <div class="row" id="header-komentar">
                                             <div class="col-12 d-flex">
                                                 <p>komentar</p>
                                                 <hr style="margin-top: -15px; color: var(--main_color-3);">
-                                            </div>
+                                            </div>                                            
                                         </div>
                                         <div class="row" id="isi-komentar">
                                             @if (isset($message))
@@ -1250,9 +1253,11 @@
                                                             <div class="col-5">
                                                                 <p class="reply" id="{{ $comment->id }}">Reply</p>
                                                             </div>
+                                                            @if ($comment->my_comment)
+                                                                
                                                             <div class="col-1">
                                                                 <form
-                                                                    action="{{ route('deletePost', ['post' => $post->id]) }}"
+                                                                    action="{{ route('deleteComment', ['comment' => $comment->id,'post' => $post->id]) }}"
                                                                     method="post" class="ml-auto">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -1261,6 +1266,7 @@
                                                                     </button>
                                                                 </form>
                                                             </div>
+                                                            @endif
                                                             <div class="row balasKomentar" style="display: none;">
                                                                 <div class="col-12" style="margin-bottom: 0.8rem;">
                                                                     <form

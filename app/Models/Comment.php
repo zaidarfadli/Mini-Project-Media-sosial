@@ -65,6 +65,14 @@ class Comment extends Model
         return false;
     }
 
+    public function getMyCommentAttribute()
+    {
+
+        $user = Auth::user();
+
+        return $user ? $this->user_id == $user->id : false;
+    }
+
     public function getLikesCountAttribute()
     {
         return $this->like()->count();
