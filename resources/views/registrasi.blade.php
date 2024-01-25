@@ -100,6 +100,8 @@
     }
 
     .showPassword,
+    .showConfPassword,
+    .hideConfPassword,
     .hidePassword:hover {
         cursor: pointer;
     }
@@ -217,7 +219,7 @@
                                                     placeholder="Masukkan username">
                                                 @error('username')
                                                     <div class="invalid-feedback">
-                                                        <p>Username sudah digunakan</p>
+                                                        <p>{{ $message }}</p>
                                                     </div>
                                                 @enderror
                                             </div>
@@ -247,7 +249,7 @@
                                                     </div>
                                                 @else
                                                     <div class="invalid-feedback">
-                                                        <p>Email sudah digunakan</p>
+                                                        <p>{{ $message }}</p>
                                                     </div>
                                                 @endif
                                             </div>
@@ -272,18 +274,18 @@
                                     </div>
                                     <div class="row row_input2">
                                         <div class="headerPassword d-flex">
-                                            <h6>Confirm Password</h6>
+                                            <h6>Konfirmasi Password</h6>
                                             <span>
-                                                <i class="fa-regular fa-eye showPassword"></i>
-                                                <i class="fa-regular fa-eye-slash hidePassword"></i>
+                                                <i class="fa-regular fa-eye showConfPassword"></i>
+                                                <i class="fa-regular fa-eye-slash hideConfPassword"></i>
                                             </span>
                                         </div>
                                         <input type="password"
                                             class="@error('cpassword') is-invalid border-danger @enderror"
-                                            name="cpassword" id="passwordRegist" placeholder="Masukkan Confirm password">
+                                            name="cpassword" id="confPasswordRegist" placeholder="Masukkan Confirm password">
                                         @error('cpassword')
                                             <div class="invalid-feedback">
-                                                <p>Confirm Password harus sama dengan password</p>
+                                                <p>Password tidak cocok</p>
                                             </div>
                                         @enderror
                                     </div>
@@ -400,15 +402,29 @@
 <script>
     $(document).ready(() => {
         $('.hidePassword').hide();
+        $('.hideConfPassword').hide();
+        //Button untuk menampilkan input password
         $('.showPassword').on('click', () => {
             $('#passwordRegist').attr('type', 'text')
             $('.showPassword').hide()
             $('.hidePassword').show()
         })
+        //Button untuk menyembunyikan input password
         $('.hidePassword').on('click', () => {
             $('#passwordRegist').attr('type', 'password')
             $('.showPassword').show()
             $('.hidePassword').hide()
+        })
+        //Button untuk menampilkan input confirmasi password
+        $('.showConfPassword').on('click', () => {
+            $('#confPasswordRegist').attr('type', 'text')
+            $('.showConfPassword').hide()
+            $('.hideConfPassword').show()
+        })
+        $('.hideConfPassword').on('click', () => {
+            $('#confPasswordRegist').attr('type', 'password')
+            $('.showConfPassword').show()
+            $('.hideConfPassword').hide()
         })
     })
 </script>

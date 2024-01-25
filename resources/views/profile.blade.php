@@ -198,6 +198,7 @@
             transform: translateY(0vh);
         }
     }
+
     @keyframes animationERROR_UP {
         from {
             transform: translateY(0vh);
@@ -216,11 +217,11 @@
         padding: 1rem 0rem 0rem 3rem;
     }
 
-    .animationERROR_DOWN{
+    .animationERROR_DOWN {
         animation: animationERROR_DOWN 0.7s ease;
     }
 
-    .animationERROR_UP{
+    .animationERROR_UP {
         animation: animationERROR_UP 0.7s ease;
     }
 
@@ -337,6 +338,10 @@
         width: calc(100% - 240px);
         padding: 2.5rem 5rem 0rem 5rem;
         transition: all 0.5s ease;
+    }
+
+    .footer .lorem {
+        margin-right: 1rem;
     }
 
     .home-section #countProfile {
@@ -613,7 +618,7 @@
         text-overflow: ellipsis;
     }
 
-       footer {
+    footer {
         background-color: var(--main_color-3);
         bottom: 0;
         z-index: 101;
@@ -836,35 +841,40 @@
     </div>
 
     @if (session()->has('failed'))
-    <div class="containerErorr alertError animationERROR_DOWN">
-        <div class="container d-flex">
-            <p>Password tidak sesuai</p>
-            <i class="fa-solid fa-xmark btnCloseError"></i>
+        <div class="containerErorr alertError animationERROR_DOWN">
+            <div class="container d-flex">
+                <p>Password tidak sesuai</p>
+                <i class="fa-solid fa-xmark btnCloseError"></i>
+            </div>
         </div>
-    </div>
     @endif
     @if (session()->has('message'))
-    <div class="containerErorr alertError animationERROR_DOWN" style="background-color: #3F979B">
-        <div class="container d-flex">
-            <p>{{ session('message') }}</p>
-            <i class="fa-solid fa-xmark btnCloseError"></i>
+        <div class="containerErorr alertError animationERROR_DOWN" style="background-color: #3F979B">
+            <div class="container d-flex">
+                <p>{{ session('message') }}</p>
+                <i class="fa-solid fa-xmark btnCloseError"></i>
+            </div>
         </div>
-    </div>
     @endif
     <section class="home-section">
         <div class="container-fluid nav" style="max-width: 55rem; display: flex; justify-content: center;">
-            <div class="container modalEdit" style="margin: auto; max-width: 32rem; border-radius: 6px; background-color: black; border: 1.8px solid rgba(220, 220, 220, 0.3); z-index: 999; padding: 1.2rem; position:fixed;">
+            <div class="container modalEdit"
+                style="margin: auto; max-width: 32rem; border-radius: 6px; background-color: black; border: 1.8px solid rgba(220, 220, 220, 0.3); z-index: 999; padding: 1.2rem; position:fixed;">
                 <form action="{{ route('confirmPassword') }}" method="post">
                     @csrf
                     <div class="col-12 d-flex justify-content-between align-items-center">
-                        <h6 style="color: white; font-weight: 800; letter-spacing: 1; margin-bottom: 0.5rem;">Konfirmasi Password</h6>
-                        <i class="fa-solid fa-xmark btn-edit-akun" style="font-size: 1rem; margin: -8px 0px 0px 0px; color: white;"></i>
+                        <h6 style="color: white; font-weight: 800; letter-spacing: 1; margin-bottom: 0.5rem;">Konfirmasi
+                            Password</h6>
+                        <i class="fa-solid fa-xmark btn-edit-akun"
+                            style="font-size: 1rem; margin: -8px 0px 0px 0px; color: white;"></i>
                     </div>
                     <div class="mb-3">
-                        <input  style="font-size: 0.6rem;" type="password" name="password" class="form-control" id="form-password"
-                            placeholder="Masukan Password">
+                        <input style="font-size: 0.6rem;" type="password" name="password" class="form-control"
+                            id="form-password" placeholder="Masukan Password">
                     </div>
-                    <button style="background-color: unset; float: right; border: unset; padding: 6px 04 px 5px 12px; border-radius: 3px; font-size: 0.7rem; color: var(--main_color); font-weight: 600;" type="submit">Konfirmasi</button>
+                    <button
+                        style="background-color: unset; float: right; border: unset; padding: 6px 04 px 5px 12px; border-radius: 3px; font-size: 0.7rem; color: var(--main_color); font-weight: 600;"
+                        type="submit">Konfirmasi</button>
                 </form>
             </div>
             <div class="col-md-3 col-12">
@@ -913,13 +923,13 @@
                 <div class="row">
                     <div class="col-12">
                         <p id="namaLengkapProfile">{{ $people->name }}</p>
-                        <p id="bioProfile">{{ $people->bio}}</p>
+                        <p id="bioProfile">{{ $people->bio }}</p>
                     </div>
                 </div>
             </div>
             <div class="row" id="feeds">
                 @foreach ($people->post as $post)
-                    <div class="col-4">
+                    <div class="col-xl-4 col-lg-4 col-md-3 col-sm-4 col-6">
                         <a href="{{ route('seePost', ['post' => $post->id]) }}">
                             <img style="aspect-ratio: 1/1; width: 100%;"
                                 src="{{ asset('images/post/' . $post->image) }}" alt="Image Postingan Feeds">
@@ -928,29 +938,26 @@
                 @endforeach
             </div>
             <div class="container-fluid footer">
-                <div class="row d-flex">
-                    <div class="col-sm-1 offset-sm-2"> <!-- Menambahkan offset-md-4 untuk membuat jarak sebelumnya -->
+                <div class="row d-flex justify-content-center">
+                    <div class="col-1 lorem">
                         <p>lorem</p>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-1 lorem">
                         <p>lorem</p>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-1 lorem">
                         <p>lorem</p>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-1 lorem">
                         <p>lorem</p>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-1 lorem">
                         <p>lorem</p>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-1 lorem">
                         <p>lorem</p>
                     </div>
-                    <div class="col-sm-1">
-                        <p>lorem</p>
-                    </div>
-                    <div class="col-sm-1">
+                    <div class="col-1 lorem">
                         <p>lorem</p>
                     </div>
                 </div>

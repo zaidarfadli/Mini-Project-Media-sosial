@@ -94,7 +94,7 @@
         border: 1.8px solid rgba(220, 220, 220, 0.3);
         border-radius: 8px;
         padding: 0.7rem 1.3rem 1.2rem 1.2rem;
-        margin-bottom: -1.3rem;
+        margin-bottom: -1rem;
         transition: all 0.5s ease;
     }
 
@@ -209,7 +209,7 @@
         position: relative;
         width: calc(100% - 240px);
         left: 240px;
-        top: 7rem;
+        top: 7.4rem;
         transition: all 0.5s ease;
     }
 
@@ -811,7 +811,7 @@
                     <div class="col-lg-8">
                         <div class="container container-lg">
                             @if (isset($message))
-                                <p class="text-center text-light">Belum ada postingan apapun</p>
+                                <p class="text-center" style="color: var(--text-color); opacity: 0.7; font-size: 0.8rem;">Belum ada postingan apapun</p>
                             @elseif (isset($posts))
                                 @foreach ($posts as $post)
                                     <a href="{{ route('seePost', ['post' => $post->id]) }}"

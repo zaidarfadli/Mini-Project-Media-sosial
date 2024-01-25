@@ -900,7 +900,7 @@
 
     .home-section .usernameDetailFollow {
         color: var(--main_color);
-        margin: 1rem 0rem 1rem -2rem;
+        margin: 1rem 0rem 1rem -1rem;
         justify-content: center;
         font-weight: 600;
     }
@@ -1129,8 +1129,8 @@
         }
 
         .navigasiFilter {
-            width: calc(100% - 100px);
-            left: 60px;
+            width: calc(100% - 5px);
+            left: 10px;
         }
 
         .nav-section {

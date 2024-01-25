@@ -744,7 +744,7 @@
                         <div class="konten-home">
                             <div class="container">
                                 @if (isset($message))
-                                    <h6 class="text-center mt-5" style="color: var(--text-color); opacity: 0.5; letter-spacing: 1;">Belum ada postingan yang di bookmark</h6>
+                                    <h6 class="text-center mt-5" style="color: var(--text-color); font-size: 0.8rem; opacity: 0.5; letter-spacing: 1;">Belum ada postingan yang di bookmark</h6>
                                 @elseif(isset($bookmarks))
                                     <div class="row">
                                         @foreach ($bookmarks as $bookmark)
@@ -777,7 +777,7 @@
                                                                 </a>
                                                             </div>
                                                             <a href="{{ route('seePost', ['post' => $bookmark->post->id]) }}">
-                                                                <img style="width: 100%; aspect-ratio: 1/1; margin: 0rem 0rem 0rem -0.5rem;"
+                                                                <img style="width: 105%; aspect-ratio: 1/1; object-fit: cover; margin: 0rem 0rem 0rem -0.5rem;"
                                                                     src="{{asset('images/post/'.$bookmark->post->image)}}" alt="Gambar Postingan">
                                                             </a>
                                                         </div>

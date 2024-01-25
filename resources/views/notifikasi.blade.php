@@ -945,6 +945,11 @@
     }
 
     .listFollowers .namaFollowers {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
         font-size: 0.9rem;
         margin: 5px 0px 0px 6px;
         font-family: 'Poppins';
@@ -1440,7 +1445,7 @@
                                             style="display: flex; margin-bottom: 1rem;">
                                             <img src="{{ asset('images/profile/' . $notif->user->image) }}"
                                                 alt="gambar postingan">
-                                            <div class="container-fluid d-flex mt-2">
+                                            <div class="container-fluid d-flex mt-3">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> mulai mengikuti anda</p>
                                             </div>
@@ -1451,7 +1456,7 @@
                                             style="display: flex; margin-bottom: 1rem;">
                                             <img src="{{ asset('images/profile/' . $notif->user->image) }}"
                                                 alt="gambar postingan">
-                                            <div class="container-fluid d-flex mt-2">
+                                            <div class="container-fluid d-flex mt-3">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> mengomentari postingan anda</p>
                                             </div>
@@ -1465,7 +1470,7 @@
                                             style="display: flex; margin-bottom: 1rem;">
                                             <img src="{{ asset('images/profile/' . $notif->user->image) }}"
                                                 alt="gambar postingan">
-                                            <div class="container-fluid d-flex mt-2">
+                                            <div class="container-fluid d-flex mt-3">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> membalas komentar anda</p>
                                             </div>
@@ -1479,7 +1484,7 @@
                                             style="display: flex; margin-bottom: 1rem;">
                                             <img src="{{ asset('images/profile/' . $notif->user->image) }}"
                                                 alt="gambar postingan">
-                                            <div class="container-fluid d-flex mt-2">
+                                            <div class="container-fluid d-flex mt-3">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> menyukai postingan anda</p>
                                             </div>
@@ -1493,7 +1498,7 @@
                                             style="display: flex; margin-bottom: 1rem;">
                                             <img src="{{ asset('images/profile/' . $notif->user->image) }}"
                                                 alt="gambar postingan">
-                                            <div class="container-fluid d-flex mt-2">
+                                            <div class="container-fluid d-flex mt-3">
                                                 <p class="usernameFollowers">{{ $notif->user->username }}</p>
                                                 <p class="namaFollowers"> menyukai komentar anda</p>
                                             </div>

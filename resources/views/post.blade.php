@@ -73,7 +73,6 @@
     }
 
     .konten-home .card {
-        width <=30rem;
         color: white;
         background-color: black;
         border: 1.8px solid rgba(220, 220, 220, 0.3);
@@ -184,7 +183,7 @@
 
     .nav-section .backRow {
         position: relative;
-        width: calc(100% - 100px);
+        width: calc(100% - 10px);
         left: -1rem;
         transition: all 0.5s ease;
     }
@@ -372,191 +371,6 @@
         margin-top: 0.2rem;
     }
 
-    @media (width <=991px) {
-        .konten-postingan .card-postingan {
-            margin-left: 0rem;
-        }
-
-        .home-section #SuggestFollowing {
-            display: none;
-        }
-
-        .sidebar {
-            width: 60px;
-        }
-
-        .rowUsername {
-            display: none;
-        }
-
-        .link-navigasi p {
-            display: none;
-        }
-
-        .sidebar.active {
-            width: 220px;
-        }
-
-        .home-section,
-        .nav-section {
-            width: calc(100% - 60px);
-            left: 60px;
-        }
-
-        .nav-section .backRow {
-            width: calc(100% - 60px);
-            left: 20px;
-        }
-
-        .nav-section {
-            width: calc(100% - 60px);
-            left: 60px;
-        }
-
-        .logoHomepage {
-            margin-left: 0rem;
-        }
-
-        .navFilter {
-            margin-left: 0rem;
-        }
-
-        .sidebar.active~.home-section {
-            overflow: hidden;
-            left: 220px;
-        }
-
-        .home-section nav {
-            width: calc(100% - 60px);
-            left: 60px;
-        }
-
-        .sidebar.active~.home-section nav {
-            width: calc(100% - 220px);
-            left: 220px;
-        }
-    }
-
-    @media (width <=580px) {
-        .footer {
-            display: none;
-        }
-    }
-
-    @media (width <=576px) {
-
-        footer .row {
-            margin-left: 0.5rem;
-        }
-    }
-
-    @media (width <=560px) {
-        .card-postingan {
-            width: 110%;
-            transition: all 0.5s ease;
-        }
-
-        .profileAuthor .namaProfileAuthorPost p {
-            font-size: 0.7rem;
-        }
-
-        #column-konten-postingan #teks-deskripsi-postingan {
-            color: var(--text-color);
-            letter-spacing: 0.3;
-            font-size: 0.6rem;
-            margin: 1rem 0rem 1rem 0rem
-        }
-    }
-
-    @media(width <=462px) {
-        .card-postingan {
-            width: 120%;
-            transition: all 0.5s ease;
-        }
-
-        .card .card-text {
-            margin-top: -1rem;
-            font-size: 0.7rem;
-        }
-
-        .profileAuthor .container p {
-            margin-top: -5px;
-        }
-
-        .profileAuthor img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .profileAuthor #usernamePosting {
-            font-size: 0.7rem;
-        }
-
-        .profileAuthor #timePosting {
-            font-size: 0.6rem;
-        }
-
-        .fiturPostingan p {
-            display: none;
-        }
-
-        .fiturPostingan i {
-            margin-right: -2rem;
-            font-size: 1rem;
-        }
-
-        .saveToBookmark {
-            font-size: 1.3rem;
-            transform: translateY(0.5rem);
-        }
-
-        #column-konten-postingan .profile-author img {
-            width: 1.7rem;
-            height: 1.7rem;
-            transition: all ease 0.3s;
-        }
-
-        #column-konten-postingan .profile-author p {
-            font-size: 0.8rem;
-            transition: all ease 0.3s;
-        }
-
-        #column-konten-postingan #teks-deskripsi-postingan {
-            color: var(--text-color);
-            letter-spacing: 0.3;
-            font-size: 0.5rem;
-            margin: 1rem 0rem 1rem 0rem
-        }
-    }
-
-    @media (width <=400px) {
-        .card-postingan {
-            width: 135%;
-            transition: all 0.5s ease;
-        }
-
-        .navigasi-item {
-            width: 60%;
-            font-size: 0.7rem;
-        }
-
-        .home-section nav {
-            width: 100%;
-            left: 70px;
-        }
-    }
-
-    .sidebar .detail_logo #namaProfileAuthor,
-    .suggestedFollowing,
-    #timePosting,
-    #usernamePosting {
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
     .card-text {
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -729,9 +543,6 @@
         font-weight: 700;
         margin: 5px 0px 0px -10px;
         font-size: 1rem;
-    }
-
-    .card-postingan #header-komentar {
         justify-content: space-between;
     }
 
@@ -795,6 +606,15 @@
         cursor: pointer;
     }
 
+    #isi-komentar #noComments {
+        text-align: center;
+        color: var(--text-color);
+        padding: 1rem;
+        margin: 0px 0px 10px -10px;
+        opacity: 0.6;
+        font-size: 0.6rem;
+    }
+
     .input-komentar #btnKirimKomentar {
         color: var(--main_color-3);
         border: none;
@@ -803,20 +623,24 @@
         background: transparent;
     }
 
-    .input-komentar .form-control {
+    .input-komentar .form-komentar {
         color: white;
         background-color: black;
         width: 90%;
-        border: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(220, 220, 220, 0.3);
         font-size: 0.6rem;
-        border-radius: 5px;
         height: 1.7rem;
         padding: 0px 0px 0px -50px;
     }
 
-    .input-komentar .form-control:focus {
+    .input-komentar .form-komentar:focus {
         color: white;
         border: unset;
+        border-bottom: 1px solid rgba(220, 220, 220, 0.3);
+        outline: unset;
         background-color: black;
     }
 
@@ -1005,7 +829,7 @@
 
     .row .col-12 #replyComment {
         border: unset;
-        border-bottom: 1.8px solid rgba(220, 220, 220, 0.3);
+        border-bottom: 1px solid rgba(220, 220, 220, 0.3);
         color: var(--text-color);
         background-color: unset;
         outline: unset;
@@ -1017,6 +841,211 @@
 
     .row .col-12 #replyComment:focus {
         outline: unset
+    }
+
+    @media (width <=991px) {
+        .konten-postingan .card-postingan {
+            margin-left: 0rem;
+        }
+
+        .home-section #SuggestFollowing {
+            display: none;
+        }
+
+        .sidebar {
+            width: 60px;
+        }
+
+        .rowUsername {
+            display: none;
+        }
+
+        .link-navigasi p {
+            display: none;
+        }
+
+        .sidebar.active {
+            width: 220px;
+        }
+
+        .home-section,
+        .nav-section {
+            width: calc(100% - 60px);
+            left: 60px;
+        }
+
+        .nav-section .backRow {
+            width: calc(100% - 60px);
+            left: 20px;
+        }
+
+        .nav-section {
+            width: calc(100% - 60px);
+            left: 60px;
+        }
+
+        .logoHomepage {
+            margin-left: 0rem;
+        }
+
+        .navFilter {
+            margin-left: 0rem;
+        }
+
+        .sidebar.active~.home-section {
+            overflow: hidden;
+            left: 220px;
+        }
+
+        .home-section nav {
+            width: calc(100% - 60px);
+            left: 60px;
+        }
+
+        .sidebar.active~.home-section nav {
+            width: calc(100% - 220px);
+            left: 220px;
+        }
+    }
+
+    @media (width <=768px) {
+        .card-postingan #header-komentar {
+            color: white;
+            position: absolute;
+            margin: 15px 0px 0px -10px;
+            font-size: 0.7rem;
+            justify-content: space-between;
+        }
+
+        #isi-komentar #noComments {
+            text-align: center;
+            color: var(--text-color);
+            padding: 0.3rem;
+            margin: 0px 0px 10px 0px;
+            opacity: 0.6;
+            font-size: 0.5rem;
+        }
+    }
+
+    @media (width <=580px) {
+        .footer {
+            display: none;
+        }
+    }
+
+
+    @media (width <=576px) {
+        footer .row {
+            margin-left: 0.5rem;
+        }
+    }
+
+    @media (width <=560px) {
+        .profileAuthor .namaProfileAuthorPost p {
+            font-size: 0.7rem;
+        }
+
+        #column-konten-postingan #teks-deskripsi-postingan {
+            color: var(--text-color);
+            letter-spacing: 0.3;
+            font-size: 0.6rem;
+            margin: 1rem 0rem 1rem 0rem
+        }
+    }
+
+    @media(width <=462px) {
+        .input-komentar .fitur i {
+            color: var(--main_color-3);
+            margin: 5px 0px 0px 0px;
+            font-size: 1.3rem;
+        }
+
+        .input-komentar .fa-bookmark {
+            margin: -3px -6px 0px 0px;
+            font-size: 1.3rem;
+        }
+
+        .card-postingan .fa-trash {
+            font-size: 0.9rem;
+        }
+
+        .card .card-text {
+            margin-top: -1rem;
+            font-size: 0.7rem;
+        }
+
+        .profileAuthor .container p {
+            margin-top: -5px;
+        }
+
+        .profileAuthor img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .profileAuthor #usernamePosting {
+            font-size: 0.7rem;
+        }
+
+        .profileAuthor #timePosting {
+            font-size: 0.6rem;
+        }
+
+        .fiturPostingan p {
+            display: none;
+        }
+
+        .fiturPostingan i {
+            margin-right: -2rem;
+            font-size: 1rem;
+        }
+
+        .saveToBookmark {
+            font-size: 1.3rem;
+            transform: translateY(0.5rem);
+        }
+
+        #column-konten-postingan .profile-author img {
+            width: 1.7rem;
+            height: 1.7rem;
+            transition: all ease 0.3s;
+        }
+
+        #column-konten-postingan .profile-author p {
+            font-size: 0.8rem;
+            transition: all ease 0.3s;
+        }
+
+        #column-konten-postingan #teks-deskripsi-postingan {
+            color: var(--text-color);
+            letter-spacing: 0.3;
+            font-size: 0.5rem;
+            margin: 1rem 0rem 1rem 0rem
+        }
+    }
+
+    @media (width <=400px) {
+
+        .navigasi-item {
+            width: 60%;
+            font-size: 0.7rem;
+        }
+
+        .home-section nav {
+            width: 100%;
+            left: 70px;
+        }
+    }
+
+    .sidebar .detail_logo #namaProfileAuthor,
+    .suggestedFollowing,
+    #timePosting,
+    #usernamePosting {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     @keyframes animationBerhasil {
@@ -1056,8 +1085,8 @@
             window.history.replaceState(null, null, window.location.href);
         }
         document.addEventListener('DOMContentLoaded', function() {
-            document.documentElement.style.backgroundColor = '#fff';
-            document.documentElement.style.color = '#fff';
+            document.documentElement.style.backgroundColor = '#0000';
+            document.documentElement.style.color = '#0000';
         });
     </script>
 </head>
@@ -1164,7 +1193,7 @@
                     <div class="logoHomepage">
                         <img src="{{ asset('images/logo-medsos.png') }}" alt="logo homepage">
                 </nav>
-                <div class="col-12 d-flex backRow" onclick="backToHistory()">
+                <div class="d-flex backRow">
                     <p id="arrowLeft">
                         < </p>
                             <p id="back">Back</p>
@@ -1230,8 +1259,7 @@
                                         </div>
                                         <div class="row" id="isi-komentar">
                                             @if (isset($message))
-                                                <p
-                                                    style="text-align: left; color: var(--text-color); margin-left: -10px; opacity: 0.7; font-size: 0.8rem;">
+                                                <p id="noComments">
                                                     Belum ada komentar</p>
                                             @elseif(isset($post->comment))
                                                 @foreach ($post->comment as $comment)
@@ -1247,7 +1275,7 @@
                                                             <p id="komentar">{{ $comment->comment }}</p>
                                                         </div>
                                                         <div class="row idForm">
-                                                            <div class="col-6">
+                                                            <div class="col-8">
                                                                 <form
                                                                     action="{{ route('likeComment', ['post' => $post->id, 'comment' => $comment->id]) }}"
                                                                     style="display: flex;" method="post">
@@ -1267,17 +1295,14 @@
                                                                                 class="fa-regular fa-heart"
                                                                                 id="btnLikes"></i></button>
                                                                     @endif
-
                                                                     <p
                                                                         style="font-size: 0.6rem; margin: -1px 0px -12px 3px; font-weight: 500; color: var(--text-color);">
                                                                         {{ $comment->likes_count }} Likes</p>
                                                                 </form>
                                                             </div>
-                                                            <div class="col-5">
+                                                            <div class="col-4">
                                                                 <p class="reply" id="{{ $comment->id }}">Reply</p>
-                                                            </div>
                                                             @if ($comment->my_comment)
-                                                                <div class="col-1">
                                                                     <form
                                                                         action="{{ route('deleteComment', ['comment' => $comment->id, 'post' => $post->id]) }}"
                                                                         method="post" class="ml-auto">
@@ -1289,7 +1314,8 @@
                                                                     </form>
                                                                 </div>
                                                             @endif
-                                                            <div class="row balasKomentar" style="display: none;">
+                                                            <div class="row balasKomentar"
+                                                                style="display: none; margin-left: -2px;">
                                                                 <div class="col-12" style="margin-bottom: 0.8rem;">
                                                                     <form
                                                                         action="{{ route('sendReply', ['post' => $post->id, 'comment' => $comment->id]) }}"
@@ -1299,7 +1325,7 @@
                                                                             placeholder="Balas komentar {{ $comment->user->username }}"
                                                                             id="replyComment">
                                                                         <button type="submit"
-                                                                            style="color: var(--main_color-3); font-size: 0.7rem; padding: 5px 15px 5px 15px; background-color: unset; border: unset;">Kirim</button>
+                                                                            style="color: var(--main_color-3); font-size: 0.6rem; padding: 5px 15px 5px 15px; background-color: unset; border: unset;">Kirim</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -1333,7 +1359,6 @@
                                                             @endforeach
                                                         </div>
                                                     </span>
-                                                    <hr style="width: 100%; color: white; margin-left: 22px;">
                                                 @endforeach
                                             @endif
                                         </div>
@@ -1451,19 +1476,21 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p id="text-2">2 hours ago</p>
+                                                        <p id="text-2">
+                                                           {{ $post->created_at->diffForHumans() }}
+                                                        </p>
                                                     </div>
                                                     <form action="{{ route('sendComment', ['post' => $post->id]) }}"
                                                         method="POST">
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-12 d-flex">
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-komentar"
                                                                     name="comment" id="isiKomentar"
                                                                     placeholder="Tambahkan komentar">
                                                                 <button type="submit" name="kirimKomentar"
                                                                     id="btnKirimKomentar">
-                                                                    <p>kirim</p>
+                                                                    <p style="color: var(--text-color)">kirim</p>
                                                                 </button>
                                                             </div>
                                                         </div>
