@@ -270,6 +270,23 @@
                                             </div>
                                         @enderror
                                     </div>
+                                    <div class="row row_input2">
+                                        <div class="headerPassword d-flex">
+                                            <h6>Confirm Password</h6>
+                                            <span>
+                                                <i class="fa-regular fa-eye showPassword"></i>
+                                                <i class="fa-regular fa-eye-slash hidePassword"></i>
+                                            </span>
+                                        </div>
+                                        <input type="password"
+                                            class="@error('cpassword') is-invalid border-danger @enderror"
+                                            name="cpassword" id="passwordRegist" placeholder="Masukkan Confirm password">
+                                        @error('cpassword')
+                                            <div class="invalid-feedback">
+                                                <p>Confirm Password harus sama dengan password</p>
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row row_input3">

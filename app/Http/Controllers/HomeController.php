@@ -35,6 +35,15 @@ class HomeController extends Controller
 
         $suggested = Auth::check() ? $this->suggestionFollow($user) : User::latest()->get();
 
+        if ($posts->count() == 0) {
+            return view('index', [
+                'posts' => $posts,
+                'user' => $user,
+                'message' => 'active',
+                'suggested' => $suggested
+            ]);
+        }
+
         return view('index', [
             'posts' => $posts,
             'user' => $user,
@@ -53,6 +62,14 @@ class HomeController extends Controller
         $suggested = Auth::check() ? $this->suggestionFollow($user) : User::latest()->get();
 
 
+        if ($posts->count() == 0) {
+            return view('index', [
+                'posts' => $posts,
+                'user' => $user,
+                'message' => 'active',
+                'suggested' => $suggested
+            ]);
+        }
         return view('index', [
             'posts' => $posts,
             'user' => $user,

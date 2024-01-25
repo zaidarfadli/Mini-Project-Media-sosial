@@ -811,7 +811,7 @@
                     <div class="col-lg-8">
                         <div class="container container-lg">
                             @if (isset($message))
-                                <p class="text-center text-light">Anda belum memfollow siapapun</p>
+                                <p class="text-center text-light">Belum ada postingan apapun</p>
                             @elseif (isset($posts))
                                 @foreach ($posts as $post)
                                     <a href="{{ route('seePost', ['post' => $post->id]) }}"

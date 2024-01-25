@@ -28,6 +28,7 @@ class AuthController extends Controller
             'email' => ['required', 'unique:users,email'],
             'username' => ['required', 'unique:users,username'],
             'password' => ['required'],
+            'cpassword' => 'required|same:password',
             'name' => ['required', 'max:255'],
         ]);
 
@@ -57,7 +58,8 @@ class AuthController extends Controller
 
         $credentials = $request->validate([
             'username' => 'required|exists:users,username',
-            'password' => 'required'
+            'password' => 'required',
+
         ]);
 
         if (Auth::attempt($credentials)) {

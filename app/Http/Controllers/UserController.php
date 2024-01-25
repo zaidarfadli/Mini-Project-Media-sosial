@@ -70,7 +70,7 @@ class UserController extends Controller
         ]);
     }
 
-  public function editProfile(Request $request)
+    public function editProfile(Request $request)
     {
         $user = Auth::user();
 
@@ -93,7 +93,7 @@ class UserController extends Controller
 
         $validatedData = $request->validate($rules, $customMessages);
 
-        
+
 
 
         $validatedData['email'] = $user->email;
@@ -195,7 +195,7 @@ class UserController extends Controller
                 DB::raw('count(follows.id) as follower_count')
             )
                 ->leftJoin('follows', 'users.id', '=', 'follows.following_id')
-                ->groupBy('users.id', 'users.bio', 'users.username', 'users.name', 'users.email', 'users.password', 'users.image', 'users.email_verified_at', '.users.remember_token', 'users.created_at', 'users.updated_at')
+                ->groupBy('users.id', 'users.bio', 'users.username', 'users.name', 'users.email', 'users.password', 'users.image', 'users.email_verified_at', 'users.remember_token', 'users.created_at', 'users.updated_at')
                 ->orderByDesc('follower_count')
                 ->take(5)
                 ->get();
