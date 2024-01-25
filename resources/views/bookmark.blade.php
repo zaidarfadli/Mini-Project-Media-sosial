@@ -744,7 +744,7 @@
                         <div class="konten-home">
                             <div class="container">
                                 @if (isset($message))
-                                    <h5 class="text-light text-center mt-5 ">BELUM ADA POSTINGAN YANG DI BOOKMARK</h5>
+                                    <h6 class="text-center mt-5" style="color: var(--text-color); opacity: 0.5; letter-spacing: 1;">Belum ada postingan yang di bookmark</h6>
                                 @elseif(isset($bookmarks))
                                     <div class="row">
                                         @foreach ($bookmarks as $bookmark)

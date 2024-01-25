@@ -1533,12 +1533,10 @@
 
 </html>
 <script>
+    function backToHistory() {
+        window.history.back();
+    }
     $(document).ready(function() {
-        function backToHistory () {
-
-            window.back.history()
-        
-        }
         //Toggle untuk menampilkan input type balasan komentar
         $('.balasKomentar').hide();
         $('.reply').on('click', function() {
