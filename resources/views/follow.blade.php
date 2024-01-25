@@ -1352,8 +1352,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Beranda</title>
-    <link rel="icon" href="images/logo-medsos.png">
+    <title>Follow</title>
+    <link rel="icon" href="{{ asset('images/logo-medsos.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"

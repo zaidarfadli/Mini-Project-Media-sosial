@@ -629,7 +629,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Beranda</title>
+    <title>Posting</title>
     <link rel="icon" href="images/logo-medsos.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link
@@ -777,15 +777,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 column-input">
-                                                <textarea class="card-text" name="content" id="inpDeskripsi" placeholder="Deskripsi postingan"></textarea>
+                                                <textarea class="card-text" required name="content" id="inpDeskripsi" placeholder="Deskripsi postingan"></textarea>
                                                 <label for="btnUbahProfile">
                                                     <img id="isiGambar"
                                                         src="{{ asset('images/post/no-images.png') }}"
                                                         alt="Pilih gambar" style="width: 100%;">
-                                                    <input type="file" name="image" id="btnUbahProfile">
+                                                    <input type="file" required name="image" id="btnUbahProfile">
                                                 </label>
-                                                <hr
-                                                    style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">
+                                                <hr style="color: white; width: 100%; margin-top: 20px; height: 2px; justify-content: center;">
                                             </div>
                                             <div class="col-12">
                                                 <button class="btn" type="submit" name="posting"

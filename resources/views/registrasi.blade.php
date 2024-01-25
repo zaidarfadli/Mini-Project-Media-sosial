@@ -98,9 +98,12 @@
         box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.2);
         border: transparent;
     }
-    .showPassword, .hidePassword:hover{
+
+    .showPassword,
+    .hidePassword:hover {
         cursor: pointer;
     }
+
     .row_input3 input[type='submit'] {
         border-radius: 5px;
         margin-top: 30px;
@@ -214,7 +217,7 @@
                                                     placeholder="Masukkan username">
                                                 @error('username')
                                                     <div class="invalid-feedback">
-                                                        <p>awiwkowk</p>
+                                                        <p>Username sudah digunakan</p>
                                                     </div>
                                                 @enderror
                                             </div>
@@ -240,12 +243,11 @@
                                             @error('email')
                                                 @if ($message === 'The email has already been taken')
                                                     <div class="invalid-feedback">
-                                                        <p>Email sudah digunakan</p>
+                                                        <p>Email wajib diisi</p>
                                                     </div>
                                                 @else
-                                                <div class="invalid-feedback">
-                                                        
-                                                    <p>Email wajib diisi</p>
+                                                    <div class="invalid-feedback">
+                                                        <p>Email sudah digunakan</p>
                                                     </div>
                                                 @endif
                                             </div>

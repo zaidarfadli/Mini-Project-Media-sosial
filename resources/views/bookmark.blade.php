@@ -86,12 +86,12 @@
     }
 
     .konten-home .card {
-        width: 100%;
+        max-width: 13rem;
         color: white;
         background-color: black;
         border: 1.8px solid rgba(220, 220, 220, 0.3);
         border-radius: 8px;
-        padding: 0.8rem 0.2rem 0.8rem 1rem;
+        padding: 0.2rem 0rem 0rem 0.7rem;
         margin-bottom: -1.3rem;
         transition: all 0.5s ease;
     }
@@ -608,7 +608,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Beranda</title>
+    <title>Bookmarks</title>
     <link rel="icon" href="images/logo-medsos.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link

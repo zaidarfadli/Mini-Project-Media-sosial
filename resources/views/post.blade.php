@@ -994,11 +994,12 @@
 
     .footer p {
         font-size: 0.6rem;
-        color: white;
+        color: grey;
         margin: 20px 20px 0px 0px;
     }
 
     .footer #copyright {
+        color: grey;
         margin: 20px 0px 20px 0px;
     }
 
@@ -1040,7 +1041,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Postingan</title>
-    <link rel="icon" href="images/logo-medsos.png">
+    <link rel="icon" href="{{ asset('images/logo-medsos.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Edu+NSW+ACT+Foundation:wght@700&family=Kanit:wght@500&family=Mochiy+Pop+One&family=Montserrat:wght@200;600;800&family=Poppins:ital,wght@0,700;1,900&family=Ubuntu:wght@300&display=swap"
@@ -1404,7 +1405,7 @@
                                                                                 @forelse ($likes as $like)
                                                                                     <a href="{{ $like->user->id }}"
                                                                                         style="display: flex;">
-                                                                                        <i><img src="{{ $like->user->image }}"
+                                                                                        <i><img src="{{ asset('images/profile/' . $like->user->image) }}"
                                                                                                 alt="gambar postingan"></i>
                                                                                         <div class="container-fluid">
                                                                                             <div class="row">
@@ -1426,7 +1427,7 @@
                                                                                                         type="submit"
                                                                                                         class="btn"name="follow"
                                                                                                         id="follow"
-                                                                                                        onclick="submitForm()">Unfollow</button>
+                                                                                                        onclick="submitForm()">Followed</button>
                                                                                                 @else
                                                                                                     <button
                                                                                                         type="submit"
@@ -1441,7 +1442,8 @@
                                                                                 @empty
                                                                                     <p
                                                                                         style="font-size: 0.8rem; font-weight: 400; text-align: center; color: var(--text-color); opacity: 0.7;">
-                                                                                        awikwok ga ada yang nge like</p>
+                                                                                        Belum ada yang menyukai
+                                                                                        postingan ini</p>
                                                                                 @endforelse
                                                                             </div>
                                                                         </div>
