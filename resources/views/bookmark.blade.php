@@ -739,7 +739,7 @@
     <section class="home-section" style="background-color: black;">
         <div class="container-fluid nav" style="background-color: black;">
             <div class="container-fluid container-xl">
-                <div class="row" style="margin-bottom: 2rem;"> <a href="postingan.php"
+                <div class="row" style="margin-bottom: 2rem;"> <a href=""
                         style="text-decoration: none; color: black;">
                         <div class="konten-home">
                             <div class="container">

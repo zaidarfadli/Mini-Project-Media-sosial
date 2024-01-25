@@ -1164,7 +1164,7 @@
                     <div class="logoHomepage">
                         <img src="{{ asset('images/logo-medsos.png') }}" alt="logo homepage">
                 </nav>
-                <div class="col-12 d-flex backRow">
+                <div class="col-12 d-flex backRow" onclick="backToHistory()">
                     <p id="arrowLeft">
                         < </p>
                             <p id="back">Back</p>
@@ -1534,6 +1534,11 @@
 </html>
 <script>
     $(document).ready(function() {
+        function backToHistory () {
+
+            window.back.history()
+        
+        }
         //Toggle untuk menampilkan input type balasan komentar
         $('.balasKomentar').hide();
         $('.reply').on('click', function() {
