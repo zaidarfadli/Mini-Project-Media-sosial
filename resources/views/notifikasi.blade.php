@@ -838,7 +838,7 @@
 
     .home-section .usernameDetailFollow {
         color: var(--main_color);
-        margin: 1rem 0rem 1rem -2rem;
+        margin: 1rem 0rem;
         justify-content: center;
         font-weight: 600;
     }
